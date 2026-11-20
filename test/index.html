@@ -192,6 +192,18 @@ a.tile:hover{transform:translateY(-1px);border-color:#C9DAEA}
 .cust{font-size:12px;color:#83898F;margin-top:6px}
 .calc select{box-sizing:border-box;width:100%;min-width:0;font:inherit;font-size:15px;padding:11px 12px;border:1px solid #E1E6ED;border-radius:12px;color:#20324C;background:#fff}
 .res small{display:block;font-size:12.5px;color:#83898F;margin-top:6px;line-height:1.8}
+.decq{box-sizing:border-box;width:100%;font:inherit;font-size:15px;padding:11px 14px;border:1px solid #E1E6ED;border-radius:12px;color:#20324C;background:#fff;outline:none}
+.declist{display:grid;gap:10px}
+.dec{background:#fff;border:1px solid #E8ECF2;border-radius:16px;padding:14px 16px;display:grid;gap:8px}
+.dec-h{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.dec-h h3{margin:0;font-size:15.5px;color:#20324C;line-height:1.6}
+.dec-pct{flex:none;background:#EAF1F8;color:#35547D;font-weight:700;font-size:13.5px;border-radius:10px;padding:4px 10px;max-width:45%;text-align:center}
+.dec-rows{display:grid;gap:3px;font-size:13px;color:#4A5563;line-height:1.7}
+.dec-rows b{color:#35547D;font-weight:600}
+.dec-f{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px}
+.dec-f a{color:#5B91BD;font-weight:600;text-decoration:none}
+.tag-off{background:#E6F4EC;color:#2E7D5B;border-radius:999px;padding:2px 9px}
+.tag-news{background:#FBF0E6;color:#B4533A;border-radius:999px;padding:2px 9px}
 .hint{font-size:12px;color:#83898F;margin:0;line-height:1.8}
 </style>
 <script>
@@ -225,6 +237,11 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   <a class="tile" href="#eos">
     <div class="t-ic">🧮</div>
     <div class="t-body"><h3>حاسبة مكافأة نهاية الخدمة</h3><p>احسب مكافأتك حسب المادتين 84 و85 من نظام العمل.</p></div>
+    <div class="t-go">‹</div>
+  </a>
+  <a class="tile" href="#decisions">
+    <div class="t-ic">📜</div>
+    <div class="t-body"><h3>قرارات التوطين</h3><p>أحدث قرارات توطين المهن: النسبة والمنشآت المشمولة والحد الأدنى للأجر.</p></div>
     <div class="t-go">‹</div>
   </a>
   <a class="tile" href="#saudization">
@@ -333,6 +350,17 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   </div>
 </main>
 </div>
+
+<div id="decView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>قرارات التوطين</b></div>
+<main class="hub">
+  <input id="decQ" class="decq" type="search" placeholder="ابحث عن مهنة أو قطاع…">
+  <div id="decList" class="declist"></div>
+  <p class="hint">مرتبة من الأحدث. «مصدر رسمي» يعني إن المعلومة من موقع وزارة الموارد البشرية، و«مصدر إخباري» يعني إنها من خبر أو مقال وتحتاج تأكيد من الدليل الإجرائي. للتفاصيل الكاملة والمسميات المشمولة، ارجع للدليل الإجرائي لكل قرار في موقع الوزارة.<br>آخر تحديث: 20 نوفمبر 2026</p>
+</main>
+</div>
+
+<script type="application/json" id="decdata">[{"t": "المهن في المراكز والصالات الرياضية", "pct": "15%", "scope": "المنشآت التي فيها 4 عاملين فأكثر في المهن المستهدفة", "wage": "", "start": "18 نوفمبر 2026", "note": "يشمل 12 مهنة في الصالات الرجالية والنسائية، مثل مدرب رياضي ومدرب لياقة بدنية.", "src": "سبق (خبر)", "url": "https://sabq.org/article/z855wu5", "off": false}, {"t": "المهن الإدارية المساندة (ومنها مهن الموارد البشرية)", "pct": "100%", "scope": "المنشآت التي فيها عامل واحد فأكثر في المهن المشمولة", "wage": "", "start": "5 أبريل 2026", "note": "قرار وزاري رقم 132249: إضافة 69 مهنة إدارية مساندة للتوطين الكامل.", "src": "صبار (مقال)", "url": "https://sabbar.com/blog/decision-localize-administrative-support-jobs-saudi-arabia", "off": false}, {"t": "مهن التسويق والمبيعات", "pct": "60%", "scope": "المنشآت التي فيها 3 عاملين فأكثر في هذه المهن", "wage": "5,500 ريال", "start": "19 أبريل 2026", "note": "يشمل نحو 20 مهنة، منها مدير تسويق ومندوب مبيعات.", "src": "المعقّب (مقال)", "url": "https://almuaqib.com/guides/saudization-professions-2026", "off": false}, {"t": "المهن الهندسية", "pct": "30%", "scope": "المنشآت التي فيها 5 عاملين فأكثر في المهن الهندسية (القطاع الخاص وغير الربحي)", "wage": "8,000 ريال", "start": "31 ديسمبر 2025", "note": "بالشراكة مع وزارة البلديات والإسكان.", "src": "وزارة الموارد البشرية", "url": "https://www.hrsd.gov.sa/media-center/news/%D8%B1%D9%81%D8%B9-%D9%86%D8%B3%D8%A8-%D8%A7%D9%84%D8%AA%D9%88%D8%B7%D9%8A%D9%86-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D9%87%D9%86-%D8%A7%D9%84%D9%87%D9%86%D8%AF%D8%B3%D9%8A%D8%A9-%D9%88%D9%85%D9%87%D9%86-%D8%A7%D9%84%D9%85%D8%B4%D8%AA%D8%B1%D9%8A%D8%A7%D8%AA", "off": true}, {"t": "مهن المشتريات", "pct": "70%", "scope": "المنشآت التي فيها 3 عاملين فأكثر في المهن المشمولة", "wage": "", "start": "30 نوفمبر 2025", "note": "حسب المسميات المعتمدة في التصنيف السعودي الموحد للمهن.", "src": "وزارة الموارد البشرية", "url": "https://www.hrsd.gov.sa/media-center/news/%D8%B1%D9%81%D8%B9-%D9%86%D8%B3%D8%A8-%D8%A7%D9%84%D8%AA%D9%88%D8%B7%D9%8A%D9%86-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D9%87%D9%86-%D8%A7%D9%84%D9%87%D9%86%D8%AF%D8%B3%D9%8A%D8%A9-%D9%88%D9%85%D9%87%D9%86-%D8%A7%D9%84%D9%85%D8%B4%D8%AA%D8%B1%D9%8A%D8%A7%D8%AA", "off": true}, {"t": "المهن المحاسبية", "pct": "40% ترتفع تدريجيًا إلى 70%", "scope": "المرحلة الأولى: المنشآت التي فيها 5 محاسبين فأكثر", "wage": "6,000 للبكالوريوس · 4,500 للدبلوم", "start": "27 أكتوبر 2025", "note": "على خمس مراحل خلال خمس سنوات، بالشراكة مع وزارة التجارة.", "src": "وزارة الموارد البشرية", "url": "https://www.hrsd.gov.sa/media-center/news/%d8%aa%d9%88%d8%b7%d9%8a%d9%86-44-%d9%85%d9%87%d9%86%d8%a9-%d9%85%d8%ad%d8%a7%d8%b3%d8%a8%d9%8a%d8%a9-%d8%ac%d8%af%d9%8a%d8%af%d8%a9-%d9%81%d9%8a-%d8%a7%d9%84%d9%82%d8%b7%d8%a7%d8%b9-%d8%a7%d9%84%d8%ae%d8%a7%d8%b5", "off": true}, {"t": "مهن الصيدلة", "pct": "35% · 65% · 55%", "scope": "المنشآت التي فيها 5 عاملين فأكثر في مهن الصيدلة", "wage": "7,000 ريال", "start": "27 يوليو 2025", "note": "35% للصيدليات المجتمعية والمجمعات الطبية، 65% لصيدليات المستشفيات، 55% للأنشطة الأخرى.", "src": "وزارة الموارد البشرية", "url": "https://www.hrsd.gov.sa/en/node/5575014", "off": true}, {"t": "مهن طب الأسنان", "pct": "45% ثم 55%", "scope": "المنشآت التي فيها 3 عاملين فأكثر في مهن طب الأسنان", "wage": "9,000 ريال", "start": "27 يوليو 2025", "note": "المرحلة الثانية (55%) بعد 12 شهرًا من صدور القرار.", "src": "وزارة الموارد البشرية", "url": "https://www.hrsd.gov.sa/l/5573180", "off": true}, {"t": "المهن الفنية الهندسية", "pct": "30%", "scope": "المنشآت التي فيها 5 عاملين فأكثر في المهن المستهدفة", "wage": "5,000 ريال", "start": "27 يوليو 2025", "note": "بالشراكة مع وزارة البلديات والإسكان.", "src": "وزارة الموارد البشرية", "url": "https://www.hrsd.gov.sa/node/5574713", "off": true}, {"t": "قصر العمل في منافذ البيع بمنطقة القصيم", "pct": "100%", "scope": "منافذ البيع في منطقة القصيم", "wage": "", "start": "5 أغسطس 2019", "note": "قرار رقم 1013.", "src": "وزارة الموارد البشرية", "url": "https://www.hrsd.gov.sa/knowledge-centre/decisions-and-regulations/ministerial-decisions/312208", "off": true}]</script>
 
 <div id="szView" class="view">
 <div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>حاسبة نسبة التوطين</b></div>
@@ -850,6 +878,7 @@ function route(){
   else if(h==="overtime")v="otView";
   else if(h==="eos")v="eosView";
   else if(h==="saudization")v="szView";
+  else if(h==="decisions")v="decView";
   document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on",x.id===v));
   if(v==="bankView"&&CATS.some(c=>c.id===h)&&state.cat!==h){state.cat=h;state.page=1;render()}
   scrollTo(0,0);
@@ -897,6 +926,14 @@ function calcSZ(){
   $("szRes").innerHTML=`نسبة التوطين<b>${f(r)}%</b>${extra}`;
 }
 ["szFull","szHalf","szZero","szFor","szTarget"].forEach(id=>$(id).addEventListener("input",calcSZ));
+const DEC=JSON.parse(document.getElementById("decdata").textContent);
+function renderDec(){
+  const q=($("decQ").value||"").trim();
+  const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const L=DEC.filter(d=>!q||(d.t+" "+d.note+" "+d.scope).includes(q));
+  $("decList").innerHTML=L.length?L.map(d=>`<div class="dec"><div class="dec-h"><h3>${esc(d.t)}</h3><span class="dec-pct">${esc(d.pct)}</span></div><div class="dec-rows"><div><b>يبدأ من:</b> ${esc(d.start)}</div><div><b>يشمل:</b> ${esc(d.scope)}</div>${d.wage?`<div><b>الحد الأدنى للأجر للاحتساب:</b> ${esc(d.wage)}</div>`:""}<div>${esc(d.note)}</div></div><div class="dec-f"><span class="${d.off?"tag-off":"tag-news"}">${d.off?"مصدر رسمي":"مصدر إخباري"}</span><a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.src)} ‹</a></div></div>`).join(""):'<div class="note-box">ما فيه نتائج</div>';
+}
+$("decQ").addEventListener("input",renderDec);renderDec();
 route();
 
 </script>
