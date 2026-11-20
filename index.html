@@ -190,6 +190,8 @@ a.tile:hover{transform:translateY(-1px);border-color:#C9DAEA}
 .otgrid input{font-size:15px;padding:9px 10px;width:100%;min-width:0;box-sizing:border-box}
 .otreset{margin-top:10px;border:0;background:none;color:#5B91BD;font:inherit;font-size:13px;font-weight:600;cursor:pointer;padding:6px 0}
 .cust{font-size:12px;color:#83898F;margin-top:6px}
+.calc select{box-sizing:border-box;width:100%;min-width:0;font:inherit;font-size:15px;padding:11px 12px;border:1px solid #E1E6ED;border-radius:12px;color:#20324C;background:#fff}
+.res small{display:block;font-size:12.5px;color:#83898F;margin-top:6px;line-height:1.8}
 .hint{font-size:12px;color:#83898F;margin:0;line-height:1.8}
 </style>
 <script>
@@ -217,6 +219,11 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   <a class="tile" href="#overtime">
     <div class="t-ic">⏱️</div>
     <div class="t-body"><h3>حاسبة العمل الإضافي</h3><p>احسب أجر ساعات العمل الإضافي حسب نظام العمل.</p></div>
+    <div class="t-go">‹</div>
+  </a>
+  <a class="tile" href="#eos">
+    <div class="t-ic">🧮</div>
+    <div class="t-body"><h3>حاسبة مكافأة نهاية الخدمة</h3><p>احسب مكافأتك حسب المادتين 84 و85 من نظام العمل.</p></div>
     <div class="t-go">‹</div>
   </a>
   <div class="tile soon">
@@ -293,6 +300,30 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
     </details>
     <div class="res" id="otRes">أدخل البيانات لعرض النتيجة</div>
     <p class="hint">القيم الافتراضية حسب المادة 107 من نظام العمل: أجر الساعة الإضافية = أجر الساعة الفعلي + 50% من أجر الساعة الأساسي، على أساس 30 يوم و8 ساعات يومياً. إذا كانت ساعات العمل في شركتك مختلفة، عدّلها من "إعدادات الحساب". النتيجة تقديرية.</p>
+  </div>
+</main>
+</div>
+
+<div id="eosView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>حاسبة مكافأة نهاية الخدمة</b></div>
+<main class="hub">
+  <div class="calc">
+    <label>الأجر الشهري الأخير (الأساسي + البدلات الثابتة)<input id="eosWage" type="number" inputmode="decimal" placeholder="مثال: 8000"></label>
+    <div class="otgrid">
+      <label>سنوات<input id="eosY" type="number" inputmode="numeric" placeholder="0"></label>
+      <label>أشهر<input id="eosM" type="number" inputmode="numeric" placeholder="0"></label>
+      <label>أيام<input id="eosD" type="number" inputmode="numeric" placeholder="0"></label>
+    </div>
+    <label>سبب انتهاء العلاقة
+      <select id="eosWhy">
+        <option value="end">انتهاء العقد أو إنهاؤه من صاحب العمل</option>
+        <option value="resign">استقالة (المادة 85)</option>
+        <option value="a87">حالات المادة 87 (قوة قاهرة، أو الموظفة خلال 6 أشهر من الزواج أو 3 أشهر من الولادة)</option>
+        <option value="a80">فسخ العقد وفق المادة 80</option>
+      </select>
+    </label>
+    <div class="res" id="eosRes">أدخل البيانات لعرض النتيجة</div>
+    <p class="hint">طريقة الحساب حسب المادة 84: نصف أجر شهر عن كل سنة من أول 5 سنوات، وأجر شهر كامل عن كل سنة بعدها، وأجزاء السنة تُحسب بنسبتها. عند الاستقالة (المادة 85): لا شيء لأقل من سنتين، والثلث من سنتين إلى أقل من 5، والثلثان من 5 إلى أقل من 10، وكاملة عند 10 سنوات فأكثر. النتيجة تقديرية.</p>
   </div>
 </main>
 </div>
@@ -796,6 +827,7 @@ function route(){
   if(h==="bank"||CATS.some(c=>c.id===h))v="bankView";
   else if(h==="magazine")v="magView";
   else if(h==="overtime")v="otView";
+  else if(h==="eos")v="eosView";
   document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on",x.id===v));
   if(v==="bankView"&&CATS.some(c=>c.id===h)&&state.cat!==h){state.cat=h;state.page=1;render()}
   scrollTo(0,0);
@@ -811,6 +843,23 @@ function calcOT(){
 }
 ["otBasic","otTotal","otHours","otDays","otDaily","otPct"].forEach(id=>$(id).addEventListener("input",calcOT));
 $("otReset").onclick=()=>{$("otDays").value=30;$("otDaily").value=8;$("otPct").value=50;calcOT()};
+function calcEOS(){
+  const w=parseFloat($("eosWage").value),y=parseFloat($("eosY").value)||0,m=parseFloat($("eosM").value)||0,d=parseFloat($("eosD").value)||0,why=$("eosWhy").value;
+  const Y=y+m/12+d/365, f=n=>n.toLocaleString("en-US",{maximumFractionDigits:2});
+  if(!(w>0)||!(Y>0)){$("eosRes").innerHTML="أدخل البيانات لعرض النتيجة";return}
+  const first=w*0.5*Math.min(Y,5), rest=w*Math.max(Y-5,0), full=first+rest;
+  let k=1,note="المكافأة كاملة";
+  if(why==="a80"){k=0;note="لا يستحق مكافأة عند الفسخ وفق المادة 80"}
+  else if(why==="resign"){
+    if(Y<2){k=0;note="لا يستحق مكافأة: الخدمة أقل من سنتين"}
+    else if(Y<5){k=1/3;note="ثلث المكافأة (خدمة من سنتين إلى أقل من 5 سنوات)"}
+    else if(Y<10){k=2/3;note="ثلثا المكافأة (خدمة من 5 إلى أقل من 10 سنوات)"}
+    else note="المكافأة كاملة (خدمة 10 سنوات فأكثر)";
+  }else if(why==="a87")note="المكافأة كاملة حسب المادة 87";
+  $("eosRes").innerHTML=`مكافأة نهاية الخدمة<b>${f(full*k)} ريال</b><small>${note}<br>مدة الخدمة: ${f(Y)} سنة · المكافأة الكاملة: ${f(full)} ريال<br>أول 5 سنوات: ${f(first)} · ما بعدها: ${f(rest)}</small>`;
+}
+["eosWage","eosY","eosM","eosD"].forEach(id=>$(id).addEventListener("input",calcEOS));
+$("eosWhy").addEventListener("change",calcEOS);
 route();
 
 </script>
