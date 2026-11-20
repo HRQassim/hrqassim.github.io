@@ -226,6 +226,11 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
     <div class="t-body"><h3>حاسبة مكافأة نهاية الخدمة</h3><p>احسب مكافأتك حسب المادتين 84 و85 من نظام العمل.</p></div>
     <div class="t-go">‹</div>
   </a>
+  <a class="tile" href="#saudization">
+    <div class="t-ic">🇸🇦</div>
+    <div class="t-body"><h3>حاسبة نسبة التوطين</h3><p>احسب نسبة التوطين في منشأتك، وكم سعودي تحتاج لتوصل للنسبة المطلوبة.</p></div>
+    <div class="t-go">‹</div>
+  </a>
   <div class="tile soon">
     <div class="t-ic">🎓</div>
     <div class="t-body"><h3>دليل الشهادات المهنية</h3><p>أهم الشهادات المهنية في الموارد البشرية ومتطلباتها.</p></div>
@@ -324,6 +329,21 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
     </label>
     <div class="res" id="eosRes">أدخل البيانات لعرض النتيجة</div>
     <p class="hint">طريقة الحساب حسب المادة 84: نصف أجر شهر عن كل سنة من أول 5 سنوات، وأجر شهر كامل عن كل سنة بعدها، وأجزاء السنة تُحسب بنسبتها. عند الاستقالة (المادة 85): لا شيء لأقل من سنتين، والثلث من سنتين إلى أقل من 5، والثلثان من 5 إلى أقل من 10، وكاملة عند 10 سنوات فأكثر. النتيجة تقديرية.</p>
+  </div>
+</main>
+</div>
+
+<div id="szView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>حاسبة نسبة التوطين</b></div>
+<main class="hub">
+  <div class="calc">
+    <label>سعوديون براتب 4,000 ريال فأكثر (يُحتسب كل واحد بعامل كامل)<input id="szFull" type="number" inputmode="numeric" placeholder="0"></label>
+    <label>سعوديون براتب من 3,000 إلى 3,999 ريال (يُحتسب كل واحد بنصف عامل)<input id="szHalf" type="number" inputmode="numeric" placeholder="0"></label>
+    <label>سعوديون براتب أقل من 3,000 ريال (لا يُحتسبون في النسبة)<input id="szZero" type="number" inputmode="numeric" placeholder="0"></label>
+    <label>عدد الموظفين غير السعوديين<input id="szFor" type="number" inputmode="numeric" placeholder="0"></label>
+    <label>النسبة المطلوبة لنشاطك % (اختياري، من منصة قوى)<input id="szTarget" type="number" inputmode="decimal" placeholder="مثال: 30"></label>
+    <div class="res" id="szRes">أدخل البيانات لعرض النتيجة</div>
+    <p class="hint">نسبة التوطين = عدد السعوديين المحتسبين ÷ إجمالي الموظفين. يُحتسب السعودي بعامل كامل إذا كان راتبه 4,000 ريال فأكثر، وبنصف عامل إذا كان راتبه من 3,000 إلى 3,999، ولا يُحتسب إذا كان راتبه أقل من 3,000. ويشترط للاحتساب أن يكون العقد موثقًا في قوى وأن يكون الموظف مسجلًا في التأمينات. النسبة المطلوبة تختلف حسب النشاط وحجم المنشأة، فخذها من منصة قوى. النتيجة تقديرية.</p>
   </div>
 </main>
 </div>
@@ -828,6 +848,7 @@ function route(){
   else if(h==="magazine")v="magView";
   else if(h==="overtime")v="otView";
   else if(h==="eos")v="eosView";
+  else if(h==="saudization")v="szView";
   document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on",x.id===v));
   if(v==="bankView"&&CATS.some(c=>c.id===h)&&state.cat!==h){state.cat=h;state.page=1;render()}
   scrollTo(0,0);
@@ -860,6 +881,21 @@ function calcEOS(){
 }
 ["eosWage","eosY","eosM","eosD"].forEach(id=>$(id).addEventListener("input",calcEOS));
 $("eosWhy").addEventListener("change",calcEOS);
+function calcSZ(){
+  const n=id=>Math.max(0,parseFloat($(id).value)||0);
+  const a=n("szFull"),b=n("szHalf"),c=n("szZero"),fo=n("szFor"),p=parseFloat($("szTarget").value);
+  const T=a+b+c+fo, S=a+0.5*b, f=x=>x.toLocaleString("en-US",{maximumFractionDigits:1});
+  if(!(T>0)){$("szRes").innerHTML="أدخل البيانات لعرض النتيجة";return}
+  const r=S/T*100;
+  let extra=`<small>السعوديون المحتسبون: ${f(S)} من إجمالي ${f(T)} موظف</small>`;
+  if(p>0&&p<100){
+    const need=Math.max(0,Math.ceil((p/100*T-S)/(1-p/100)-1e-9));
+    extra+=need===0?`<small style="color:#2E7D5B;font-weight:700">✓ منشأتك تحقق النسبة المطلوبة (${f(p)}%)</small>`
+      :`<small style="color:#B4533A;font-weight:700">تحتاج تقريبًا ${need} موظف سعودي إضافي براتب 4,000 فأكثر لتصل إلى ${f(p)}%</small>`;
+  }
+  $("szRes").innerHTML=`نسبة التوطين<b>${f(r)}%</b>${extra}`;
+}
+["szFull","szHalf","szZero","szFor","szTarget"].forEach(id=>$(id).addEventListener("input",calcSZ));
 route();
 
 </script>
