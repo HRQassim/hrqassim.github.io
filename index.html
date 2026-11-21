@@ -192,6 +192,28 @@ a.tile:hover{transform:translateY(-1px);border-color:#C9DAEA}
 .cust{font-size:12px;color:#83898F;margin-top:6px}
 .calc select{box-sizing:border-box;width:100%;min-width:0;font:inherit;font-size:15px;padding:11px 12px;border:1px solid #E1E6ED;border-radius:12px;color:#20324C;background:#fff}
 .res small{display:block;font-size:12.5px;color:#83898F;margin-top:6px;line-height:1.8}
+.decq{box-sizing:border-box;width:100%;font:inherit;font-size:15px;padding:11px 14px;border:1px solid #E1E6ED;border-radius:12px;color:#20324C;background:#fff;outline:none}
+.declist{display:grid;gap:10px}
+.dec{background:#fff;border:1px solid #E8ECF2;border-radius:16px;padding:14px 16px;display:grid;gap:8px}
+.dec-h{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.dec-h h3{margin:0;font-size:15.5px;color:#20324C;line-height:1.6}
+.dec-pct{flex:none;background:#EAF1F8;color:#35547D;font-weight:700;font-size:13.5px;border-radius:10px;padding:4px 10px;max-width:45%;text-align:center}
+.dec-rows{display:grid;gap:3px;font-size:13px;color:#4A5563;line-height:1.7}
+.dec-rows b{color:#35547D;font-weight:600}
+.dec-f{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px}
+.dec-f a{color:#5B91BD;font-weight:600;text-decoration:none}
+.tag-off{background:#E6F4EC;color:#2E7D5B;border-radius:999px;padding:2px 9px}
+.tag-news{background:#FBF0E6;color:#B4533A;border-radius:999px;padding:2px 9px}
+.why{background:#FBF0E6;border:1px solid #F1D9C4;border-radius:16px;padding:14px 16px}
+.why h3{margin:0 0 6px;font-size:15px;color:#B4533A}
+.why ol{margin:0;padding-inline-start:20px;font-size:13.5px;color:#4A5563;line-height:1.9}
+.ph{display:grid;gap:4px;margin-top:2px}
+.ph div{display:flex;gap:8px;align-items:baseline}
+.ph span{flex:none;background:#F1F4F8;border-radius:8px;padding:1px 8px;font-size:12px;color:#35547D}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.chips span{background:#F1F4F8;color:#20324C;border-radius:999px;padding:2px 9px;font-size:12px}
+.chips em{font-style:normal;font-size:12px;color:#83898F;align-self:center}
+.dec-cond{background:#EAF1F8;border-radius:10px;padding:6px 10px;font-size:12.5px;color:#35547D}
 .hint{font-size:12px;color:#83898F;margin:0;line-height:1.8}
 </style>
 <script>
@@ -224,6 +246,16 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   <a class="tile" href="#eos">
     <div class="t-ic">🧮</div>
     <div class="t-body"><h3>حاسبة مكافأة نهاية الخدمة</h3><p>احسب مكافأتك حسب المادتين 84 و85 من نظام العمل.</p></div>
+    <div class="t-go">‹</div>
+  </a>
+  <a class="tile" href="#decisions">
+    <div class="t-ic">📜</div>
+    <div class="t-body"><h3>قرارات التوطين</h3><p>أحدث قرارات توطين المهن: النسبة والمنشآت المشمولة والحد الأدنى للأجر.</p></div>
+    <div class="t-go">‹</div>
+  </a>
+  <a class="tile" href="#saudization">
+    <div class="t-ic">🇸🇦</div>
+    <div class="t-body"><h3>حاسبة نسبة التوطين</h3><p>احسب نسبة التوطين في منشأتك، وكم سعودي تحتاج لتوصل للنسبة المطلوبة.</p></div>
     <div class="t-go">‹</div>
   </a>
   <div class="tile soon">
@@ -328,6 +360,40 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
 </main>
 </div>
 
+<div id="decView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>قرارات التوطين</b></div>
+<main class="hub">
+  <div class="why">
+    <h3>أسباب عدم احتساب الموظف السعودي في التوطين</h3>
+    <ol>
+      <li>الراتب أقل من الحد الأدنى المحدد للمهنة (الأساسي + بدل السكن).</li>
+      <li>عدم إصدار أو تجديد شهادة الهيئة السعودية للمهندسين.</li>
+      <li>عدم إصدار أو تجديد شهادة الهيئة السعودية للمراجعين والمحاسبين.</li>
+    </ol>
+  </div>
+  <input id="decQ" class="decq" type="search" placeholder="ابحث عن مهنة أو قطاع…">
+  <div id="decList" class="declist"></div>
+  <p class="hint">مرتبة من الأحدث، وكل المعلومات من الموقع الرسمي لوزارة الموارد البشرية والتنمية الاجتماعية. للتفاصيل الكاملة والمسميات المشمولة، ارجع للدليل الإجرائي لكل قرار في موقع الوزارة.<br>آخر تحديث: 21 نوفمبر 2026</p>
+</main>
+</div>
+
+<script type="application/json" id="decdata">[{"t": "مهن إدارة المشاريع", "no": "41454", "start": "14 فبراير 2027", "phases": [["14 فبراير 2027", "70%"]], "prof": ["مدير إدارة مشاريع", "مهندس إدارة مشاريع", "أخصائي إدارة مشاريع"], "more": "", "wage": "حسب الدليل الإجرائي", "scope": "منشآت القطاع الخاص", "cond": "", "url": "https://www.hrsd.gov.sa/knowledge-centre/decisions-and-regulations/regulation-and-procedures/الدليل-الإجرائي-لتوطين-مهن-إدارة-المشاريع", "pct": "70%"}, {"t": "المهن الفنية الهندسية", "no": "97528 (المرحلة الثانية)", "start": "27 يوليو 2025", "phases": [["27 يوليو 2025", "30%"], ["9 مايو 2027", "35%"]], "prof": ["فني الهندسة المدنية", "فني الهندسة الكهربائية", "فني الهندسة الميكانيكية", "فني الهندسة الإلكترونية", "فني المساحة", "فني الصيانة الميكانيكية", "رسام معماري"], "more": "وغيرها، والمجموع 94 مهنة", "wage": "5,000 ريال", "scope": "المنشآت التي فيها 5 عاملين فأكثر في المهن المستهدفة، على مستوى الكيان", "cond": "", "url": "https://hrsd.gov.sa/node/5581905", "pct": "30% ← 35%"}, {"t": "المهن في المراكز والصالات الرياضية", "no": "", "start": "18 نوفمبر 2026", "phases": [["18 نوفمبر 2026", "15%"]], "prof": ["مدرب رياضي", "مدرب كرة قدم محترف", "مشرف رياضي", "مدرب رياضي خاص", "مدرب ألعاب قوى محترف"], "more": "وغيرها، والمجموع 12 مهنة", "wage": "حسب الدليل الإجرائي", "scope": "المنشآت التي فيها 4 عاملين فأكثر في المهن المستهدفة", "cond": "", "url": "https://www.hrsd.gov.sa/node/5578281", "pct": "15%"}, {"t": "المهن الإدارية المساندة (ومنها مهن الموارد البشرية)", "no": "132249", "start": "5 أبريل 2026", "phases": [["5 أبريل 2026", "100%"], ["4 أكتوبر 2026", "دخول القرار حيز التنفيذ الكامل"]], "prof": ["مدير تطوير موارد بشرية", "مدير تخطيط قوى عاملة", "مدير عمليات موارد بشرية", "مدير توظيف", "أخصائي توظيف", "أخصائي عمليات موارد بشرية", "أخصائي تخطيط قوى عاملة", "مدير مكتب استقدام", "أخصائي استقدام", "كاتب علاقات حكومية", "مساعد إداري", "موظف استقبال", "وكيل جمركي", "وكيل شحن", "كاتب شحن", "كاتب حركة مخزون", "مدير علاقات عامة", "أخصائي علاقات عامة"], "more": "وغيرها، والمجموع 69 مهنة", "wage": "حسب الدليل الإجرائي", "scope": "المنشآت التي فيها عامل واحد فأكثر في المهن المشمولة", "cond": "", "url": "https://www.hrsd.gov.sa/media-center/news/دخول-قرار-توطين-المهن-الإدارية-المساندة-حيز-التنفيذ", "pct": "100%"}, {"t": "المهن الهندسية", "no": "", "start": "30 يونيو 2026", "phases": [["30 يونيو 2026", "30%"]], "prof": ["مهندس معماري", "مهندس توليد طاقة", "مهندس صناعي", "مهندس إلكترونيات", "مهندس مركبات", "مهندس بحري", "مهندس صحي"], "more": "وغيرها، والمجموع 46 مهنة", "wage": "8,000 ريال", "scope": "المنشآت التي فيها 5 عاملين فأكثر في المهن الهندسية (القطاع الخاص وغير الربحي)", "cond": "الاعتماد المهني من الهيئة السعودية للمهندسين", "url": "https://www.hrsd.gov.sa/media-center/news/تطبيق-رفع-نسبة-التوطين-في-المهن-الهندسية", "pct": "30%"}, {"t": "مهن المشتريات", "no": "", "start": "31 مايو 2026", "phases": [["31 مايو 2026", "70%"]], "prof": ["مدير مشتريات", "مندوب مشتريات", "مدير عقود", "أمين مستودع", "مدير خدمات لوجستية", "مدير مستودع", "أخصائي مناقصات", "أخصائي مشتريات", "أخصائي تجارة إلكترونية", "أخصائي أبحاث أسواق", "أخصائي مستودعات", "أخصائي توريد للعلامات التجارية الخاصة"], "more": "", "wage": "حسب الدليل الإجرائي", "scope": "المنشآت التي فيها 3 عاملين فأكثر في المهن المشمولة", "cond": "", "url": "https://www.hrsd.gov.sa/media-center/news/%D8%B1%D9%81%D8%B9-%D9%86%D8%B3%D8%A8%D8%A9-%D8%A7%D9%84%D8%AA%D9%88%D8%B7%D9%8A%D9%86-%D9%81%D9%8A-%D9%85%D9%87%D9%86-%D8%A7%D9%84%D9%85%D8%B4%D8%AA%D8%B1%D9%8A%D8%A7%D8%AA", "pct": "70%"}, {"t": "مهن التسويق والمبيعات", "no": "", "start": "19 يناير 2026", "phases": [["19 يناير 2026", "60%"]], "prof": ["مدير تسويق", "وكيل دعاية وإعلان", "مدير دعاية وإعلان", "مصمم جرافيك", "مصمم إعلان", "أخصائي علاقات عامة", "أخصائي دعاية وإعلان", "أخصائي تسويق", "مدير علاقات عامة", "مصور فوتوغرافي", "مدير مبيعات", "مندوب مبيعات تجزئة", "مندوب مبيعات جملة", "مندوب مبيعات", "أخصائي مبيعات أجهزة تقنية المعلومات والاتصالات", "أخصائي مبيعات", "أخصائي تجاري", "وسيط سلع"], "more": "", "wage": "5,500 ريال (لمهن التسويق)", "scope": "المنشآت التي فيها 3 عاملين فأكثر في هذه المهن", "cond": "", "url": "https://www.hrsd.gov.sa/media-center/news/رفع-نسب-التوطين-في-المهن", "pct": "60%"}, {"t": "مهن طب الأسنان", "no": "", "start": "27 يوليو 2025", "phases": [["27 يوليو 2025", "45%"], ["27 يناير 2026", "55%"]], "prof": [], "more": "مهن طب الأسنان المحددة في الدليل الإجرائي", "wage": "9,000 ريال (الأجر المسجل في التأمينات)", "scope": "المنشآت التي فيها 3 عاملين فأكثر في تخصصات طب الأسنان", "cond": "اعتماد مهني ساري من الهيئة السعودية للتخصصات الصحية", "url": "https://www.hrsd.gov.sa/knowledge-centre/decisions-and-regulations/regulation-and-procedures/الدليل-الإجرائي-لقرار-توطين-مهنة-طب-الأسنان", "pct": "55%"}, {"t": "المهن المحاسبية", "no": "", "start": "27 أكتوبر 2025", "phases": [["27 أكتوبر 2025", "40% (المرحلة الأولى)"], ["خلال خمس سنوات", "ترتفع تدريجيًا حتى 70% على خمس مراحل، وتواريخها في الدليل الإجرائي"]], "prof": ["مدير مالي", "مدير حسابات", "مدير شؤون مالية ومحاسبة", "مدير حسابات وميزانية", "مدير خزينة", "مدير ميزانية", "مدير تحصيل", "مدير خزانة", "محاسب قانوني", "مراقب مالي", "مراجع مالي أول"], "more": "وغيرها، والمجموع 44 مهنة", "wage": "6,000 ريال للبكالوريوس · 4,500 ريال للدبلوم", "scope": "المنشآت التي فيها 5 محاسبين فأكثر", "cond": "", "url": "https://www.hrsd.gov.sa/media-center/news/%d8%aa%d9%88%d8%b7%d9%8a%d9%86-44-%d9%85%d9%87%d9%86%d8%a9-%d9%85%d8%ad%d8%a7%d8%b3%d8%a8%d9%8a%d8%a9-%d8%ac%d8%af%d9%8a%d8%af%d8%a9-%d9%81%d9%8a-%d8%a7%d9%84%d9%82%d8%b7%d8%a7%d8%b9-%d8%a7%d9%84%d8%ae%d8%a7%d8%b5", "pct": "40% ← 70%"}, {"t": "مهن الصيدلة", "no": "103111", "start": "27 يوليو 2025", "phases": [["27 يوليو 2025", "35% الصيدليات المجتمعية والمجمعات الطبية · 65% صيدليات المستشفيات · 55% الأنشطة الأخرى"]], "prof": [], "more": "مهن الصيدلة المحددة في الدليل الإجرائي", "wage": "7,000 ريال", "scope": "المنشآت التي فيها 5 عاملين فأكثر في مهن الصيدلة", "cond": "الاعتماد المهني من الهيئة السعودية للتخصصات الصحية", "url": "https://hrsd.gov.sa/ar/node/413394", "pct": "35% – 65%"}, {"t": "قصر العمل في منافذ البيع بمنطقة القصيم", "no": "1013", "start": "5 أغسطس 2019", "phases": [["5 أغسطس 2019", "100%"]], "prof": [], "more": "العمل في منافذ البيع بمنطقة القصيم", "wage": "", "scope": "منافذ البيع في منطقة القصيم", "cond": "", "url": "https://www.hrsd.gov.sa/knowledge-centre/decisions-and-regulations/ministerial-decisions/312208", "pct": "100%"}]</script>
+
+<div id="szView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>حاسبة نسبة التوطين</b></div>
+<main class="hub">
+  <div class="calc">
+    <label>سعوديون براتب 4,000 ريال فأكثر (يُحتسب كل واحد بعامل كامل)<input id="szFull" type="number" inputmode="numeric" placeholder="0"></label>
+    <label>سعوديون براتب من 3,000 إلى 3,999 ريال (يُحتسب كل واحد بنصف عامل)<input id="szHalf" type="number" inputmode="numeric" placeholder="0"></label>
+    <label>سعوديون براتب أقل من 3,000 ريال (لا يُحتسبون في النسبة)<input id="szZero" type="number" inputmode="numeric" placeholder="0"></label>
+    <label>عدد الموظفين غير السعوديين<input id="szFor" type="number" inputmode="numeric" placeholder="0"></label>
+    <label>النسبة المطلوبة لنشاطك % (اختياري، من منصة قوى)<input id="szTarget" type="number" inputmode="decimal" placeholder="مثال: 30"></label>
+    <div class="res" id="szRes">أدخل البيانات لعرض النتيجة</div>
+    <p class="hint">نسبة التوطين = عدد السعوديين المحتسبين ÷ إجمالي الموظفين. يُحتسب السعودي بعامل كامل إذا كان راتبه 4,000 ريال فأكثر، وبنصف عامل إذا كان راتبه من 3,000 إلى 3,999، ولا يُحتسب إذا كان راتبه أقل من 3,000. ويشترط للاحتساب أن يكون العقد موثقًا في قوى وأن يكون الموظف مسجلًا في التأمينات. النسبة المطلوبة تختلف حسب النشاط وحجم المنشأة، فخذها من منصة قوى. النتيجة تقديرية.</p>
+  </div>
+</main>
+</div>
+
 <div id="bankView" class="view">
 <div class="subbar on-hero"><a href="#" class="back">→ الرئيسية</a></div>
 <header class="hero"><div class="hero-in">
@@ -340,7 +406,7 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
       <div><b id="total">0</b><span>سيرة ذاتية</span></div>
       <div><b id="catcount">0</b><span>تخصص</span></div>
     </div>
-    <a class="send" href="https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%AD%D8%A7%D8%A8%20%D8%A3%D8%B6%D9%8A%D9%81%20%D8%B3%D9%8A%D8%B1%D8%AA%D9%8A%20%D8%A7%D9%84%D8%B0%D8%A7%D8%AA%D9%8A%D8%A9%20%D9%81%D9%8A%20%D8%A8%D9%86%D9%83%20%D8%A7%D9%84%D8%B3%D9%8A%D8%B1%20%D8%A7%D9%84%D8%B0%D8%A7%D8%AA%D9%8A%D8%A9.%0A%D8%A7%D9%84%D8%AA%D8%AE%D8%B5%D8%B5%3A%20%0A%28%D8%A3%D8%B1%D9%81%D9%82%20%D9%85%D9%84%D9%81%20%D8%A7%D9%84%D8%B3%D9%8A%D8%B1%D8%A9%20PDF%29" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.3-2.9-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.1z"/></svg> أرسل سيرتك عبر واتساب</a>
+    <a class="send" href="https://docs.google.com/forms/d/e/1FAIpQLSc2BrqpWQVnxNkavJZphEGLqJ5ANGIOMhYWfqLPfLU2A9bjaQ/viewform" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="M9 15l3-3 3 3"/></svg> أضف سيرتك الذاتية</a>
   </div>
 </div></header>
 <div class="bar"><div class="bar-in"><div class="search">
@@ -553,6 +619,8 @@ function route(){
   else if(h==="magazine")v="magView";
   else if(h==="overtime")v="otView";
   else if(h==="eos")v="eosView";
+  else if(h==="saudization")v="szView";
+  else if(h==="decisions")v="decView";
   document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on",x.id===v));
   if(v==="bankView"&&CATS.some(c=>c.id===h)&&state.cat!==h){state.cat=h;state.page=1;render()}
   scrollTo(0,0);
@@ -585,6 +653,40 @@ function calcEOS(){
 }
 ["eosWage","eosY","eosM","eosD"].forEach(id=>$(id).addEventListener("input",calcEOS));
 $("eosWhy").addEventListener("change",calcEOS);
+function calcSZ(){
+  const n=id=>Math.max(0,parseFloat($(id).value)||0);
+  const a=n("szFull"),b=n("szHalf"),c=n("szZero"),fo=n("szFor"),p=parseFloat($("szTarget").value);
+  const T=a+b+c+fo, S=a+0.5*b, f=x=>x.toLocaleString("en-US",{maximumFractionDigits:1});
+  if(!(T>0)){$("szRes").innerHTML="أدخل البيانات لعرض النتيجة";return}
+  const r=S/T*100;
+  let extra=`<small>السعوديون المحتسبون: ${f(S)} من إجمالي ${f(T)} موظف</small>`;
+  if(p>0&&p<100){
+    const need=Math.max(0,Math.ceil((p/100*T-S)/(1-p/100)-1e-9));
+    extra+=need===0?`<small style="color:#2E7D5B;font-weight:700">✓ منشأتك تحقق النسبة المطلوبة (${f(p)}%)</small>`
+      :`<small style="color:#B4533A;font-weight:700">تحتاج تقريبًا ${need} موظف سعودي إضافي براتب 4,000 فأكثر لتصل إلى ${f(p)}%</small>`;
+  }
+  $("szRes").innerHTML=`نسبة التوطين<b>${f(r)}%</b>${extra}`;
+}
+["szFull","szHalf","szZero","szFor","szTarget"].forEach(id=>$(id).addEventListener("input",calcSZ));
+const DEC=JSON.parse(document.getElementById("decdata").textContent);
+function renderDec(){
+  const q=($("decQ").value||"").trim();
+  const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const L=DEC.filter(d=>!q||(d.t+" "+d.prof.join(" ")+" "+d.more+" "+d.scope).includes(q));
+  $("decList").innerHTML=L.length?L.map(d=>{
+    return `<div class="dec"><div class="dec-h"><h3>${esc(d.t)}</h3><span class="dec-pct">${esc(d.pct)}</span></div>
+    <div class="dec-rows">
+      ${d.no?`<div><b>رقم القرار:</b> ${esc(d.no)}</div>`:""}
+      <div><b>تاريخ بداية التوطين:</b> ${esc(d.start)}</div>
+      <div><b>مراحل التوطين:</b><div class="ph">${d.phases.map(p=>`<div><span>${esc(p[0])}</span>${esc(p[1])}</div>`).join("")}</div></div>
+      <div><b>المهن الموطنة:</b><div class="chips">${d.prof.map(x=>`<span>${esc(x)}</span>`).join("")}${d.more?`<em>${esc(d.more)}</em>`:""}</div></div>
+      ${d.wage?`<div><b>الراتب المحتسب للتوطين:</b> ${esc(d.wage)}</div>`:""}
+      <div><b>يشمل:</b> ${esc(d.scope)}</div>
+      ${d.cond?`<div class="dec-cond">شرط الاحتساب: ${esc(d.cond)}</div>`:""}
+    </div>
+    <div class="dec-f"><span class="tag-off">مصدر رسمي</span><a href="${esc(d.url)}" target="_blank" rel="noopener">التفاصيل في موقع الوزارة ‹</a></div></div>`}).join(""):'<div class="note-box">ما فيه نتائج</div>';
+}
+$("decQ").addEventListener("input",renderDec);renderDec();
 route();
 
 </script>
