@@ -1,5 +1,8 @@
 {
   "note": "Processed Google Form responses (by Timestamp). The scheduled task skips these and appends new ones.",
-  "processed": ["11/21/2026 20:45:44"],
-  "next_id": 274
+  "processed": [
+    "11/21/2026 20:45:44",
+    "11/21/2026 21:40:52"
+  ],
+  "next_id": 275
 }
