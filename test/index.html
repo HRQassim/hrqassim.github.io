@@ -445,6 +445,12 @@ footer{background:transparent}
 .plat h3{margin:0;font-size:16px;color:#20324C}.plat p{margin:0;font-size:13px;color:#5B6B80}
 .plat ul{margin:0;padding-inline-start:18px;font-size:13px;color:#4A5563;line-height:1.8}
 .plat a{flex:none;font-size:12px;font-weight:800;text-decoration:none;background:#20324C;color:#fff;border-radius:999px;padding:6px 12px}
+
+.cgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:6px}
+.cgrid a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:86px;background:#F3F6FA;border-radius:18px;padding:10px 6px;text-decoration:none;color:#20324C;font-size:13px;font-weight:700;text-align:center;line-height:1.35}
+.cgrid a span{width:38px;height:38px;border-radius:50%;background:#FBFCFE;display:grid;place-items:center;font-size:19px}
+.cgrid a:active{transform:scale(.97)}
+@media (min-width:760px){.b-calc{flex-direction:column!important;align-items:stretch!important}}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -493,13 +499,13 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
 
   <section class="b b-calc">
     <h3>الحاسبات</h3>
-    <div class="chips">
+    <div class="cgrid">
       <a href="#overtime"><span>⏱️</span>العمل الإضافي</a>
       <a href="#eos"><span>🧮</span>نهاية الخدمة</a>
-      <a href="#saudization"><span>🇸🇦</span>نسبة التوطين</a>
-      <a href="#leave" class="sm"><span>🏖️</span>الإجازات</a>
-      <a href="#gosi" class="sm"><span>🛡️</span>التأمينات</a>
-      <a href="#absence" class="sm"><span>⏰</span>خصم الغياب</a>
+      <a href="#saudization"><span>🇸🇦</span>التوطين</a>
+      <a href="#leave"><span>🏖️</span>الإجازات</a>
+      <a href="#gosi"><span>🛡️</span>التأمينات</a>
+      <a href="#absence"><span>⏰</span>خصم الغياب</a>
     </div>
   </section>
 
