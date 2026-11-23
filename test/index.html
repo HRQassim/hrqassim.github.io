@@ -234,6 +234,73 @@ a.tile:hover{transform:translateY(-1px);border-color:#C9DAEA}
 .jd-pdf{font:inherit;border:0;cursor:pointer;font-size:13px;font-weight:700;border-radius:10px;padding:8px 14px;background:#20324C;color:#fff;text-decoration:none}
 .jd-copy{font:inherit;font-size:13px;font-weight:600;border:0;border-radius:10px;padding:8px 14px;background:#EAF1F8;color:#35547D;cursor:pointer}
 .hint{font-size:12px;color:#83898F;margin:0;line-height:1.8}
+
+/* ===== Bento hub ===== */
+#hubView{background:#E9EFF5}
+.bento{max-width:1040px;margin:0 auto;padding:16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.bento>*{min-width:0}
+.b{position:relative;overflow:hidden;border-radius:28px;padding:20px;text-decoration:none;color:#20324C;background:#FBFCFE;display:flex;flex-direction:column;gap:6px;transition:transform .15s}
+a.b:active{transform:scale(.985)}
+.b h1,.b h2,.b h3,.b p{margin:0}
+.b h3{font-size:16px;font-weight:800;line-height:1.4}
+.b p{font-size:13px;color:#5B6B80;line-height:1.7}
+.b-ic{font-size:26px;line-height:1}
+.b-tag{align-self:flex-start;font-size:11px;font-weight:700;border-radius:999px;padding:3px 10px;background:rgba(91,145,189,.18);color:#35547D}
+.b-tag.light{background:rgba(255,255,255,.22);color:#fff}
+.b-brand{grid-column:span 2;flex-direction:row;align-items:center;gap:14px;padding:24px 20px;background:#FBFCFE}
+.b-brand .mark{flex:none;width:84px;height:84px;color:#35547D}
+.b-brand-t{min-width:0}
+.b-kicker{font-size:11px;font-weight:600;color:#83898F;letter-spacing:.3px}
+.b-brand h1{font-size:25px;font-weight:900;line-height:1.3;margin:2px 0 4px}
+.b-bank{grid-column:span 2;background:#20324C;color:#fff;min-height:250px;justify-content:flex-end}
+.b-bank:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:#35547D;opacity:.6;left:-90px;top:-110px}
+.b-bank:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#5B91BD;opacity:.35;left:40px;bottom:-110px}
+.b-bank>*{position:relative;z-index:1}
+.b-bank .b-tag{background:rgba(255,255,255,.16);color:#DCE7F2;margin-bottom:auto}
+.b-bank h2{font-size:24px;font-weight:900}
+.b-bank p{color:#C9D6E4}
+.b-big{display:flex;align-items:baseline;gap:8px;margin-top:4px}
+.b-big b{font-size:44px;font-weight:900;line-height:1}
+.b-big span{font-size:13px;color:#C9D6E4}
+.b-btn{align-self:flex-start;margin-top:8px;background:#fff;color:#20324C;font-weight:800;font-size:13px;border-radius:999px;padding:8px 16px}
+.b-stats{grid-column:span 2;flex-direction:row;padding:0;gap:0;background:transparent}
+.sw{flex:1;min-width:0;padding:18px 16px;display:flex;flex-direction:column;justify-content:flex-end;min-height:110px;border-radius:28px}
+.sw b{font-size:26px;font-weight:900;line-height:1.1}
+.sw span{font-size:12px;font-weight:600}
+.sw1{background:#FBFCFE;color:#20324C;z-index:3}
+.sw2{background:#20324C;color:#fff;margin-inline-start:-22px;padding-inline-start:36px;z-index:2}
+.sw3{background:#5B91BD;color:#fff;margin-inline-start:-22px;padding-inline-start:36px;z-index:1}
+.sw2 span,.sw3 span{color:rgba(255,255,255,.8)}
+.b-ad{grid-column:span 2;background:#35547D;color:#fff;min-height:150px;justify-content:flex-end}
+.b-pattern{position:absolute;inset:0;opacity:.22;background-image:radial-gradient(circle at 0 50%,#fff 0 13px,transparent 14px),radial-gradient(circle at 100% 50%,#fff 0 13px,transparent 14px);background-size:44px 30px}
+.b-ad-in{position:relative;z-index:1;display:flex;flex-direction:column;gap:6px;background:linear-gradient(0deg,#35547D 55%,rgba(53,84,125,0));margin:-20px;padding:30px 20px 20px}
+.b-ad h3{font-size:18px}.b-ad p{color:#DCE7F2}
+.b-mag{background:#5B91BD;color:#fff}.b-mag p{color:#EAF2FA}
+.b-jd{background:#FBFCFE}
+.b-dec{background:#DCE7F2}
+.b-soon{background:#FBFCFE;opacity:.85}
+.b-mag,.b-jd,.b-dec,.b-soon{min-height:140px;justify-content:space-between}
+.b-calc{grid-column:span 2;background:#FBFCFE}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.chips a{display:flex;align-items:center;gap:6px;text-decoration:none;font-size:13px;font-weight:700;color:#20324C;background:#EEF3F8;border-radius:999px;padding:8px 14px}
+.b-links{grid-column:span 2;flex-direction:row;align-items:center;gap:8px;background:transparent;padding:0}
+.pill{flex:1;min-width:0;display:flex;align-items:center;gap:10px;background:#FBFCFE;border-radius:999px;padding:8px 10px;text-decoration:none;color:#20324C;font-weight:700;font-size:15px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;direction:ltr;justify-content:center}
+.pill .dot{width:30px;height:30px;border-radius:50%;background:#20324C;display:grid;place-items:center;font-size:14px;flex:none}
+.circ{flex:none;width:46px;height:46px;border-radius:50%;background:#FBFCFE;color:#20324C;display:grid;place-items:center}
+.circ svg{width:24px;height:24px}
+@media (min-width:760px){
+  .bento{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;padding:24px}
+  .b-brand{grid-column:1/3}
+  .b-bank{grid-column:3/5;grid-row:1/3;min-height:0}
+  .b-stats{grid-column:1/3}
+  .b-ad{grid-column:1/3;grid-row:3/5}
+  .b-mag{grid-column:3/4;grid-row:3}.b-jd{grid-column:4/5;grid-row:3}
+  .b-dec{grid-column:3/4;grid-row:4}.b-soon{grid-column:4/5;grid-row:4}
+  .b-calc{grid-column:1/5;grid-row:5;flex-direction:row;align-items:center;justify-content:space-between}
+  .b-calc .chips{margin:0}
+  .b-links{grid-column:1/5;grid-row:6}
+  .b-brand h1{font-size:30px}
+}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -242,52 +309,53 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
 <body>
 <div style="background:#B4533A;color:#fff;text-align:center;font-size:13px;padding:6px">🧪 نسخة تجريبية — للاختبار فقط</div>
 <div id="hubView" class="view">
-<header class="hero hub-hero"><div class="hero-in">
-  <span class="kicker">HR Professionals Community</span>
-  <h1>مجتمع محترفي الموارد البشرية</h1>
-  <p class="lead">كل أدوات المجتمع ومحتواه في مكان واحد.</p>
-</div></header>
-<main class="hub">
-  <a class="tile" href="#bank">
-    <div class="t-ic">📚</div>
-    <div class="t-body"><h3>بنك السير الذاتية</h3><p>سير ذاتية مفرزة حسب التخصص، مع البحث والعرض والتحميل.</p></div>
-    <div class="t-meta"><b id="hubCount">0</b><span>سيرة</span></div>
+<main class="bento">
+  <section class="b b-brand">
+    <svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><path d="M18 22h46a38 38 0 0 1 0 76H18z" fill="currentColor" opacity=".18"/><path d="M18 22h46a38 38 0 0 1 38 38H56a38 38 0 0 0-38-38z" fill="currentColor"/><path d="M18 98h46a38 38 0 0 0 38-38H56a38 38 0 0 1-38 38z" fill="currentColor" opacity=".55"/></svg>
+    <div class="b-brand-t"><span class="b-kicker">HR Professionals Community</span><h1>مجتمع محترفي<br>الموارد البشرية</h1><p>كل أدوات المجتمع ومحتواه في مكان واحد.</p></div>
+  </section>
+
+  <a class="b b-bank" href="#bank">
+    <span class="b-tag">الأكثر استخدامًا</span>
+    <h2>بنك السير الذاتية</h2>
+    <p>كفاءات سعودية مفرزة حسب التخصص، مع البحث والعرض والتحميل.</p>
+    <div class="b-big"><b id="hubCount">0</b><span>سيرة ذاتية</span></div>
+    <span class="b-btn">تصفّح البنك ‹</span>
   </a>
-  <a class="tile" href="#magazine">
-    <div class="t-ic">📰</div>
-    <div class="t-body"><h3>مجلة المجتمع</h3><p>كل أعداد مجلة مجتمع محترفي الموارد البشرية.</p></div>
-    <div class="t-meta"><b>8</b><span>أعداد</span></div>
+
+  <section class="b b-stats">
+    <div class="sw sw1"><b id="stCv">0</b><span>سيرة ذاتية</span></div>
+    <div class="sw sw2"><b id="stDec">0</b><span>قرار توطين</span></div>
+    <div class="sw sw3"><b id="stJd">0</b><span>وصف وظيفي</span></div>
+  </section>
+
+  <a class="b b-ad" href="https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9" target="_blank" rel="noopener">
+    <div class="b-pattern" aria-hidden="true"></div>
+    <div class="b-ad-in"><span class="b-tag light">مساحة إعلانية</span><h3>شريك المجتمع أو دورتك القادمة هنا</h3><p>تواصل معنا لحجز المساحة</p></div>
   </a>
-  <a class="tile" href="#overtime">
-    <div class="t-ic">⏱️</div>
-    <div class="t-body"><h3>حاسبة العمل الإضافي</h3><p>احسب أجر ساعات العمل الإضافي حسب نظام العمل.</p></div>
-    <div class="t-go">‹</div>
-  </a>
-  <a class="tile" href="#eos">
-    <div class="t-ic">🧮</div>
-    <div class="t-body"><h3>حاسبة مكافأة نهاية الخدمة</h3><p>احسب مكافأتك حسب المادتين 84 و85 من نظام العمل.</p></div>
-    <div class="t-go">‹</div>
-  </a>
-  <a class="tile" href="#jd">
-    <div class="t-ic">📋</div>
-    <div class="t-body"><h3>مكتبة الأوصاف الوظيفية</h3><p>أوصاف وظيفية جاهزة: الهدف والمهام والمؤهلات والمهارات، قابلة للنسخ.</p></div>
-    <div class="t-go">‹</div>
-  </a>
-  <a class="tile" href="#decisions">
-    <div class="t-ic">📜</div>
-    <div class="t-body"><h3>قرارات التوطين</h3><p>أحدث قرارات توطين المهن: النسبة والمنشآت المشمولة والحد الأدنى للأجر.</p></div>
-    <div class="t-go">‹</div>
-  </a>
-  <a class="tile" href="#saudization">
-    <div class="t-ic">🇸🇦</div>
-    <div class="t-body"><h3>حاسبة نسبة التوطين</h3><p>احسب نسبة التوطين في منشأتك، وكم سعودي تحتاج لتوصل للنسبة المطلوبة.</p></div>
-    <div class="t-go">‹</div>
-  </a>
-  <div class="tile soon">
-    <div class="t-ic">🎓</div>
-    <div class="t-body"><h3>دليل الشهادات المهنية</h3><p>أهم الشهادات المهنية في الموارد البشرية ومتطلباتها.</p></div>
-    <span class="soon-tag">قريباً</span>
-  </div>
+
+  <a class="b b-mag" href="#magazine"><span class="b-ic">📰</span><h3>مجلة المجتمع</h3><p><b>8</b> أعداد</p></a>
+
+  <a class="b b-jd" href="#jd"><span class="b-ic">📋</span><h3>الأوصاف الوظيفية</h3><p>PDF عربي وإنجليزي</p></a>
+
+  <a class="b b-dec" href="#decisions"><span class="b-ic">📜</span><h3>قرارات التوطين</h3><p>محدّثة من الوزارة</p></a>
+
+
+  <section class="b b-soon"><span class="b-ic">🎓</span><h3>دليل الشهادات المهنية</h3><span class="b-tag">قريبًا</span></section>
+  <section class="b b-calc">
+    <h3>الحاسبات</h3>
+    <div class="chips">
+      <a href="#overtime"><span>⏱️</span>العمل الإضافي</a>
+      <a href="#eos"><span>🧮</span>نهاية الخدمة</a>
+      <a href="#saudization"><span>🇸🇦</span>نسبة التوطين</a>
+    </div>
+  </section>
+
+  <section class="b b-links">
+    <a class="pill" href="https://hrqassim.github.io"><span class="dot">🌐</span>hrqassim.github.io</a>
+    <a class="circ" href="https://wa.me/966552655676" target="_blank" rel="noopener" aria-label="واتساب"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.3-2.9-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.1z"/></svg></a>
+    <a class="circ" href="#bank" aria-label="بنك السير"><svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><path d="M18 22h46a38 38 0 0 1 0 76H18z" fill="currentColor" opacity=".18"/><path d="M18 22h46a38 38 0 0 1 38 38H56a38 38 0 0 0-38-38z" fill="currentColor"/><path d="M18 98h46a38 38 0 0 0 38-38H56a38 38 0 0 1-38 38z" fill="currentColor" opacity=".55"/></svg></a>
+  </section>
 </main>
 <footer>مجتمع محترفي الموارد البشرية</footer>
 </div>
@@ -521,7 +589,7 @@ Promise.resolve(JSON.parse(document.getElementById("cvdata").textContent)).then(
   fillSelect("city",[...new Set(DATA.map(r=>r.city))].sort((a,b)=>a.localeCompare(b,"ar")));
   fillSelect("edu",[...new Set(DATA.map(r=>r.edu))]);
   try{const h=location.hash.slice(1);if(CATS.some(c=>c.id===h))state.cat=h}catch(e){}
-  $("total").textContent=DATA.length.toLocaleString("en-US");$("hubCount").textContent=DATA.length.toLocaleString("en-US");
+  $("total").textContent=DATA.length.toLocaleString("en-US");$("hubCount").textContent=DATA.length.toLocaleString("en-US");if($("stCv"))$("stCv").textContent=DATA.length.toLocaleString("en-US");
   $("catcount").textContent=new Set(DATA.map(r=>r.cat)).size.toLocaleString("en-US");
   var lt=DATA.map(r=>r.added).sort().pop();if(lt){var p=lt.split("-");$("latest").textContent=(+p[2])+"/"+(+p[1])+"/"+p[0];}
   render();var b=document.getElementById("boot");if(b)b.style.display="none";
@@ -754,6 +822,7 @@ $("jdList").addEventListener("click",e=>{const dl=e.target.closest(".jd-dl");if(
   function fb(x){const a=document.createElement("textarea");a.value=x;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy")}catch(_){}a.remove()}
 });
 renderJD();
+if($("stDec"))$("stDec").textContent=DEC.length;if($("stJd"))$("stJd").textContent=JD.length;
 route();
 
 </script>
