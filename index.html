@@ -399,6 +399,13 @@ footer{background:transparent}
 .ocinfo{background:#EEF3F8;border-radius:16px;padding:12px 14px;font-size:13px;color:#35547D;line-height:1.9}
 .ocinfo b{color:#20324C}
 .ocinfo .warn{color:#B4533A;font-weight:700}
+
+.b-links{display:grid!important;grid-template-columns:1fr 1fr;gap:10px!important}
+.lk{display:flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 12px;font:inherit;font-size:14.5px;font-weight:800;text-decoration:none;cursor:pointer}
+.lk svg{width:20px;height:20px;flex:none}
+.lk-share{background:#20324C;color:#fff}
+.lk-wa{background:#FBFCFE;color:#20324C}.lk-wa svg{color:#25D366}
+.toast-sh{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#20324C;color:#fff;border-radius:999px;padding:10px 18px;font-size:13.5px;z-index:99}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -453,9 +460,8 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   </section>
 
   <section class="b b-links">
-    <a class="pill" href="https://hrqassim.github.io"><span class="dot">🌐</span>hrqassim.github.io</a>
-    <a class="circ" href="https://wa.me/966552655676" target="_blank" rel="noopener" aria-label="واتساب"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.3-2.9-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.1z"/></svg></a>
-    <a class="circ" href="#bank" aria-label="بنك السير"><img src="assets/logo-icon.png" alt="" style="width:26px;height:auto"></a>
+    <button class="lk lk-share" id="shareBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>شارك الموقع</span></button>
+    <a class="lk lk-wa" href="https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%B9%D9%86%D8%AF%D9%8A%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1/%D8%A7%D9%82%D8%AA%D8%B1%D8%A7%D8%AD%20%D8%A8%D8%AE%D8%B5%D9%88%D8%B5%20%D9%85%D9%88%D9%82%D8%B9%20%D9%85%D8%AC%D8%AA%D9%85%D8%B9%20%D9%85%D8%AD%D8%AA%D8%B1%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B1%D8%AF%20%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D9%8A%D8%A9" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.3-2.9-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.1z"/></svg><span>تواصل معنا</span></a>
   </section>
 </main>
 <footer>مجتمع محترفي الموارد البشرية</footer>
@@ -1026,6 +1032,14 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
   ["ocTot","ocSa"].forEach(id=>$(id).addEventListener("input",calc));
   info();
 })();
+(function(){const b=document.getElementById("shareBtn");if(!b)return;
+  const url="https://hrqassim.github.io",text="مجتمع محترفي الموارد البشرية — مرجعك اليومي وأدواتك في الموارد البشرية";
+  b.addEventListener("click",async()=>{
+    if(navigator.share){try{await navigator.share({title:"مجتمع محترفي الموارد البشرية",text,url});return}catch(e){if(e&&e.name==="AbortError")return}}
+    const done=()=>{const t=document.createElement("div");t.className="toast-sh";t.textContent="تم نسخ رابط الموقع ✓";document.body.appendChild(t);setTimeout(()=>t.remove(),1800)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,()=>location.href="https://wa.me/?text="+encodeURIComponent(text+"\n"+url))}
+    else location.href="https://wa.me/?text="+encodeURIComponent(text+"\n"+url);
+  });})();
 route();
 
 </script>
