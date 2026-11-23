@@ -9,6 +9,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hrqassim.github.io/">
 <meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
 <title>مجتمع محترفي الموارد البشرية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -363,6 +365,32 @@ footer{background:transparent}
 .ins a{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;text-decoration:none}
 .ins a.call{background:#EAF1F8;color:#20324C}.ins a.wa{background:#25D366;color:#fff}
 .ins a svg{width:20px;height:20px}
+
+.b-ad{padding:0;justify-content:stretch}
+.ad-track{position:relative;flex:1;min-height:320px}
+.ad{position:absolute;inset:0;padding:20px 20px 34px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;opacity:0;transform:translateX(-12px);transition:opacity .5s,transform .5s;pointer-events:none;background:linear-gradient(0deg,#35547D 55%,rgba(53,84,125,0))}
+.ad.on{opacity:1;transform:none;pointer-events:auto}
+.ad h3{font-size:20px;font-weight:900;color:#fff}
+.ad p{color:#DCE7F2;font-size:13px}
+.ad-meta{display:flex;flex-wrap:wrap;gap:6px}
+.ad-meta span{font-size:12px;background:rgba(255,255,255,.14);color:#fff;border-radius:999px;padding:3px 10px}
+.ad-cta{align-self:flex-start;margin-top:4px;background:#fff;color:#20324C;font-weight:800;font-size:13px;border-radius:999px;padding:8px 16px;text-decoration:none}
+.ad.course .b-tag{background:#F2C14E;color:#20324C}
+.ad.partner .b-tag{background:#fff;color:#35547D}
+.ad-status{align-self:flex-start;font-size:12.5px;font-weight:700;color:#20324C;background:#F2C14E;border-radius:10px;padding:4px 10px}
+.ad.course .ad-status{}
+.ad-logo{align-self:flex-start;background:#fff;border-radius:16px;padding:8px 12px}
+.ad-logo img{display:block;height:36px;width:auto}
+.ad-logo+.b-tag+h3{display:none}
+.ad-dots{position:absolute;bottom:14px;left:20px;display:flex;gap:6px;z-index:2}
+.ad-dots button{width:8px;height:8px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.4);cursor:pointer;transition:width .3s}
+.ad-dots button.on{width:22px;background:#fff}
+.ad-demo{position:absolute;top:14px;left:16px;z-index:2;font-size:10.5px;color:#fff;background:rgba(0,0,0,.25);border-radius:999px;padding:2px 9px}
+
+.b-brand{flex-direction:column!important;align-items:center;justify-content:center;text-align:center;gap:10px!important;padding:26px 20px!important}
+.b-logo{display:block;width:min(210px,62%);height:auto}
+.b-tagline{font-size:13.5px!important;color:#5B6B80!important;font-weight:600}
+@media (min-width:760px){.b-logo{width:min(220px,60%)}}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -372,8 +400,8 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
 <div id="hubView" class="view">
 <main class="bento">
   <section class="b b-brand">
-    <svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><path d="M18 22h46a38 38 0 0 1 0 76H18z" fill="currentColor" opacity=".18"/><path d="M18 22h46a38 38 0 0 1 38 38H56a38 38 0 0 0-38-38z" fill="currentColor"/><path d="M18 98h46a38 38 0 0 0 38-38H56a38 38 0 0 1-38 38z" fill="currentColor" opacity=".55"/></svg>
-    <div class="b-brand-t"><span class="b-kicker">HR Professionals Community</span><h1>مجتمع محترفي<br>الموارد البشرية</h1><p>كل أدوات المجتمع ومحتواه في مكان واحد.</p></div>
+    <img class="b-logo" src="assets/logo-full.png" alt="مجتمع محترفي الموارد البشرية · HR Professionals Community">
+    <p class="b-tagline">كل أدوات المجتمع ومحتواه في مكان واحد</p>
   </section>
 
   <a class="b b-bank" href="#bank">
@@ -390,10 +418,12 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
     <div class="sw sw3"><b id="stJd">0</b><span>وصف وظيفي</span></div>
   </section>
 
-  <a class="b b-ad" href="https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9" target="_blank" rel="noopener">
+  <section class="b b-ad" id="adBox">
     <div class="b-pattern" aria-hidden="true"></div>
-    <div class="b-ad-in"><span class="b-tag light">مساحة إعلانية</span><h3>شريك المجتمع أو دورتك القادمة هنا</h3><p>تواصل معنا لحجز المساحة</p></div>
-  </a>
+    <div class="ad-track" id="adTrack"></div>
+    <div class="ad-dots" id="adDots"></div>
+  </section>
+  <script type="application/json" id="addata">[{"kind": "slot", "tag": "مساحة إعلانية", "title": "إعلانك أو دورتك القادمة هنا", "sub": "وصول مباشر لمحترفي الموارد البشرية في القصيم", "meta": [], "cta": "احجز المساحة", "url": "https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9"}]</script>
 
   <a class="b b-mag" href="#magazine"><span class="b-ic">📰</span><h3>مجلة المجتمع</h3><p><b>8</b> أعداد</p></a>
 
@@ -417,7 +447,7 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   <section class="b b-links">
     <a class="pill" href="https://hrqassim.github.io"><span class="dot">🌐</span>hrqassim.github.io</a>
     <a class="circ" href="https://wa.me/966552655676" target="_blank" rel="noopener" aria-label="واتساب"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.3-2.9-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.1z"/></svg></a>
-    <a class="circ" href="#bank" aria-label="بنك السير"><svg class="mark" viewBox="0 0 120 120" aria-hidden="true"><path d="M18 22h46a38 38 0 0 1 0 76H18z" fill="currentColor" opacity=".18"/><path d="M18 22h46a38 38 0 0 1 38 38H56a38 38 0 0 0-38-38z" fill="currentColor"/><path d="M18 98h46a38 38 0 0 0 38-38H56a38 38 0 0 1-38 38z" fill="currentColor" opacity=".55"/></svg></a>
+    <a class="circ" href="#bank" aria-label="بنك السير"><img src="assets/logo-icon.png" alt="" style="width:26px;height:auto"></a>
   </section>
 </main>
 <footer>مجتمع محترفي الموارد البشرية</footer>
@@ -908,6 +938,39 @@ function renderIns(){
 }
 $("insF").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;insC=b.dataset.c;renderIns()});
 renderIns();
+const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=0,adT;
+(function(){const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const qd=new URLSearchParams(location.search).get("d");
+  const today=(()=>{if(qd&&/^\d{4}-\d{2}-\d{2}$/.test(qd))return qd;const t=new Date(Date.now()+3*3600e3);return t.toISOString().slice(0,10)})(); // Riyadh date
+  const days=(a,b)=>Math.round((Date.parse(b)-Date.parse(a))/864e5);
+  const AR=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+  const DW=["الأحد","الاثنين","الثلاثاء","الأربعاء","الخميس","الجمعة","السبت"];
+  const fmt=d=>{const x=new Date(d+"T00:00:00Z");return `${DW[x.getUTCDay()]} ${x.getUTCDate()} ${AR[x.getUTCMonth()]}`};
+  const plural=n=>n===1?"يوم واحد":n===2?"يومين":n<=10?`${n} أيام`:`${n} يومًا`;
+  const ADS=ADS_ALL.map(a=>{
+    if(a.end&&!a.event){
+      if(today>a.end)return null;
+      if(a.start&&today<a.start)return {...a,cta:"",status:`🔔 يبدأ العرض ${fmt(a.start)}`};
+      const n=days(today,a.end);return {...a,meta:[...a.meta,`📅 حتى ${fmt(a.end)}`],status:n===0?"⏳ آخر يوم للعرض اليوم":`⏳ العرض ينتهي بعد ${plural(n)}`};
+    }
+    if(!a.event)return {...a,status:""};
+    if(today>a.event)return null;                       // event passed → hide
+    const ev=`📅 ${fmt(a.event)}`;
+    if(a.regOpen&&today<a.regOpen)return {...a,meta:[ev,...a.meta],cta:"",status:`🔔 يفتح التسجيل ${fmt(a.regOpen)}`};
+    if(a.regClose&&today<=a.regClose){const n=days(today,a.regClose);return {...a,meta:[ev,...a.meta],status:n===0?"⏳ آخر يوم للتسجيل اليوم":`⏳ يغلق التسجيل بعد ${plural(n)}`}}
+    const n=days(today,a.event);
+    return {...a,meta:[ev,...a.meta],cta:"",tag:"تذكير",status:n===0?"🎯 الدورة اليوم":`🔒 انتهى التسجيل · الدورة بعد ${plural(n)}`};
+  }).filter(Boolean);
+  for(let i=ADS.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ADS[i],ADS[j]]=[ADS[j],ADS[i]]} // random order per visit
+  window.ADS=ADS;
+  $("adTrack").innerHTML=ADS.map((a,i)=>`<div class="ad ${a.kind}${i?"":" on"}">${a.logo?`<div class="ad-logo"><img src="${a.logo.startsWith("http")?a.logo:a.logo}" alt="${esc(a.title)}"></div>`:""}<span class="b-tag light">${esc(a.tag)}</span><h3>${esc(a.title)}</h3><p>${esc(a.sub)}</p>${a.meta.length?`<div class="ad-meta">${a.meta.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`:""}${a.status?`<div class="ad-status">${esc(a.status)}</div>`:""}${a.cta?`<a class="ad-cta" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.cta)} ‹</a>`:""}</div>`).join("");
+  $("adDots").innerHTML=ADS.length>1?ADS.map((a,i)=>`<button data-i="${i}" class="${i?"":"on"}" aria-label="إعلان ${i+1}"></button>`).join(""):"";
+  const go=i=>{adI=(i+ADS.length)%ADS.length;document.querySelectorAll("#adTrack .ad").forEach((e,k)=>e.classList.toggle("on",k===adI));document.querySelectorAll("#adDots button").forEach((e,k)=>e.classList.toggle("on",k===adI))};
+  const start=()=>{clearInterval(adT);if(ADS.length>1)adT=setInterval(()=>go(adI+1),5000)};
+  $("adDots").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;go(+b.dataset.i);start()});
+  let x0=null;$("adBox").addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true});
+  $("adBox").addEventListener("touchend",e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){go(adI+(dx>0?1:-1));start()}x0=null});
+  start();})();
 route();
 
 </script>
