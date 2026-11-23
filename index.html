@@ -301,6 +301,52 @@ a.b:active{transform:scale(.985)}
   .b-links{grid-column:1/5;grid-row:6}
   .b-brand h1{font-size:30px}
 }
+
+/* ===== Inner pages — bento theme ===== */
+body{background:#E9EFF5}
+.view{background:#E9EFF5;min-height:100vh}
+.subbar:not(.on-hero){max-width:1040px;width:calc(100% - 32px);box-sizing:border-box;margin:16px auto 0;background:#20324C;color:#fff;border-radius:28px;padding:18px 20px 20px;min-height:128px;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;position:relative;overflow:hidden}
+.subbar:not(.on-hero):before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:#35547D;opacity:.6;left:-70px;top:-110px}
+.subbar:not(.on-hero):after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:#5B91BD;opacity:.35;left:60px;bottom:-95px}
+.subbar>*{position:relative;z-index:1}
+.subbar:not(.on-hero) .back{background:rgba(255,255,255,.14);color:#fff}
+.subbar:not(.on-hero) b{font-size:24px;font-weight:900;line-height:1.3}
+.hub{max-width:1040px;gap:12px;padding:12px 16px 30px}
+.tile{border:0;border-radius:24px;box-shadow:none;background:#FBFCFE}
+.calc,.dec,.jd{border:0;border-radius:24px;background:#FBFCFE;box-shadow:none}
+.calc{padding:20px}
+.calc input,.calc select{border-radius:14px;background:#F3F6FA;border-color:transparent}
+.res{border-radius:20px;background:#20324C;color:#C9D6E4}
+.res b{color:#fff}.res small{color:#C9D6E4!important}
+.why{border-radius:24px;border:0}
+.decq,.jdcats button{border-color:transparent}
+.decq{border-radius:999px;background:#FBFCFE}
+.jdcats button{background:#FBFCFE}
+.note-box{border-radius:20px}
+/* bank */
+#bankView{position:relative}
+#bankView .hero{max-width:1040px;width:calc(100% - 32px);margin:16px auto 0;border-radius:28px;background:#20324C}
+#bankView .hero:after{border:0;width:300px;height:300px;background:#35547D;opacity:.55;left:-100px;top:-130px}
+#bankView .hero:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:#5B91BD;opacity:.3;left:40px;bottom:-120px}
+#bankView .hero-in{padding:70px 20px 22px}
+#bankView .subbar.on-hero{top:16px;left:0;right:0;max-width:1040px;width:calc(100% - 32px);margin:auto;box-sizing:border-box;padding:16px 20px}
+#bankView .stats div{border-radius:20px;background:rgba(255,255,255,.1);border:0}
+#bankView .send{border-radius:999px}
+.bar{background:#E9EFF5;border-bottom:0}
+.bar-in{max-width:1040px;padding:12px 16px}
+.search input{background:#FBFCFE;border-color:transparent}
+.wrap{max-width:1040px;padding:8px 16px 40px}
+.cats{border:0;border-radius:24px;background:#FBFCFE;padding:10px}
+.cat{border-radius:14px}
+.cat.on{background:#20324C;color:#fff}
+.cat.on .ic{color:#9cc3e2}.cat.on .n{background:rgba(255,255,255,.16);color:#fff}
+.note{display:block;text-decoration:none;border:0;border-radius:20px;background:#35547D;color:#DCE7F2;padding:14px 16px}
+.note b{color:#fff}
+.filters select{border-radius:999px;border-color:transparent;background-color:#FBFCFE}
+.sectionhead{border-bottom:0}
+.card{border:0;border-radius:22px;background:#FBFCFE;box-shadow:none}
+.card:hover{box-shadow:0 6px 18px rgba(32,50,76,.08)}
+footer{background:transparent}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
