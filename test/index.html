@@ -347,6 +347,22 @@ body{background:#E9EFF5}
 .card{border:0;border-radius:22px;background:#FBFCFE;box-shadow:none}
 .card:hover{box-shadow:0 6px 18px rgba(32,50,76,.08)}
 footer{background:transparent}
+
+.b-ins{grid-column:span 2;background:#5B91BD;color:#fff;flex-direction:row;align-items:center;gap:14px}
+.b-ins>div{flex:1;min-width:0}.b-ins p{color:#EAF2FA}
+.b-go{font-size:22px;font-weight:800}
+@media (min-width:760px){.b-ins{grid-column:1/3;grid-row:5}.b-calc{grid-column:3/5!important;grid-row:5;flex-direction:column!important;align-items:flex-start!important}}
+.insf{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.insf button{flex:none;font:inherit;font-size:12.5px;border:0;background:#FBFCFE;color:#35547D;border-radius:999px;padding:6px 14px;cursor:pointer}
+.insf button.on{background:#20324C;color:#fff}
+.insl{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}
+.ins{background:#FBFCFE;border-radius:22px;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.ins .av{flex:none;width:44px;height:44px;border-radius:50%;background:#EAF1F8;color:#35547D;display:grid;place-items:center;font-weight:800}
+.ins .tx{flex:1;min-width:0}.ins .tx b{display:block;font-size:15px}.ins .tx span{font-size:12.5px;color:#83898F}
+.ins .tx i{font-style:normal;display:block;font-size:13px;color:#5B6B80;letter-spacing:.3px}
+.ins a{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;text-decoration:none}
+.ins a.call{background:#EAF1F8;color:#20324C}.ins a.wa{background:#25D366;color:#fff}
+.ins a svg{width:20px;height:20px}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -388,6 +404,8 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
 
 
   <section class="b b-soon"><span class="b-ic">🎓</span><h3>دليل الشهادات المهنية</h3><span class="b-tag">قريبًا</span></section>
+  <a class="b b-ins" href="#insurance"><span class="b-ic">🩺</span><div><h3>دليل مندوبي التأمين الطبي</h3><p>تواصل مباشر مع مندوبي شركات التأمين</p></div><span class="b-go">‹</span></a>
+
   <section class="b b-calc">
     <h3>الحاسبات</h3>
     <div class="chips">
@@ -498,6 +516,17 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   </div>
 </main>
 </div>
+
+<div id="insView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>دليل مندوبي التأمين الطبي</b></div>
+<main class="hub">
+  <div id="insF" class="insf"></div>
+  <div id="insL" class="insl"></div>
+  <p class="hint">للتواصل مع المندوب اضغط على أيقونة الاتصال أو واتساب. لإضافة مندوب أو تعديل بياناته تواصل مع إدارة المجتمع.</p>
+</main>
+</div>
+
+<script type="application/json" id="insdata">[{"n": "هشام", "c": "بوبا", "p": "0551196124"}, {"n": "فيصل الردادي", "c": "بوبا", "p": "0582806751"}, {"n": "المهنا", "c": "بوبا", "p": "0559549970"}, {"n": "التعاونية تأمين أول", "c": "التعاونية", "p": "0552604885"}, {"n": "سالم المهوس", "c": "التعاونية", "p": "0118358524", "fixed": true}, {"n": "أبو فراس", "c": "التعاونية", "p": "0546656755"}, {"n": "أبو سارة", "c": "ولاء", "p": "0533212922"}, {"n": "أبو عمير", "c": "ملاذ", "p": "0533094668"}, {"n": "عبدالملك", "c": "تأمين طبي", "p": "0549622226"}, {"n": "خدمات تأمين طبي", "c": "تأمين طبي", "p": "0558512636"}, {"n": "سلامه", "c": "تأمين طبي", "p": "0544720050"}, {"n": "الصقر", "c": "تأمين طبي", "p": "0535711185"}]</script>
 
 <div id="jdView" class="view">
 <div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>مكتبة الأوصاف الوظيفية</b></div>
@@ -773,6 +802,7 @@ function route(){
   else if(h==="saudization")v="szView";
   else if(h==="decisions")v="decView";
   else if(h==="jd")v="jdView";
+  else if(h==="insurance")v="insView";
   document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on",x.id===v));
   if(v==="bankView"&&CATS.some(c=>c.id===h)&&state.cat!==h){state.cat=h;state.page=1;render()}
   scrollTo(0,0);
@@ -868,6 +898,17 @@ $("jdList").addEventListener("click",e=>{const dl=e.target.closest(".jd-dl");if(
 });
 renderJD();
 if($("stDec"))$("stDec").textContent=DEC.length;if($("stJd"))$("stJd").textContent=JD.length;
+const INS=JSON.parse(document.getElementById("insdata").textContent);let insC="الكل";
+function renderIns(){
+  const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const cs=["الكل",...new Set(INS.map(x=>x.c))];
+  $("insF").innerHTML=cs.map(c=>`<button data-c="${esc(c)}" class="${c===insC?"on":""}">${esc(c)}</button>`).join("");
+  const tel='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>';
+  const wa='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.3-2.9-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.1z"/></svg>';
+  $("insL").innerHTML=INS.filter(x=>insC==="الكل"||x.c===insC).map(x=>`<div class="ins"><div class="av">${esc(x.n.replace(/^أبو\s*/,"").charAt(0))}</div><div class="tx"><b>${esc(x.n)}</b><span>${esc(x.c)}</span><i>${esc(x.p)}</i></div><a class="call" href="tel:${x.p}" aria-label="اتصال">${tel}</a>${x.fixed?"":`<a class="wa" href="https://wa.me/966${x.p.slice(1)}" target="_blank" rel="noopener" aria-label="واتساب">${wa}</a>`}</div>`).join("");
+}
+$("insF").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;insC=b.dataset.c;renderIns()});
+renderIns();
 route();
 
 </script>
