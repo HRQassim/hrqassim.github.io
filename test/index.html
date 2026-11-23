@@ -451,6 +451,26 @@ footer{background:transparent}
 .cgrid a span{width:38px;height:38px;border-radius:50%;background:#FBFCFE;display:grid;place-items:center;font-size:19px}
 .cgrid a:active{transform:scale(.97)}
 @media (min-width:760px){.b-calc{flex-direction:column!important;align-items:stretch!important}}
+
+.b-jobs{grid-column:span 2;background:#20324C;color:#fff;flex-direction:row!important;align-items:center;gap:14px}
+.b-jobs>div{flex:1;min-width:0}.b-jobs p{color:#C9D6E4}
+.jobs-n{font-size:30px;font-weight:900;background:rgba(255,255,255,.12);border-radius:16px;padding:4px 14px;min-width:28px;text-align:center}
+@media (min-width:760px){.b-jobs{grid-column:1/5;grid-row:3}.b-ad{grid-row:4/6!important}.b-mag{grid-row:4!important}.b-jd{grid-row:4!important}.b-dec{grid-row:5!important}.b-soon{grid-row:5!important}.b-ins{grid-row:6!important}.b-calc{grid-row:6!important}.b-mini{grid-row:7!important}.b-links{grid-row:8!important}}
+.jf{display:flex;gap:8px}.jf select{flex:1;min-width:0;font:inherit;font-size:14px;border:0;border-radius:999px;padding:9px 12px;background:#FBFCFE;color:#20324C}
+.job{background:#FBFCFE;border-radius:22px;padding:16px;display:grid;gap:8px}
+.job .h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.job h3{margin:0;font-size:16px;color:#20324C}.job .co{font-size:13px;color:#5B6B80}
+.job .tags{display:flex;flex-wrap:wrap;gap:6px}.job .tags span{font-size:12px;background:#EEF3F8;color:#35547D;border-radius:999px;padding:3px 10px}
+.job p{margin:0;font-size:13.5px;color:#4A5563;line-height:1.8}
+.job ul{margin:0;padding-inline-start:18px;font-size:13px;color:#4A5563;line-height:1.8}
+.job .f{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.job .dl{font-size:12.5px;font-weight:700;color:#B4533A}
+.job .dl.ok{color:#2E7D5B}
+.job .ap{font-size:13px;font-weight:800;text-decoration:none;background:#20324C;color:#fff;border-radius:999px;padding:8px 16px}
+.job .cvs{font-size:12.5px;color:#5B91BD;text-decoration:none;font-weight:700}
+.job .demo{font-size:10.5px;background:#FBF0E6;color:#B4533A;border-radius:999px;padding:2px 8px;flex:none}
+.jobs-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#35547D;color:#fff;border-radius:22px;padding:14px 16px;text-decoration:none}
+.jobs-cta b{font-size:14.5px}.jobs-cta span{font-size:12.5px;color:#DCE7F2}.jobs-cta i{font-style:normal;background:#fff;color:#20324C;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:800}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -479,6 +499,8 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
     <div class="sw sw2"><b id="stDec">0</b><span>قرار توطين</span></div>
     <div class="sw sw3"><b id="stJd">0</b><span>وصف وظيفي</span></div>
   </section>
+
+  <a class="b b-jobs" href="#jobs"><span class="b-ic">💼</span><div><h3>الوظائف الشاغرة</h3><p id="jobsSub">وظائف من منشآت القصيم</p></div><b class="jobs-n" id="jobsN">0</b></a>
 
   <section class="b b-ad" id="adBox">
     <div class="b-pattern" aria-hidden="true"></div>
@@ -629,6 +651,18 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   </div>
 </main>
 </div>
+
+<div id="jobsView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>الوظائف الشاغرة</b></div>
+<main class="hub">
+  <a class="jobs-cta" id="jobsPost" href="https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D9%86%D8%B4%D8%B1%20%D9%88%D8%B8%D9%8A%D9%81%D8%A9%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%20%D9%85%D8%AC%D8%AA%D9%85%D8%B9%20%D9%85%D8%AD%D8%AA%D8%B1%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B1%D8%AF%20%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D9%8A%D8%A9" target="_blank" rel="noopener"><div><b>عندك وظيفة شاغرة؟</b><br><span>انشرها مجانًا لأعضاء المجتمع</span></div><i>انشر وظيفة ‹</i></a>
+  <div class="jf"><select id="jfCat"></select><select id="jfCity"></select></div>
+  <div id="jobsList" class="declist"></div>
+  <p class="hint">الوظائف تُنشر من المنشآت مباشرة، وتختفي تلقائيًا بعد آخر موعد للتقديم. المجتمع لا يتدخل في إجراءات التوظيف، ونوصي بالتقديم عبر القنوات الرسمية للمنشأة.</p>
+</main>
+</div>
+
+<script type="application/json" id="jobsdata">[{"t": "أخصائي موارد بشرية", "co": "شركة تجريبية للتجارة", "city": "بريدة", "cat": "hr", "type": "دوام كامل", "exp": "2–4 سنوات", "sal": "", "posted": "2026-11-20", "dl": "2026-12-10", "desc": "تنفيذ عمليات الموارد البشرية ومعاملات قوى والتأمينات ومدد.", "req": ["بكالوريوس موارد بشرية أو إدارة أعمال", "خبرة في المنصات الحكومية", "إجادة Excel"], "apply": {"k": "email", "v": "jobs@example.com"}, "demo": true}, {"t": "محاسب", "co": "مؤسسة تجريبية للمقاولات", "city": "عنيزة", "cat": "finance", "type": "دوام كامل", "exp": "سنة فأكثر", "sal": "6,000 – 7,500 ريال", "posted": "2026-11-22", "dl": "2026-11-30", "desc": "تسجيل القيود وإعداد التسويات البنكية وإقرارات الضريبة.", "req": ["بكالوريوس محاسبة", "عضوية الهيئة السعودية للمراجعين والمحاسبين ميزة"], "apply": {"k": "wa", "v": "0500000000"}, "demo": true}, {"t": "موظف/ة خدمة عملاء", "co": "مستشفى تجريبي", "city": "بريدة", "cat": "cs", "type": "دوام جزئي", "exp": "بدون خبرة", "sal": "", "posted": "2026-11-18", "dl": "2026-12-31", "desc": "استقبال المراجعين والرد على الاستفسارات وحجز المواعيد.", "req": ["ثانوي أو دبلوم", "مهارات تواصل ممتازة"], "apply": {"k": "link", "v": "https://example.com/apply"}, "demo": true}, {"t": "متدرب/ة موارد بشرية (تمهير)", "co": "شركة تجريبية للخدمات", "city": "الرس", "cat": "hr", "type": "تدريب", "exp": "حديث تخرج", "sal": "مكافأة حسب البرنامج", "posted": "2026-11-15", "dl": "2026-11-25", "desc": "برنامج تدريب على رأس العمل في عمليات الموارد البشرية.", "req": ["بكالوريوس أو دبلوم حديث", "سعودي/ة الجنسية"], "apply": {"k": "email", "v": "training@example.com"}, "demo": true}]</script>
 
 <div id="otView" class="view">
 <div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>حاسبة العمل الإضافي</b></div>
@@ -975,6 +1009,7 @@ function route(){
   else if(h==="jd")v="jdView";
   else if(h==="insurance")v="insView";
   else if(h==="templates")v="tplView";
+  else if(h==="jobs")v="jobsView";
   else if(h==="platforms")v="platView";
   else if(h==="leave")v="leaveView";
   else if(h==="gosi")v="gosiView";
@@ -1225,6 +1260,33 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
     const day=w/30,min=day/(h*60),tot=d*day+m*min,over=tot>w/2;
     $("abRes").innerHTML=`إجمالي الخصم<b>${f(tot)} ريال</b><small>الغياب: ${f(d*day)} ريال (${f(d)} يوم × ${f(day)}) · التأخير: ${f(m*min)} ريال (${f(m)} دقيقة)${over?'<br><span style="color:#F2C14E;font-weight:700">تنبيه: الخصم يتجاوز نصف الأجر، والنظام لا يجيز ذلك</span>':""}</small>`}
   ["abWage","abDays","abMin","abHours"].forEach(id=>$(id).addEventListener("input",ab));
+})();
+(function(){
+  const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const qd=new URLSearchParams(location.search).get("d"),today=(qd&&/^\d{4}-\d{2}-\d{2}$/.test(qd))?qd:new Date(Date.now()+3*3600e3).toISOString().slice(0,10);
+  const days=(a,b)=>Math.round((Date.parse(b)-Date.parse(a))/864e5);
+  const AR=["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"];
+  const fd=d=>{const x=new Date(d+"T00:00:00Z");return `${x.getUTCDate()} ${AR[x.getUTCMonth()]}`};
+  const plural=n=>n===1?"يوم واحد":n===2?"يومين":n<=10?`${n} أيام`:`${n} يومًا`;
+  const CN={hr:"الموارد البشرية",marketing:"التسويق",finance:"المالية والمحاسبة",it:"تقنية المعلومات",sales:"المبيعات",health:"الصحة",eng:"الهندسة",quality:"الجودة والسلامة",admin:"الإدارة",cs:"خدمة العملاء",logistics:"المشتريات واللوجستيات",legal:"الشؤون القانونية",other:"أخرى"};
+  const J=JSON.parse(document.getElementById("jobsdata").textContent).filter(j=>j.dl>=today).sort((a,b)=>b.posted.localeCompare(a.posted));
+  $("jobsN").textContent=J.length;
+  const cats=[...new Set(J.map(j=>j.cat))],cities=[...new Set(J.map(j=>j.city))];
+  $("jfCat").innerHTML='<option value="">كل التخصصات</option>'+cats.map(c=>`<option value="${c}">${CN[c]||c}</option>`).join("");
+  $("jfCity").innerHTML='<option value="">كل المدن</option>'+cities.map(c=>`<option>${esc(c)}</option>`).join("");
+  const cvCount=c=>(typeof DATA!=="undefined"?DATA.filter(r=>r.cat===c).length:0);
+  function apply(j){const a=j.apply;if(a.k==="email")return `mailto:${a.v}?subject=${encodeURIComponent("التقديم على وظيفة "+j.t)}`;
+    if(a.k==="wa")return `https://wa.me/966${a.v.replace(/^0/,"")}?text=${encodeURIComponent("السلام عليكم، أرغب بالتقديم على وظيفة "+j.t+" المنشورة في موقع مجتمع محترفي الموارد البشرية")}`;return a.v}
+  function render(){const c=$("jfCat").value,ct=$("jfCity").value;
+    const L=J.filter(j=>(!c||j.cat===c)&&(!ct||j.city===ct));
+    $("jobsList").innerHTML=L.length?L.map(j=>{const n=days(today,j.dl),cv=cvCount(j.cat);
+      return `<div class="job"><div class="h"><div><h3>${esc(j.t)}</h3><div class="co">${esc(j.co)}</div></div>${j.demo?'<span class="demo">تجريبية</span>':""}</div>
+      <div class="tags"><span>📍 ${esc(j.city)}</span><span>${esc(j.type)}</span><span>${esc(j.exp)}</span>${j.sal?`<span>💰 ${esc(j.sal)}</span>`:""}</div>
+      <p>${esc(j.desc)}</p>${j.req&&j.req.length?`<ul>${j.req.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}
+      <div class="f"><span class="dl${n>7?" ok":""}">${n===0?"⏳ آخر يوم للتقديم اليوم":`⏳ يغلق التقديم بعد ${plural(n)} · ${fd(j.dl)}`}</span><a class="ap" href="${esc(apply(j))}" target="_blank" rel="noopener">قدّم الآن ‹</a></div>
+      ${cv?`<a class="cvs" href="#${j.cat}">👥 ${cv} سيرة ذاتية في ${CN[j.cat]} ‹</a>`:""}</div>`}).join(""):'<div class="note-box">ما فيه وظائف حاليًا بهذا الفلتر</div>'}
+  $("jfCat").addEventListener("change",render);$("jfCity").addEventListener("change",render);render();
+  window.addEventListener("hashchange",()=>{if(location.hash==="#jobs")render()});window.addEventListener("load",render);setTimeout(render,0);
 })();
 route();
 
