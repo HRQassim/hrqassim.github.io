@@ -10,7 +10,8 @@
 <meta property="og:url" content="https://hrqassim.github.io/">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/app-180.png">
+<meta name="theme-color" content="#20324C">
 <title>مجتمع محترفي الموارد البشرية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -406,6 +407,23 @@ footer{background:transparent}
 .lk-share{background:#20324C;color:#fff}
 .lk-wa{background:#FBFCFE;color:#20324C}.lk-wa svg{color:#25D366}
 .toast-sh{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#20324C;color:#fff;border-radius:999px;padding:10px 18px;font-size:13.5px;z-index:99}
+
+.inst{position:fixed;left:12px;right:12px;bottom:12px;z-index:90;background:#20324C;color:#fff;border-radius:22px;padding:14px 16px;display:flex;gap:12px;align-items:center;box-shadow:0 10px 30px rgba(32,50,76,.3);max-width:520px;margin:auto}
+.inst img{width:44px;height:44px;border-radius:12px;background:#fff;flex:none}
+.inst .t{flex:1;min-width:0;font-size:13px;line-height:1.7;color:#DCE7F2}.inst .t b{display:block;color:#fff;font-size:14.5px}
+.inst .ios-sh{display:inline-block;width:16px;height:16px;vertical-align:-3px}
+.inst button{border:0;font:inherit;cursor:pointer}
+.inst .go{background:#fff;color:#20324C;font-weight:800;border-radius:999px;padding:8px 14px;font-size:13px}
+.inst .x{background:transparent;color:#9FB7CF;font-size:20px;line-height:1;padding:4px}
+@media (display-mode: standalone){.inst{display:none!important}}
+
+.minibar{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:center;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;pointer-events:none;opacity:0;transform:translateY(-18px) scale(.92);will-change:opacity,transform}
+.minibar.on a{pointer-events:auto}
+.minibar a{pointer-events:none!important}.minibar.on a{pointer-events:auto!important}
+.b-logo,.b-tagline{will-change:transform,opacity;transform-origin:50% 0}
+.minibar a{pointer-events:auto;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:5px 14px 5px 6px;box-shadow:0 4px 18px rgba(32,50,76,.10),inset 0 1px 0 rgba(255,255,255,.6);text-decoration:none;color:#20324C;max-width:100%}
+.minibar img{width:28px;height:28px;flex:none}
+.minibar b{font-size:12.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 0 rgba(255,255,255,.5)}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -413,6 +431,7 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
 </head>
 <body>
 <div id="hubView" class="view">
+<div class="minibar" id="miniBar" aria-hidden="true"><a href="#" id="miniLink"><img src="assets/logo-icon.png" alt=""><b>مجتمع محترفي الموارد البشرية</b></a></div>
 <main class="bento">
   <section class="b b-brand">
     <img class="b-logo" src="assets/logo-full.png" alt="مجتمع محترفي الموارد البشرية · HR Professionals Community">
@@ -1040,6 +1059,20 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,()=>location.href="https://wa.me/?text="+encodeURIComponent(text+"\n"+url))}
     else location.href="https://wa.me/?text="+encodeURIComponent(text+"\n"+url);
   });})();
+(function(){const bar=$("miniBar");if(!bar)return;document.body.appendChild(bar);
+  $("miniLink").addEventListener("click",e=>{if(!location.hash||location.hash==="#"){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"})}});
+  const logo=document.querySelector(".b-logo"),tag=document.querySelector(".b-tagline"),br=document.querySelector(".b-brand");
+  const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2, cl=x=>Math.max(0,Math.min(1,x));
+  let tick=false;function upd(){tick=false;const y=window.scrollY;
+    const hub=document.getElementById("hubView"),onHub=hub&&getComputedStyle(hub).display!=="none"&&br;
+    let p;
+    if(onHub){const h=br.offsetTop+br.offsetHeight,q=cl(y/(h*.9));
+      logo.style.transform=`scale(${1-.45*ease(q)})`;logo.style.opacity=1-.6*ease(q);tag.style.opacity=1-ease(cl(q*1.6));
+      p=cl((y-(h*.55))/(h*.45))}
+    else p=cl((y-40)/120);
+    const e=ease(p);bar.style.opacity=e;bar.style.transform=`translateY(${-18*(1-e)}px) scale(${.92+.08*e})`;bar.classList.toggle("on",e>.6)}
+  window.addEventListener("scroll",()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
+  window.addEventListener("hashchange",()=>setTimeout(upd,50));window.addEventListener("resize",upd);upd();})();
 route();
 
 </script>
