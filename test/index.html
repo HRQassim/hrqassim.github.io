@@ -365,7 +365,7 @@ footer{background:transparent}
 .ins a svg{width:20px;height:20px}
 
 .b-ad{padding:0;justify-content:stretch}
-.ad-track{position:relative;flex:1;min-height:300px}
+.ad-track{position:relative;flex:1;min-height:320px}
 .ad{position:absolute;inset:0;padding:20px 20px 34px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;opacity:0;transform:translateX(-12px);transition:opacity .5s,transform .5s;pointer-events:none;background:linear-gradient(0deg,#35547D 55%,rgba(53,84,125,0))}
 .ad.on{opacity:1;transform:none;pointer-events:auto}
 .ad h3{font-size:20px;font-weight:900;color:#fff}
@@ -377,6 +377,9 @@ footer{background:transparent}
 .ad.partner .b-tag{background:#fff;color:#35547D}
 .ad-status{align-self:flex-start;font-size:12.5px;font-weight:700;color:#20324C;background:#F2C14E;border-radius:10px;padding:4px 10px}
 .ad.course .ad-status{}
+.ad-logo{align-self:flex-start;background:#fff;border-radius:16px;padding:8px 12px}
+.ad-logo img{display:block;height:36px;width:auto}
+.ad-logo+.b-tag+h3{display:none}
 .ad-dots{position:absolute;bottom:14px;left:20px;display:flex;gap:6px;z-index:2}
 .ad-dots button{width:8px;height:8px;border-radius:999px;border:0;padding:0;background:rgba(255,255,255,.4);cursor:pointer;transition:width .3s}
 .ad-dots button.on{width:22px;background:#fff}
@@ -414,7 +417,7 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
     <div class="ad-track" id="adTrack"></div>
     <div class="ad-dots" id="adDots"></div>
   </section>
-  <script type="application/json" id="addata">[{"kind": "course", "tag": "دورة قادمة", "title": "أساسيات الرواتب وحماية الأجور", "sub": "تطبيق عملي على منصة مدد واحتساب نهاية الخدمة", "meta": ["📍 بريدة · حضوري", "⏱️ 3 ساعات"], "cta": "سجّل الآن", "url": "https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%B3%D8%AC%D9%84%20%D9%81%D9%8A%20%D8%AF%D9%88%D8%B1%D8%A9%20%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B1%D9%88%D8%A7%D8%AA%D8%A8%20%D9%88%D8%AD%D9%85%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A3%D8%AC%D9%88%D8%B1", "regOpen": "2026-11-25", "regClose": "2026-11-30", "event": "2026-12-10"}, {"kind": "partner", "tag": "شريك المجتمع", "title": "اسم الشريك هنا", "sub": "شعار الشريك ونبذة قصيرة عن خدماته للمنشآت ومنسوبي الموارد البشرية", "meta": ["🎁 خصم 15% لأعضاء المجتمع"], "cta": "تعرّف أكثر", "url": "https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%B9%D8%B1%D9%81%20%D8%B9%D9%86%20%D8%B9%D8%B1%D8%B6%20%D8%B4%D8%B1%D9%8A%D9%83%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9"}, {"kind": "slot", "tag": "مساحة إعلانية", "title": "إعلانك أو دورتك القادمة هنا", "sub": "وصول مباشر لمحترفي الموارد البشرية في القصيم", "meta": [], "cta": "احجز المساحة", "url": "https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9"}]</script>
+  <script type="application/json" id="addata">[{"kind": "course", "tag": "دورة قادمة", "title": "أساسيات الرواتب وحماية الأجور", "sub": "تطبيق عملي على منصة مدد واحتساب نهاية الخدمة", "meta": ["📍 بريدة · حضوري", "⏱️ 3 ساعات"], "cta": "سجّل الآن", "url": "https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%B3%D8%AC%D9%84%20%D9%81%D9%8A%20%D8%AF%D9%88%D8%B1%D8%A9%20%D8%A3%D8%B3%D8%A7%D8%B3%D9%8A%D8%A7%D8%AA%20%D8%A7%D9%84%D8%B1%D9%88%D8%A7%D8%AA%D8%A8%20%D9%88%D8%AD%D9%85%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A3%D8%AC%D9%88%D8%B1", "regOpen": "2026-11-25", "regClose": "2026-11-30", "event": "2026-12-10"}, {"kind": "partner", "tag": "شريك المجتمع", "logo": "ads/shahm.png", "title": "شهم", "sub": "معمول وكليجا قصيمية وشابورة — خصم خاص لأعضاء مجتمع محترفي الموارد البشرية", "meta": ["🎁 خصم 15%"], "cta": "اطلب الآن", "url": "https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%AC%D8%A7%D9%8A%20%D9%85%D9%86%20%D9%85%D9%88%D9%82%D8%B9%20%D9%85%D8%AC%D8%AA%D9%85%D8%B9%20%D9%85%D8%AD%D8%AA%D8%B1%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B1%D8%AF%20%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D9%8A%D8%A9%20%D9%88%D8%A3%D8%A8%D8%BA%D9%89%20%D8%A3%D8%B3%D8%AA%D9%81%D9%8A%D8%AF%20%D9%85%D9%86%20%D8%AE%D8%B5%D9%85%2015%25", "start": "2026-11-25", "end": "2026-12-25"}, {"kind": "slot", "tag": "مساحة إعلانية", "title": "إعلانك أو دورتك القادمة هنا", "sub": "وصول مباشر لمحترفي الموارد البشرية في القصيم", "meta": [], "cta": "احجز المساحة", "url": "https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D8%A8%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%86%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D9%84%D9%85%D8%AC%D8%AA%D9%85%D8%B9"}]</script>
 
   <a class="b b-mag" href="#magazine"><span class="b-ic">📰</span><h3>مجلة المجتمع</h3><p><b>8</b> أعداد</p></a>
 
@@ -939,6 +942,11 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
   const fmt=d=>{const x=new Date(d+"T00:00:00Z");return `${DW[x.getUTCDay()]} ${x.getUTCDate()} ${AR[x.getUTCMonth()]}`};
   const plural=n=>n===1?"يوم واحد":n===2?"يومين":n<=10?`${n} أيام`:`${n} يومًا`;
   const ADS=ADS_ALL.map(a=>{
+    if(a.end&&!a.event){
+      if(today>a.end)return null;
+      if(a.start&&today<a.start)return {...a,cta:"",status:`🔔 يبدأ العرض ${fmt(a.start)}`};
+      const n=days(today,a.end);return {...a,meta:[...a.meta,`📅 حتى ${fmt(a.end)}`],status:n===0?"⏳ آخر يوم للعرض اليوم":`⏳ العرض ينتهي بعد ${plural(n)}`};
+    }
     if(!a.event)return {...a,status:""};
     if(today>a.event)return null;                       // event passed → hide
     const ev=`📅 ${fmt(a.event)}`;
@@ -948,7 +956,7 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
     return {...a,meta:[ev,...a.meta],cta:"",tag:"تذكير",status:n===0?"🎯 الدورة اليوم":`🔒 انتهى التسجيل · الدورة بعد ${plural(n)}`};
   }).filter(Boolean);
   window.ADS=ADS;
-  $("adTrack").innerHTML=ADS.map((a,i)=>`<div class="ad ${a.kind}${i?"":" on"}"><span class="b-tag light">${esc(a.tag)}</span><h3>${esc(a.title)}</h3><p>${esc(a.sub)}</p>${a.meta.length?`<div class="ad-meta">${a.meta.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`:""}${a.status?`<div class="ad-status">${esc(a.status)}</div>`:""}${a.cta?`<a class="ad-cta" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.cta)} ‹</a>`:""}</div>`).join("")+'<span class="ad-demo">إعلانات تجريبية</span>';
+  $("adTrack").innerHTML=ADS.map((a,i)=>`<div class="ad ${a.kind}${i?"":" on"}">${a.logo?`<div class="ad-logo"><img src="${a.logo.startsWith("http")?a.logo:"../"+a.logo}" alt="${esc(a.title)}"></div>`:""}<span class="b-tag light">${esc(a.tag)}</span><h3>${esc(a.title)}</h3><p>${esc(a.sub)}</p>${a.meta.length?`<div class="ad-meta">${a.meta.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`:""}${a.status?`<div class="ad-status">${esc(a.status)}</div>`:""}${a.cta?`<a class="ad-cta" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.cta)} ‹</a>`:""}</div>`).join("")+'<span class="ad-demo">إعلانات تجريبية</span>';
   $("adDots").innerHTML=ADS.length>1?ADS.map((a,i)=>`<button data-i="${i}" class="${i?"":"on"}" aria-label="إعلان ${i+1}"></button>`).join(""):"";
   const go=i=>{adI=(i+ADS.length)%ADS.length;document.querySelectorAll("#adTrack .ad").forEach((e,k)=>e.classList.toggle("on",k===adI));document.querySelectorAll("#adDots button").forEach((e,k)=>e.classList.toggle("on",k===adI))};
   const start=()=>{clearInterval(adT);if(ADS.length>1)adT=setInterval(()=>go(adI+1),5000)};
