@@ -842,7 +842,7 @@ const catName=id=>(CATS.find(c=>c.id===id)||CATS[CATS.length-1]).name;
 const expTxt=n=>n==null?"غير محدد":n==0?"حديث تخرج":n==1?"سنة":n==2?"سنتان":n<=10?n+" سنوات":n+" سنة";
 
 /* ---- CV bank lock: data is AES-GCM encrypted in cvx/, the key is unwrapped with the PIN ---- */
-const CVX="cvx/",ub=b=>Uint8Array.from(atob(b),c=>c.charCodeAt(0));let CVK=null;const _imgs={};
+const CVX="../cvx/",ub=b=>Uint8Array.from(atob(b),c=>c.charCodeAt(0));let CVK=null;const _imgs={};
 const CVMETA=fetch(CVX+"keys.json",{cache:"no-cache"}).then(r=>r.json());
 CVMETA.then(m=>{const n=(m.n||0).toLocaleString("en-US");["hubCount","stCv","total"].forEach(i=>{const e=document.getElementById(i);if(e)e.textContent=n})}).catch(()=>{});
 const cvDec=(k,b)=>crypto.subtle.decrypt({name:"AES-GCM",iv:b.slice(0,12)},k,b.slice(12));
@@ -851,7 +851,7 @@ async function cvKeyFromPin(pin){const m=await CVMETA;const base=await crypto.su
     return new Uint8Array(await crypto.subtle.decrypt({name:"AES-GCM",iv:ub(k.iv)},kk,ub(k.w)))}catch(e){}}return null}
 async function cvOpen(raw){CVK=await crypto.subtle.importKey("raw",raw,"AES-GCM",false,["decrypt"]);
   const b=new Uint8Array(await (await fetch(CVX+"data.bin",{cache:"no-cache"})).arrayBuffer());
-  return JSON.parse(new TextDecoder().decode(await cvDec(CVK,b))).map(r=>Object.assign(r,{img:r.img?"cvx/"+r.id+".bin":r.img}))}
+  return JSON.parse(new TextDecoder().decode(await cvDec(CVK,b))).map(r=>Object.assign(r,{img:r.img?CVX+r.id+".bin":r.img}))}
 async function cvBlob(r){if(_imgs[r.id])return _imgs[r.id];const res=await fetch(r.img);if(!res.ok)throw 0;
   return _imgs[r.id]=new Blob([await cvDec(CVK,new Uint8Array(await res.arrayBuffer()))],{type:"image/jpeg"})}
 const CVP=new Promise(res=>{
