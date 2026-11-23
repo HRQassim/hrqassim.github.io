@@ -421,6 +421,12 @@ footer{background:transparent}
 .inst .go{background:#fff;color:#20324C;font-weight:800;border-radius:999px;padding:8px 14px;font-size:13px}
 .inst .x{background:transparent;color:#9FB7CF;font-size:20px;line-height:1;padding:4px}
 @media (display-mode: standalone){.inst{display:none!important}}
+
+.minibar{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:center;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;pointer-events:none;transform:translateY(-110%);transition:transform .28s ease}
+.minibar.on{transform:none}
+.minibar a{pointer-events:auto;display:flex;align-items:center;gap:10px;background:rgba(251,252,254,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-radius:999px;padding:6px 16px 6px 8px;box-shadow:0 6px 20px rgba(32,50,76,.12);text-decoration:none;color:#20324C;max-width:100%}
+.minibar img{width:34px;height:34px;flex:none}
+.minibar b{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -429,6 +435,7 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
 <body>
 <div style="background:#B4533A;color:#fff;text-align:center;font-size:13px;padding:6px">🧪 نسخة تجريبية — للاختبار فقط</div>
 <div id="hubView" class="view">
+<div class="minibar" id="miniBar" aria-hidden="true"><a href="#" id="miniLink"><img src="../assets/logo-icon.png" alt=""><b>مجتمع محترفي الموارد البشرية</b></a></div>
 <main class="bento">
   <section class="b b-brand">
     <img class="b-logo" src="../assets/logo-full.png" alt="مجتمع محترفي الموارد البشرية · HR Professionals Community">
@@ -1074,6 +1081,13 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
   if(isIOS)setTimeout(()=>{if(isSafari)show(`<b>ثبّت التطبيق على جوالك</b>اضغط ${SH} مشاركة، ثم «إضافة إلى الشاشة الرئيسية»`);
     else show("<b>ثبّت التطبيق على جوالك</b>افتح الرابط في Safari، ثم مشاركة ← «إضافة إلى الشاشة الرئيسية»")},1500);
 })();
+(function(){const bar=$("miniBar");if(!bar)return;document.body.appendChild(bar);
+  $("miniLink").addEventListener("click",e=>{if(!location.hash||location.hash==="#"){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"})}});
+  let tick=false;function upd(){tick=false;const hub=document.getElementById("hubView");const onHub=hub&&!hub.hidden&&getComputedStyle(hub).display!=="none";
+    let lim=120;if(onHub){const br=document.querySelector(".b-brand");if(br)lim=br.offsetTop+br.offsetHeight-40}
+    bar.classList.toggle("on",window.scrollY>lim)}
+  window.addEventListener("scroll",()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
+  window.addEventListener("hashchange",()=>setTimeout(upd,50));upd();})();
 route();
 
 </script>
