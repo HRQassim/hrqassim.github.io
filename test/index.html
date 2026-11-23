@@ -429,6 +429,22 @@ footer{background:transparent}
 .minibar a{pointer-events:auto;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:5px 14px 5px 6px;box-shadow:0 4px 18px rgba(32,50,76,.10),inset 0 1px 0 rgba(255,255,255,.6);text-decoration:none;color:#20324C;max-width:100%}
 .minibar img{width:28px;height:28px;flex:none}
 .minibar b{font-size:12.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 0 rgba(255,255,255,.5)}
+
+.b-calc .chips a.sm{font-size:12.5px;padding:6px 12px;background:#F3F6FA;color:#35547D}
+.b-mini{grid-column:span 2;background:transparent!important;padding:0!important;display:grid!important;grid-template-columns:1fr 1fr;gap:10px!important}
+.b-mini a{display:flex;align-items:center;gap:8px;background:#FBFCFE;border-radius:18px;padding:12px 14px;text-decoration:none;color:#20324C;min-width:0}
+.b-mini b{flex:1;font-size:13px;font-weight:700;line-height:1.4}.b-mini span{font-size:18px}.b-mini i{font-style:normal;color:#5B91BD;font-weight:800}
+@media (min-width:760px){.b-mini{grid-column:1/5;grid-row:6}.b-links{grid-row:7!important}}
+.tpl-g h3{font-size:13px;color:#83898F;margin:6px 4px 0;font-weight:700}
+.tpl{background:#FBFCFE;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:10px}
+.tpl b{flex:1;font-size:14.5px;color:#20324C}
+.tpl a{font-size:12px;font-weight:800;text-decoration:none;border-radius:999px;padding:6px 12px}
+.tpl a.w{background:#20324C;color:#fff}.tpl a.p{background:#EEF3F8;color:#35547D}
+.plat{background:#FBFCFE;border-radius:22px;padding:16px;display:grid;gap:6px}
+.plat .h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.plat h3{margin:0;font-size:16px;color:#20324C}.plat p{margin:0;font-size:13px;color:#5B6B80}
+.plat ul{margin:0;padding-inline-start:18px;font-size:13px;color:#4A5563;line-height:1.8}
+.plat a{flex:none;font-size:12px;font-weight:800;text-decoration:none;background:#20324C;color:#fff;border-radius:999px;padding:6px 12px}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -481,7 +497,15 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
       <a href="#overtime"><span>⏱️</span>العمل الإضافي</a>
       <a href="#eos"><span>🧮</span>نهاية الخدمة</a>
       <a href="#saudization"><span>🇸🇦</span>نسبة التوطين</a>
+      <a href="#leave" class="sm"><span>🏖️</span>الإجازات</a>
+      <a href="#gosi" class="sm"><span>🛡️</span>التأمينات</a>
+      <a href="#absence" class="sm"><span>⏰</span>خصم الغياب</a>
     </div>
+  </section>
+
+  <section class="b b-mini">
+    <a href="#templates"><span>🗂️</span><b>نماذج الموارد البشرية</b><i>‹</i></a>
+    <a href="#platforms"><span>🏛️</span><b>دليل المنصات الحكومية</b><i>‹</i></a>
   </section>
 
   <section class="b b-links">
@@ -536,6 +560,67 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
     <div class="t-body"><h3>العدد الأول</h3><p>مجلة مجتمع محترفي الموارد البشرية</p></div>
     <div class="t-go">‹</div>
   </a>
+</main>
+</div>
+
+<div id="tplView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>نماذج الموارد البشرية</b></div>
+<main class="hub">
+  <script type="application/json" id="tpldata">[{"id": "salary-letter", "t": "خطاب تعريف بالراتب", "c": "خطابات"}, {"id": "experience", "t": "شهادة خبرة", "c": "خطابات"}, {"id": "offer", "t": "عرض وظيفي", "c": "التوظيف"}, {"id": "joining", "t": "نموذج مباشرة عمل", "c": "التوظيف"}, {"id": "leave-request", "t": "نموذج طلب إجازة", "c": "الإجازات"}, {"id": "return-leave", "t": "نموذج مباشرة بعد إجازة", "c": "الإجازات"}, {"id": "attention", "t": "لفت نظر", "c": "الانضباط"}, {"id": "warning", "t": "إنذار كتابي", "c": "الانضباط"}, {"id": "investigation-call", "t": "استدعاء للتحقيق", "c": "الانضباط"}, {"id": "investigation-record", "t": "محضر تحقيق إداري", "c": "الانضباط"}, {"id": "resignation", "t": "نموذج استقالة", "c": "إنهاء الخدمة"}, {"id": "clearance", "t": "نموذج إخلاء طرف", "c": "إنهاء الخدمة"}]</script>
+  <div id="tplList" class="declist tpl-g"></div>
+  <p class="hint">نماذج استرشادية قابلة للتعديل. حمّل نسخة Word وعدّلها بشعار منشأتك وبياناتها، وراجعها مع لائحة تنظيم العمل المعتمدة في منشأتك.</p>
+</main>
+</div>
+
+<div id="platView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>دليل المنصات الحكومية</b></div>
+<main class="hub">
+  <script type="application/json" id="platdata">[{"n": "قوى", "u": "https://www.qiwa.sa", "d": "منصة وزارة الموارد البشرية لخدمات قطاع العمل.", "s": ["توثيق عقود العمل", "رخص العمل ونقل الخدمات", "متابعة نطاقات ونسب التوطين", "شهادة السعودة"]}, {"n": "مدد", "u": "https://mudad.com.sa", "d": "منصة الرواتب وحماية الأجور.", "s": ["رفع ملف حماية الأجور", "مسيرات الرواتب", "متابعة الالتزام بدفع الأجور"]}, {"n": "التأمينات الاجتماعية", "u": "https://www.gosi.gov.sa", "d": "خدمات المؤسسة العامة للتأمينات الاجتماعية للمنشآت والمشتركين.", "s": ["تسجيل المشتركين واستبعادهم", "تعديل الأجور", "شهادة الالتزام", "إصابات العمل"]}, {"n": "مقيم", "u": "https://muqeem.sa", "d": "خدمات الإقامة للعمالة الوافدة.", "s": ["إصدار وتجديد الإقامة", "تأشيرات الخروج والعودة", "الخروج النهائي"]}, {"n": "أبشر أعمال", "u": "https://www.absher.sa", "d": "خدمات الجوازات والأحوال للمنشآت.", "s": ["خدمات الجوازات للعمالة", "تفويض المستخدمين", "الاستعلامات"]}, {"n": "جدارات", "u": "https://jadarat.sa", "d": "منصة التوظيف الوطنية.", "s": ["نشر الوظائف الشاغرة", "البحث عن الكفاءات الوطنية"]}, {"n": "صندوق تنمية الموارد البشرية (هدف)", "u": "https://www.hrdf.org.sa", "d": "برامج دعم التوظيف والتدريب.", "s": ["دعم أجور السعوديين", "برامج التدريب على رأس العمل", "دعم التوطين"]}]</script>
+  <div id="platList" class="insl"></div>
+  <p class="hint">روابط المنصات الرسمية وأبرز خدماتها لمنسوبي الموارد البشرية.</p>
+</main>
+</div>
+
+<div id="leaveView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>حاسبة الإجازات</b></div>
+<main class="hub">
+  <div class="calc">
+    <label>مدة الخدمة بالسنوات<input id="lvYears" type="number" inputmode="decimal" placeholder="مثال: 3"></label>
+    <label>الرصيد المستحق المتراكم (أيام)<input id="lvEarned" type="number" inputmode="decimal" placeholder="اتركه فارغًا لحساب سنة كاملة"></label>
+    <label>الأيام المستخدمة<input id="lvUsed" type="number" inputmode="decimal" placeholder="0"></label>
+    <label>الأجر الشهري الفعلي (لحساب مقابل الإجازة)<input id="lvWage" type="number" inputmode="decimal" placeholder="اختياري"></label>
+    <div class="res" id="lvRes">أدخل البيانات لعرض النتيجة</div>
+    <p class="hint">الإجازة السنوية 21 يومًا، وتصبح 30 يومًا إذا أمضى العامل 5 سنوات متصلة لدى صاحب العمل (المادة 109). ويستحق العامل أجر الأيام غير المستخدمة عند انتهاء العلاقة (المادة 111). قيمة اليوم = الأجر الشهري ÷ 30. النتيجة تقديرية.</p>
+  </div>
+</main>
+</div>
+
+<div id="gosiView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>حاسبة التأمينات الاجتماعية</b></div>
+<main class="hub">
+  <div class="calc">
+    <label>الجنسية<select id="gsNat"><option value="sa">سعودي</option><option value="nsa">غير سعودي</option></select></label>
+    <label id="gsSysL">تاريخ أول تسجيل في التأمينات<select id="gsSys"><option value="old">قبل 3 يوليو 2024 (النظام الحالي)</option><option value="new">من 3 يوليو 2024 فأحدث (النظام الجديد)</option></select></label>
+    <label>الأجر الأساسي<input id="gsBasic" type="number" inputmode="decimal" placeholder="مثال: 6000"></label>
+    <label>بدل السكن<input id="gsHousing" type="number" inputmode="decimal" placeholder="مثال: 1500"></label>
+    <label>العمولات (إن وجدت)<input id="gsComm" type="number" inputmode="decimal" placeholder="0"></label>
+    <div class="res" id="gsRes">أدخل البيانات لعرض النتيجة</div>
+    <p class="hint">الأجر الخاضع للاشتراك = الأساسي + السكن + العمولات، بحد أعلى 45,000 ريال. للسعودي: المعاشات (9% على كل طرف في النظام الحالي، وفي النظام الجديد ترتفع 0.5% كل يوليو حتى 11% في 2028)، وساند 0.75% على كل طرف، والأخطار المهنية 2% على صاحب العمل. لغير السعودي: الأخطار المهنية 2% على صاحب العمل فقط. المرجع: المؤسسة العامة للتأمينات الاجتماعية. النتيجة تقديرية.</p>
+  </div>
+</main>
+</div>
+
+<div id="absView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>حاسبة خصم الغياب والتأخير</b></div>
+<main class="hub">
+  <div class="calc">
+    <label>الأجر الشهري المعتمد للخصم حسب لائحة منشأتك<input id="abWage" type="number" inputmode="decimal" placeholder="مثال: 8000"></label>
+    <label>أيام الغياب بدون عذر<input id="abDays" type="number" inputmode="decimal" placeholder="0"></label>
+    <label>مجموع دقائق التأخير<input id="abMin" type="number" inputmode="numeric" placeholder="0"></label>
+    <label>ساعات العمل اليومية<input id="abHours" type="number" inputmode="decimal" value="8"></label>
+    <div class="res" id="abRes">أدخل البيانات لعرض النتيجة</div>
+    <p class="hint">أجر اليوم = الأجر الشهري ÷ 30، وأجر الدقيقة = أجر اليوم ÷ (ساعات العمل × 60). يُخصم أجر مدة الغياب أو التأخير، والجزاءات الإضافية حسب لائحة تنظيم العمل المعتمدة. ولا يجوز أن يزيد مجموع الحسميات على نصف الأجر الشهري (المادة 92). النتيجة تقديرية.</p>
+  </div>
 </main>
 </div>
 
@@ -883,6 +968,11 @@ function route(){
   else if(h==="decisions")v="decView";
   else if(h==="jd")v="jdView";
   else if(h==="insurance")v="insView";
+  else if(h==="templates")v="tplView";
+  else if(h==="platforms")v="platView";
+  else if(h==="leave")v="leaveView";
+  else if(h==="gosi")v="gosiView";
+  else if(h==="absence")v="absView";
   document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on",x.id===v));
   if(v==="bankView"&&CATS.some(c=>c.id===h)&&state.cat!==h){state.cat=h;state.page=1;render()}
   scrollTo(0,0);
@@ -1097,6 +1187,37 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
     const e=ease(p);bar.style.opacity=e;bar.style.transform=`translateY(${-18*(1-e)}px) scale(${.92+.08*e})`;bar.classList.toggle("on",e>.6)}
   window.addEventListener("scroll",()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
   window.addEventListener("hashchange",()=>setTimeout(upd,50));window.addEventListener("resize",upd);upd();})();
+(function(){
+  const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const f=n=>n.toLocaleString("en-US",{maximumFractionDigits:2});
+  const TP=JSON.parse(document.getElementById("tpldata").textContent),cats=[...new Set(TP.map(t=>t.c))];
+  $("tplList").innerHTML=cats.map(c=>`<h3>${esc(c)}</h3>`+TP.filter(t=>t.c===c).map(t=>`<div class="tpl"><b>${esc(t.t)}</b><a class="w" href="../templates/${t.id}.docx" download="${esc(t.t)}.docx">Word</a><a class="p" href="../templates/${t.id}.pdf" target="_blank" rel="noopener">PDF</a></div>`).join("")).join("");
+  const PL=JSON.parse(document.getElementById("platdata").textContent);
+  $("platList").innerHTML=PL.map(p=>`<div class="plat"><div class="h"><h3>${esc(p.n)}</h3><a href="${esc(p.u)}" target="_blank" rel="noopener">فتح المنصة ‹</a></div><p>${esc(p.d)}</p><ul>${p.s.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
+  // leave
+  function lv(){const y=parseFloat($("lvYears").value),e=$("lvEarned").value,u=parseFloat($("lvUsed").value)||0,w=parseFloat($("lvWage").value);
+    if(!(y>=0)||$("lvYears").value===""){$("lvRes").innerHTML="أدخل البيانات لعرض النتيجة";return}
+    const ent=y>=5?30:21,earned=e===""?ent:parseFloat(e)||0,bal=earned-u;
+    $("lvRes").innerHTML=`الرصيد المتبقي<b>${f(bal)} يوم</b><small>الاستحقاق السنوي: ${ent} يومًا${y>=5?" (5 سنوات فأكثر)":""}${w>0?` · مقابل الرصيد: ${f(Math.max(bal,0)*w/30)} ريال (قيمة اليوم ${f(w/30)} ريال)`:""}</small>`}
+  ["lvYears","lvEarned","lvUsed","lvWage"].forEach(id=>$(id).addEventListener("input",lv));
+  // gosi
+  const qd=new URLSearchParams(location.search).get("d"),today=(qd&&/^\d{4}-\d{2}-\d{2}$/.test(qd))?qd:new Date(Date.now()+3*3600e3).toISOString().slice(0,10);
+  const newRate=()=>today>="2028-07-01"?11:today>="2027-07-01"?10.5:today>="2026-07-01"?10:today>="2025-07-01"?9.5:9;
+  function gs(){const sa=$("gsNat").value==="sa";$("gsSysL").hidden=!sa;
+    let base=(parseFloat($("gsBasic").value)||0)+(parseFloat($("gsHousing").value)||0)+(parseFloat($("gsComm").value)||0);
+    if(!(base>0)){$("gsRes").innerHTML="أدخل البيانات لعرض النتيجة";return}
+    const capped=base>45000;base=Math.min(base,45000);
+    if(!sa){$("gsRes").innerHTML=`على صاحب العمل<b>${f(base*.02)} ريال</b><small>الأخطار المهنية 2% · لا يُخصم شيء من الموظف${capped?" · طُبّق الحد الأعلى 45,000":""}</small>`;return}
+    const pen=$("gsSys").value==="new"?newRate():9,emp=base*(pen+.75)/100,er=base*(pen+.75+2)/100;
+    $("gsRes").innerHTML=`يُخصم من الموظف<b>${f(emp)} ريال</b><small>المعاشات ${pen}% + ساند 0.75% = ${f(pen+.75)}%<br>على صاحب العمل: ${f(er)} ريال (المعاشات ${pen}% + ساند 0.75% + الأخطار المهنية 2%)<br>الإجمالي الشهري: ${f(emp+er)} ريال · الأجر الخاضع: ${f(base)}${capped?" (الحد الأعلى)":""}</small>`}
+  ["gsNat","gsSys"].forEach(id=>$(id).addEventListener("change",gs));["gsBasic","gsHousing","gsComm"].forEach(id=>$(id).addEventListener("input",gs));gs();
+  // absence
+  function ab(){const w=parseFloat($("abWage").value),d=parseFloat($("abDays").value)||0,m=parseFloat($("abMin").value)||0,h=parseFloat($("abHours").value)||8;
+    if(!(w>0)){$("abRes").innerHTML="أدخل البيانات لعرض النتيجة";return}
+    const day=w/30,min=day/(h*60),tot=d*day+m*min,over=tot>w/2;
+    $("abRes").innerHTML=`إجمالي الخصم<b>${f(tot)} ريال</b><small>الغياب: ${f(d*day)} ريال (${f(d)} يوم × ${f(day)}) · التأخير: ${f(m*min)} ريال (${f(m)} دقيقة)${over?'<br><span style="color:#F2C14E;font-weight:700">تنبيه: الخصم يتجاوز نصف الأجر، والنظام لا يجيز ذلك</span>':""}</small>`}
+  ["abWage","abDays","abMin","abHours"].forEach(id=>$(id).addEventListener("input",ab));
+})();
 route();
 
 </script>
