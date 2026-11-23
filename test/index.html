@@ -422,8 +422,10 @@ footer{background:transparent}
 .inst .x{background:transparent;color:#9FB7CF;font-size:20px;line-height:1;padding:4px}
 @media (display-mode: standalone){.inst{display:none!important}}
 
-.minibar{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:center;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;pointer-events:none;transform:translateY(-110%);transition:transform .28s ease}
-.minibar.on{transform:none}
+.minibar{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:center;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;pointer-events:none;opacity:0;transform:translateY(-18px) scale(.92);will-change:opacity,transform}
+.minibar.on a{pointer-events:auto}
+.minibar a{pointer-events:none!important}.minibar.on a{pointer-events:auto!important}
+.b-logo,.b-tagline{will-change:transform,opacity;transform-origin:50% 0}
 .minibar a{pointer-events:auto;display:flex;align-items:center;gap:10px;background:rgba(251,252,254,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-radius:999px;padding:6px 16px 6px 8px;box-shadow:0 6px 20px rgba(32,50,76,.12);text-decoration:none;color:#20324C;max-width:100%}
 .minibar img{width:34px;height:34px;flex:none}
 .minibar b{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1083,11 +1085,18 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
 })();
 (function(){const bar=$("miniBar");if(!bar)return;document.body.appendChild(bar);
   $("miniLink").addEventListener("click",e=>{if(!location.hash||location.hash==="#"){e.preventDefault();window.scrollTo({top:0,behavior:"smooth"})}});
-  let tick=false;function upd(){tick=false;const hub=document.getElementById("hubView");const onHub=hub&&!hub.hidden&&getComputedStyle(hub).display!=="none";
-    let lim=120;if(onHub){const br=document.querySelector(".b-brand");if(br)lim=br.offsetTop+br.offsetHeight-40}
-    bar.classList.toggle("on",window.scrollY>lim)}
+  const logo=document.querySelector(".b-logo"),tag=document.querySelector(".b-tagline"),br=document.querySelector(".b-brand");
+  const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2, cl=x=>Math.max(0,Math.min(1,x));
+  let tick=false;function upd(){tick=false;const y=window.scrollY;
+    const hub=document.getElementById("hubView"),onHub=hub&&getComputedStyle(hub).display!=="none"&&br;
+    let p;
+    if(onHub){const h=br.offsetTop+br.offsetHeight,q=cl(y/(h*.9));
+      logo.style.transform=`scale(${1-.45*ease(q)})`;logo.style.opacity=1-.6*ease(q);tag.style.opacity=1-ease(cl(q*1.6));
+      p=cl((y-(h*.55))/(h*.45))}
+    else p=cl((y-40)/120);
+    const e=ease(p);bar.style.opacity=e;bar.style.transform=`translateY(${-18*(1-e)}px) scale(${.92+.08*e})`;bar.classList.toggle("on",e>.6)}
   window.addEventListener("scroll",()=>{if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});
-  window.addEventListener("hashchange",()=>setTimeout(upd,50));upd();})();
+  window.addEventListener("hashchange",()=>setTimeout(upd,50));window.addEventListener("resize",upd);upd();})();
 route();
 
 </script>
