@@ -740,7 +740,7 @@ function renderJD(){
     <h4>المهام والمسؤوليات</h4><ul>${j.d.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
     <h4>المؤهلات والخبرات</h4><ul>${j.q.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
     <h4>المهارات</h4><ul>${j.s.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
-    <div class="jd-act"><a class="jd-pdf" href="../jd/${j.f}" download="الوصف الوظيفي - ${esc(j.t)}.pdf" target="_blank" rel="noopener">تحميل PDF</a><button class="jd-copy" data-i="${i}">نسخ النص</button></div></div></details>`).join(""):'<div class="note-box">ما فيه نتائج</div>';
+    <div class="jd-act"><a class="jd-pdf" href="../jd/${j.f}" download="الوصف الوظيفي - ${esc(j.t)}.pdf" target="_blank" rel="noopener">تحميل PDF · عربي/English</a><button class="jd-copy" data-i="${i}">نسخ النص</button></div></div></details>`).join(""):'<div class="note-box">ما فيه نتائج</div>';
 }
 $("jdCats").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;jdCat=b.dataset.c;renderJD()});
 $("jdLv").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;jdL=b.dataset.l;renderJD()});
