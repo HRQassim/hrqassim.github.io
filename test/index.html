@@ -393,9 +393,9 @@ footer{background:transparent}
 .ad-dots button.on{width:22px;background:#fff}
 .ad-demo{position:absolute;top:14px;left:16px;z-index:2;font-size:10.5px;color:#fff;background:rgba(0,0,0,.25);border-radius:999px;padding:2px 9px}
 
-.b-brand{flex-direction:column!important;align-items:center;justify-content:center;text-align:center;gap:4px!important;padding:12px 20px!important}
-.b-logo{display:block;width:min(100px,30%);height:auto}
-.b-tagline{font-size:12px!important;color:#5B6B80!important;font-weight:600}
+.b-brand{flex-direction:row!important;align-items:center;justify-content:space-between;text-align:center;gap:16px!important;padding:14px 20px!important}
+.b-logo{display:block;flex:none;width:min(100px,30%);height:auto}
+.b-tagline{flex:1;margin:0;font-size:14.5px!important;line-height:1.7;color:#5B6B80!important;font-weight:600}
 @media (min-width:760px){.b-logo{width:min(110px,30%)}}
 
 .calc label[hidden],[hidden]{display:none!important}
@@ -425,7 +425,7 @@ footer{background:transparent}
 .minibar{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:center;padding:calc(8px + env(safe-area-inset-top)) 12px 8px;pointer-events:none;opacity:0;transform:translateY(-18px) scale(.92);will-change:opacity,transform}
 .minibar.on a{pointer-events:auto}
 .minibar a{pointer-events:none!important}.minibar.on a{pointer-events:auto!important}
-.b-logo,.b-tagline{will-change:transform,opacity;transform-origin:50% 0}
+.b-logo,.b-tagline{will-change:transform,opacity;transform-origin:50% 50%}
 .minibar a{pointer-events:auto;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.62);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,.55);border-radius:999px;padding:5px 14px 5px 6px;box-shadow:0 4px 18px rgba(32,50,76,.10),inset 0 1px 0 rgba(255,255,255,.6);text-decoration:none;color:#20324C;max-width:100%}
 .minibar img{width:28px;height:28px;flex:none}
 .minibar b{font-size:12.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 0 rgba(255,255,255,.5)}
