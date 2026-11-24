@@ -468,6 +468,16 @@ a,button,summary{touch-action:manipulation;-webkit-tap-highlight-color:transpare
 .ad.vid:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(32,50,76,.95) 0%,rgba(32,50,76,.55) 38%,rgba(32,50,76,0) 65%)}
 .ad.vid{isolation:isolate}
 .ad-snd{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:14px;padding:0;cursor:pointer}
+.tv{position:fixed;inset:0;z-index:80;background:#EAEFF5;display:flex;flex-direction:column}
+.tv[hidden]{display:none}
+.tv-h{padding:calc(env(safe-area-inset-top) + 14px) 18px 10px;text-align:center;font-weight:800;font-size:16px;color:#20324C}
+.tv-b{flex:1;overflow:auto;padding:4px 14px 14px;-webkit-overflow-scrolling:touch}
+.tv-b img{display:block;width:100%;max-width:700px;margin:auto;background:#fff;border-radius:10px;box-shadow:0 6px 24px rgba(32,50,76,.12)}
+.tv-f{display:flex;gap:8px;align-items:center;padding:10px 14px calc(env(safe-area-inset-bottom) + 12px);background:rgba(255,255,255,.75);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid rgba(32,50,76,.08)}
+.tv-back{display:flex;align-items:center;gap:4px;font:inherit;font-weight:800;font-size:14px;color:#20324C;background:rgba(234,241,248,.9);border:1px solid rgba(32,50,76,.1);border-radius:999px;padding:9px 16px 9px 18px;cursor:pointer;margin-inline-end:auto}
+.tv-back svg{width:18px;height:18px}
+.tv-f a{font-size:13px;font-weight:800;text-decoration:none;border-radius:999px;padding:9px 18px;cursor:pointer}
+.tv-w{background:#20324C;color:#fff}.tv-p{background:#fff;color:#35547D;border:1px solid #D5DEE8}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -1257,7 +1267,7 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
   const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const f=n=>n.toLocaleString("en-US",{maximumFractionDigits:2});
   const TP=JSON.parse(document.getElementById("tpldata").textContent),cats=[...new Set(TP.map(t=>t.c))];
-  $("tplList").innerHTML=cats.map(c=>`<h3>${esc(c)}</h3>`+TP.filter(t=>t.c===c).map(t=>`<div class="tpl"><b>${esc(t.t)}</b><a class="w" href="../templates/${t.id}.docx" download="${esc(t.t)}.docx" target="_blank" rel="noopener">Word</a><a class="p" href="../templates/${t.id}.pdf" target="_blank" rel="noopener">PDF</a></div>`).join("")).join("");
+  $("tplList").innerHTML=cats.map(c=>`<h3>${esc(c)}</h3>`+TP.filter(t=>t.c===c).map(t=>`<div class="tpl" data-id="${t.id}"><b>${esc(t.t)}</b><a class="w" href="../templates/${t.id}.docx" download="${esc(t.t)}.docx" target="_blank" rel="noopener">Word</a><a class="p" href="../templates/${t.id}.pdf" target="_blank" rel="noopener">PDF</a></div>`).join("")).join("");
   const PL=JSON.parse(document.getElementById("platdata").textContent);
   $("platList").innerHTML=PL.map(p=>`<div class="plat"><div class="h"><h3>${esc(p.n)}</h3><a href="${esc(p.u)}" target="_blank" rel="noopener">فتح المنصة ‹</a></div><p>${esc(p.d)}</p><ul>${p.s.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
   // leave
@@ -1290,6 +1300,19 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
   b.addEventListener("click",()=>{b.classList.add("spin");
     const go=()=>location.reload();
     if(navigator.serviceWorker&&navigator.serviceWorker.getRegistration)navigator.serviceWorker.getRegistration().then(r=>r&&r.update()).finally(()=>setTimeout(go,300));else setTimeout(go,300)})})();
+(function(){if(!$("tplList"))return;document.body.insertAdjacentHTML("beforeend",'<div class="tv" id="tv" hidden><div class="tv-h" id="tvT"></div><div class="tv-b"><img id="tvI" alt=""></div><div class="tv-f"><button type="button" class="tv-back" id="tvBack" aria-label="رجوع"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>رجوع</button><a class="tv-w" id="tvW">Word</a><a class="tv-p" id="tvP">PDF</a></div></div>');const tv=$("tv");const TP=JSON.parse(document.getElementById("tpldata").textContent);let cur=null;
+  const open=id=>{const t=TP.find(x=>x.id===id);if(!t)return;cur=t;$("tvT").textContent=t.t;$("tvI").src="../templates/prev/"+id+".jpg";$("tvI").alt=t.t;
+    $("tvW").href="../templates/"+id+".docx";$("tvP").href="../templates/"+id+".pdf";tv.hidden=false;document.body.style.overflow="hidden";history.pushState({tv:1},"")};
+  const close=()=>{if(tv.hidden)return;tv.hidden=true;document.body.style.overflow="";$("tvI").removeAttribute("src")};
+  $("tplList").addEventListener("click",e=>{const d=e.target.closest(".tpl[data-id]");if(!d)return;e.preventDefault();open(d.dataset.id)});
+  $("tvBack").addEventListener("click",()=>{if(history.state&&history.state.tv)history.back();else close()});
+  addEventListener("popstate",close);
+  const get=async(ext,type)=>{const t=cur,url="../templates/"+t.id+"."+ext,nm=t.t+"."+ext;
+    try{if(navigator.canShare){const b=await (await fetch(url)).blob(),f=new File([b],nm,{type});if(navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}}}catch(e){if(e&&e.name==="AbortError")return}
+    const a=document.createElement("a");a.href=url;a.download=nm;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove()};
+  $("tvW").addEventListener("click",e=>{e.preventDefault();get("docx","application/vnd.openxmlformats-officedocument.wordprocessingml.document")});
+  $("tvP").addEventListener("click",e=>{e.preventDefault();get("pdf","application/pdf")});
+})();
 route();
 
 </script>
