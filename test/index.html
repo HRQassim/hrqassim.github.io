@@ -458,6 +458,17 @@ footer{background:transparent}
 .cvlock form{display:flex;gap:8px}.cvlock input{flex:1;min-width:0;font:inherit;font-size:18px;text-align:center;letter-spacing:6px;border:1.5px solid #D5DEE8;border-radius:14px;padding:10px}.cvlock input::placeholder{letter-spacing:0;font-size:15px}.cvlock input:focus{outline:0;border-color:#5B91BD}
 .cvlock .btn{border-radius:14px;padding:0 22px}.cvlock-err{color:#B4533A;font-size:13px;margin-top:10px;font-weight:600}.cvlock small{display:block;margin-top:16px;color:#83898F;font-size:12px}
 .cvlock-wa{display:flex;align-items:center;justify-content:center;gap:7px;margin:14px auto 0;width:fit-content;background:rgba(37,211,102,.12);-webkit-backdrop-filter:blur(10px) saturate(160%);backdrop-filter:blur(10px) saturate(160%);border:1px solid rgba(37,211,102,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 4px 14px rgba(37,211,102,.12);color:#1E9E57;text-decoration:none;font-weight:600;font-size:14.5px;border-radius:999px;padding:9px 22px}.cvlock-wa svg{width:18px;height:18px}.cvlock-wa[hidden]{display:none}.cvlock-wa:not([hidden])~small{display:none}
+.gd{background:#FBFCFE;border-radius:22px;padding:16px 18px;margin-bottom:12px}
+.gd h3{margin:0 0 8px;font-size:16px;color:#20324C}.gd p{margin:0 0 6px;font-size:13.5px;color:#4A5563;line-height:1.9}
+.gd ul,.gd ol{margin:0;padding-inline-start:20px;font-size:13.5px;color:#4A5563;line-height:1.95}
+.gd details{border-top:1px solid #EEF2F6;padding:9px 0}.gd details:first-of-type{border-top:0}
+.gd summary{cursor:pointer;font-weight:700;font-size:14px;color:#20324C;list-style:none}.gd summary::-webkit-details-marker{display:none}
+.gd summary:before{content:"+";display:inline-block;width:18px;color:#5B91BD;font-weight:800}.gd details[open] summary:before{content:"–"}
+.gd summary small{display:block;font-weight:500;color:#83898F;font-size:12px;margin-inline-start:18px;direction:ltr;text-align:right}
+.gd details p{margin:6px 18px 0 0}
+.star{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.star div{background:#EAF1F8;border-radius:14px;padding:10px}.star b{display:block;color:#35547D;font-size:13.5px}.star span{font-size:12.5px;color:#4A5563}
+.gd-links{display:grid;gap:8px}.gd-links a{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#EAF1F8;border-radius:14px;padding:10px 14px;text-decoration:none;color:#20324C;font-size:13.5px;font-weight:700}.gd-links a i{font-style:normal;color:#5B91BD;font-size:12px;direction:ltr}
+.gd-intro{font-size:14px!important;color:#35547D!important;font-weight:600}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -519,6 +530,8 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   <section class="b b-mini">
     <a href="#templates"><span>🗂️</span><b>نماذج الموارد البشرية</b><i>‹</i></a>
     <a href="#platforms"><span>🏛️</span><b>دليل المنصات الحكومية</b><i>‹</i></a>
+    <a href="#interview"><span>💼</span><b>حقيبة اجتياز المقابلات</b><i>‹</i></a>
+    <a href="#nonprofit"><span>🤝</span><b>التعريف بالقطاع غير الربحي</b><i>‹</i></a>
   </section>
 
   <section class="b b-links">
@@ -591,6 +604,78 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   <script type="application/json" id="platdata">[{"n": "قوى", "u": "https://www.qiwa.sa", "d": "منصة وزارة الموارد البشرية لخدمات قطاع العمل.", "s": ["توثيق عقود العمل", "رخص العمل ونقل الخدمات", "متابعة نطاقات ونسب التوطين", "شهادة السعودة"]}, {"n": "مدد", "u": "https://mudad.com.sa", "d": "منصة الرواتب وحماية الأجور.", "s": ["رفع ملف حماية الأجور", "مسيرات الرواتب", "متابعة الالتزام بدفع الأجور"]}, {"n": "التأمينات الاجتماعية", "u": "https://www.gosi.gov.sa", "d": "خدمات المؤسسة العامة للتأمينات الاجتماعية للمنشآت والمشتركين.", "s": ["تسجيل المشتركين واستبعادهم", "تعديل الأجور", "شهادة الالتزام", "إصابات العمل"]}, {"n": "مقيم", "u": "https://muqeem.sa", "d": "خدمات الإقامة للعمالة الوافدة.", "s": ["إصدار وتجديد الإقامة", "تأشيرات الخروج والعودة", "الخروج النهائي"]}, {"n": "أبشر أعمال", "u": "https://www.absher.sa", "d": "خدمات الجوازات والأحوال للمنشآت.", "s": ["خدمات الجوازات للعمالة", "تفويض المستخدمين", "الاستعلامات"]}, {"n": "جدارات", "u": "https://jadarat.sa", "d": "منصة التوظيف الوطنية.", "s": ["نشر الوظائف الشاغرة", "البحث عن الكفاءات الوطنية"]}, {"n": "صندوق تنمية الموارد البشرية (هدف)", "u": "https://www.hrdf.org.sa", "d": "برامج دعم التوظيف والتدريب.", "s": ["دعم أجور السعوديين", "برامج التدريب على رأس العمل", "دعم التوطين"]}]</script>
   <div id="platList" class="insl"></div>
   <p class="hint">روابط المنصات الرسمية وأبرز خدماتها لمنسوبي الموارد البشرية.</p>
+</main>
+</div>
+
+<div id="ivView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>حقيبة اجتياز المقابلات</b></div>
+<main class="hub">
+  <div class="gd"><p class="gd-intro">كل اللي تحتاجه عشان تدخل المقابلة وأنت مستعد: تجهيز، أسئلة متوقعة، وطريقة إجابة واضحة.</p></div>
+  <div class="gd"><h3>✅ قبل المقابلة</h3><ul>
+    <li>اقرأ عن المنشأة: نشاطها، خدماتها، وآخر أخبارها.</li>
+    <li>راجع الوصف الوظيفي، واربط كل متطلب بخبرة أو موقف عندك.</li>
+    <li>جهّز نسخة من سيرتك الذاتية وشهاداتك.</li>
+    <li>تأكد من الموقع والوقت، واحضر قبل الموعد بـ 10–15 دقيقة.</li>
+    <li>المقابلة عن بُعد؟ جرّب الاتصال والكاميرا والصوت، واختر مكان هادئ.</li>
+    <li>لبس رسمي ومرتب يناسب طبيعة المنشأة.</li></ul></div>
+  <div class="gd"><h3>💬 أشهر الأسئلة وكيف تجاوب</h3>
+    <details><summary>عرّفنا بنفسك<small>Tell me about yourself</small></summary><p>دقيقة إلى دقيقتين: وضعك الحالي، أبرز خبرة أو إنجاز، وليش هالوظيفة تناسبك. لا تسرد سيرتك كاملة.</p></details>
+    <details><summary>ليش تبي تشتغل عندنا؟<small>Why do you want to work here?</small></summary><p>اربط شي حقيقي تعرفه عن المنشأة (قيمها، مشاريعها، توسعها) بطموحك وخبرتك.</p></details>
+    <details><summary>ليش نختارك أنت؟<small>Why should we hire you?</small></summary><p>ثلاث نقاط: مهارة مطلوبة عندك، إنجاز يثبتها، وكيف بتفيدهم من أول يوم.</p></details>
+    <details><summary>وش نقاط قوتك؟<small>What are your strengths?</small></summary><p>نقطتين مرتبطة بالوظيفة، ومع كل وحدة مثال قصير من شغلك.</p></details>
+    <details><summary>وش نقاط ضعفك؟<small>What are your weaknesses?</small></summary><p>نقطة حقيقية ما تكون جوهرية للوظيفة، ووش سويت عشان تطوّرها.</p></details>
+    <details><summary>ليش تبي تترك عملك الحالي؟<small>Why are you leaving your current job?</small></summary><p>إجابة إيجابية ومختصرة عن التطور والفرص، بدون انتقاد جهتك السابقة.</p></details>
+    <details><summary>وين تشوف نفسك بعد 5 سنوات؟<small>Where do you see yourself in 5 years?</small></summary><p>طموح واقعي مرتبط بنفس المسار، يبيّن إنك ناوي تكبر داخل المنشأة.</p></details>
+    <details><summary>كم الراتب المتوقع؟<small>What are your salary expectations?</small></summary><p>اعطِ نطاق مبني على السوق وخبرتك، واسأل عن الباقة كاملة (البدلات، التأمين، الإجازات).</p></details>
+    <details><summary>احكِ لنا عن موقف صعب واجهته<small>Tell me about a challenge you faced</small></summary><p>جاوب بطريقة STAR اللي تحت: الموقف، المهمة، وش سويت، والنتيجة.</p></details>
+  </div>
+  <div class="gd"><h3>⭐ طريقة STAR لأسئلة المواقف</h3><p>أي سؤال يبدأ بـ «احكِ لنا عن موقف…» رتّب إجابتك كذا:</p>
+    <div class="star"><div><b>S · الموقف</b><span>وش كان الوضع باختصار</span></div><div><b>T · المهمة</b><span>وش كان المطلوب منك</span></div><div><b>A · الإجراء</b><span>وش سويت أنت بالتحديد</span></div><div><b>R · النتيجة</b><span>وش تحقق، وبالأرقام لو تقدر</span></div></div></div>
+  <div class="gd"><h3>⚠️ أخطاء شائعة</h3><ul>
+    <li>التأخير أو الحضور بدون معرفة عن المنشأة.</li>
+    <li>الإجابات الطويلة اللي تبعد عن السؤال.</li>
+    <li>انتقاد المدير أو الجهة السابقة.</li>
+    <li>المبالغة في الخبرات أو ذكر شي ما تقدر تثبته.</li>
+    <li>استخدام الجوال أو الانشغال أثناء المقابلة.</li></ul></div>
+  <div class="gd"><h3>❓ أسئلة تسألها أنت في آخر المقابلة</h3><ul>
+    <li>وش أولويات الوظيفة في أول 3 شهور؟</li>
+    <li>كيف يُقاس الأداء في هذا الدور؟</li>
+    <li>وش فرص التدريب والتطور الوظيفي؟</li>
+    <li>وش الخطوة الجاية في إجراءات التوظيف؟</li></ul></div>
+  <div class="gd"><h3>📩 بعد المقابلة</h3><ul>
+    <li>أرسل رسالة شكر قصيرة خلال يوم.</li>
+    <li>دوّن الأسئلة اللي انسألت عشان تستعد أفضل للمرة الجاية.</li>
+    <li>إذا تأخر الرد عن الموعد المتفق عليه، تابع بلطف.</li></ul></div>
+</main>
+</div>
+
+<div id="npView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>التعريف بالقطاع غير الربحي</b></div>
+<main class="hub">
+  <div class="gd"><p class="gd-intro">القطاع غير الربحي (القطاع الثالث) هو الكيانات اللي ما تهدف للربح أساسًا، وتخدم المجتمع في أغراض البر والتكافل والأنشطة الاجتماعية والثقافية والصحية والتعليمية والبيئية وغيرها.</p></div>
+  <div class="gd"><h3>🏷️ أنواع الكيانات</h3><ul>
+    <li><b>الجمعية الأهلية:</b> مجموعة أشخاص (طبيعيين أو اعتباريين) بتنظيم مستمر، لتحقيق غرض غير ربحي.</li>
+    <li><b>المؤسسة الأهلية:</b> يؤسسها شخص أو أكثر، وتقوم على أموال يخصصها المؤسسون لغرض غير ربحي.</li>
+    <li><b>الصناديق العائلية والأهلية:</b> كيانات تُنشأ لخدمة أغراض اجتماعية لعائلة أو فئة محددة.</li>
+    <li><b>الأوقاف:</b> أموال موقوفة على أوجه البر، وتشرف عليها الهيئة العامة للأوقاف.</li></ul></div>
+  <div class="gd"><h3>🏛️ الجهات المنظمة</h3><ul>
+    <li><b>المركز الوطني لتنمية القطاع غير الربحي:</b> الجهة المنظمة للجمعيات والمؤسسات الأهلية؛ التسجيل والترخيص والإشراف والحوكمة.</li>
+    <li><b>الجهة المشرفة:</b> الوزارة أو الجهة الحكومية اللي يدخل نشاط الكيان ضمن اختصاصها.</li>
+    <li><b>الهيئة العامة للأوقاف:</b> تنظيم الأوقاف والإشراف عليها.</li></ul></div>
+  <div class="gd"><h3>🎯 القطاع ورؤية 2030</h3><ul>
+    <li>رفع مساهمة القطاع غير الربحي في الناتج المحلي إلى 5%.</li>
+    <li>الوصول إلى مليون متطوع.</li></ul></div>
+  <div class="gd"><h3>👥 الموارد البشرية في القطاع غير الربحي</h3><ul>
+    <li>الموظفون في الجمعيات والمؤسسات الأهلية يخضعون لنظام العمل، ويُسجَّلون في التأمينات الاجتماعية مثل القطاع الخاص.</li>
+    <li><b>المتطوع ليس موظفًا:</b> ما له أجر ولا عقد عمل، وتُنظَّم الفرص التطوعية وتُوثَّق ساعاتها عبر المنصة الوطنية للعمل التطوعي.</li>
+    <li>الحوكمة أساس: مجلس إدارة (للجمعية) أو مجلس أمناء (للمؤسسة)، والتزام بالإفصاح والشفافية.</li>
+    <li>فرص المهنة: إدارة المتطوعين، تنمية الموارد المالية، إدارة البرامج والمشاريع، والحوكمة والامتثال.</li></ul></div>
+  <div class="gd"><h3>🔗 روابط رسمية</h3><div class="gd-links">
+    <a href="https://ncnp.gov.sa" target="_blank" rel="noopener">المركز الوطني لتنمية القطاع غير الربحي<i>ncnp.gov.sa</i></a>
+    <a href="https://nvg.gov.sa" target="_blank" rel="noopener">المنصة الوطنية للعمل التطوعي<i>nvg.gov.sa</i></a>
+    <a href="https://www.awqaf.gov.sa" target="_blank" rel="noopener">الهيئة العامة للأوقاف<i>awqaf.gov.sa</i></a>
+    <a href="https://uqn.gov.sa/decisions-and-regulations/4000284" target="_blank" rel="noopener">اللائحة التنفيذية لنظام الجمعيات والمؤسسات الأهلية<i>uqn.gov.sa</i></a></div></div>
+  <p class="hint">معلومات تعريفية مختصرة من المصادر الرسمية. للتفاصيل والاشتراطات ارجع للأنظمة واللوائح في الروابط أعلاه.</p>
 </main>
 </div>
 
@@ -1017,6 +1102,8 @@ function route(){
   else if(h==="insurance")v="insView";
   else if(h==="templates")v="tplView";
   else if(h==="platforms")v="platView";
+  else if(h==="interview")v="ivView";
+  else if(h==="nonprofit")v="npView";
   else if(h==="leave")v="leaveView";
   else if(h==="gosi")v="gosiView";
   else if(h==="absence")v="absView";
