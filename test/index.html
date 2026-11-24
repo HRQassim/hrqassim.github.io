@@ -469,6 +469,15 @@ footer{background:transparent}
 .star{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.star div{background:#EAF1F8;border-radius:14px;padding:10px}.star b{display:block;color:#35547D;font-size:13.5px}.star span{font-size:12.5px;color:#4A5563}
 .gd-links{display:grid;gap:8px}.gd-links a{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#EAF1F8;border-radius:14px;padding:10px 14px;text-decoration:none;color:#20324C;font-size:13.5px;font-weight:700}.gd-links a i{font-style:normal;color:#5B91BD;font-size:12px;direction:ltr}
 .gd-intro{font-size:14px!important;color:#35547D!important;font-weight:600}
+.mock .btn{border-radius:14px;padding:10px 22px;margin-top:6px}
+.mk-top{display:flex;align-items:center;gap:10px;font-size:12.5px;color:#83898F;font-weight:700;margin-bottom:10px}.mk-bar{flex:1;height:6px;background:#EAF1F8;border-radius:9px;overflow:hidden}.mk-bar i{display:block;height:100%;background:#5B91BD;border-radius:9px;transition:width .3s}
+.mk-q{font-size:16px;font-weight:800;color:#20324C;margin-bottom:10px}
+.mk-o{display:grid;gap:8px}.mk-o button{font:inherit;text-align:right;background:#fff;border:1.5px solid #D5DEE8;border-radius:14px;padding:11px 13px;font-size:13.5px;color:#20324C;line-height:1.8;cursor:pointer}.mk-o button:active{border-color:#5B91BD;background:#EAF1F8}
+.mk-score{text-align:center;padding:6px 0 12px}.mk-score b{display:block;font-size:40px;color:#20324C;line-height:1.2}.mk-score span{display:inline-block;margin-top:6px;border-radius:999px;padding:3px 14px;font-weight:700;font-size:13px}
+.mk-g{background:#E6F4EC;color:#2E7D5B}.mk-m{background:#FBF3E2;color:#9A6A12}.mk-b{background:#FBEBEB;color:#B4533A}
+.mk-it{border-top:1px solid #EEF2F6;padding:10px 0}.mk-it h4{margin:0 0 4px;font-size:14px;color:#20324C}.mk-it p{margin:3px 0!important;font-size:13px!important}
+.mk-it .y{color:#83898F}.mk-it .w{color:#B4533A}.mk-it .f{color:#2E7D5B}
+.mk-ok{font-size:13px;color:#2E7D5B;font-weight:700;margin:6px 0}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -611,6 +620,13 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
 <div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>حقيبة اجتياز المقابلات</b></div>
 <main class="hub">
   <div class="gd"><p class="gd-intro">كل اللي تحتاجه عشان تدخل المقابلة وأنت مستعد: تجهيز، أسئلة متوقعة، وطريقة إجابة واضحة.</p></div>
+  <div class="gd mock" id="mock"><h3>🎯 مقابلة تجريبية</h3>
+    <div id="mkStart"><p>جرّب نفسك على 9 أسئلة من أشهر أسئلة المقابلات. اختر الإجابة اللي كنت بتقولها، وبالنهاية تشوف تقييمك ووش أخطاءك وكيف تعدّلها.</p><button class="btn" id="mkGo" type="button">ابدأ المقابلة</button></div>
+    <div id="mkQ" hidden><div class="mk-top"><span id="mkN"></span><div class="mk-bar"><i id="mkP"></i></div></div><div class="mk-q" id="mkQt"></div><div class="mk-o" id="mkO"></div></div>
+    <div id="mkR" hidden></div>
+  </div>
+<script type="application/json" id="mockdata">[{"q":"عرّفنا بنفسك","o":[["أنا خريج إدارة أعمال، أشتغل حاليًا أخصائي موارد بشرية بخبرة 3 سنوات، أبرز إنجاز لي أتمتة إجراءات الإجازات، وأبحث عن دور أكبر في التوظيف وهذا اللي يقدمه منصبكم.",2,""],["اسمي فلان، عمري 27، من بريدة، متزوج، أحب القراءة والسفر، وتخرجت من الجامعة قبل كم سنة.",0,"ركّزت على معلومات شخصية ما تهم المقابِل، وما ذكرت خبرتك ولا ليش تناسب الوظيفة."],["كل شي موجود في سيرتي الذاتية، تقدر ترجع لها.",0,"تحيل المقابِل للسيرة يعطي انطباع إنك غير مستعد أو غير مهتم."]],"fix":"اختصر في دقيقة: وضعك الحالي ← أبرز خبرة أو إنجاز ← ليش هالوظيفة تناسبك."},{"q":"ليش تبي تشتغل عندنا؟","o":[["لأن الراتب عندكم أعلى من شغلي الحالي.",0,"الراتب سبب مفهوم، لكن ذكره أول وحيد يوحي إنك بتترك أول ما يجيك عرض أعلى."],["شفت توسعكم في فروع القصيم واهتمامكم بتطوير الموظفين، وهذا يتوافق مع رغبتي أطور مسيرتي في بيئة تنمو.",2,""],["سمعت إن شركتكم زينة وأبي أجرب.",1,"إجابة عامة تبيّن إنك ما بحثت عن المنشأة."]],"fix":"اذكر شي حقيقي عن المنشأة (مشروع، قيمة، توسع) واربطه بطموحك."},{"q":"ليش نختارك أنت؟","o":[["لأني أحتاج هالوظيفة ضروري.",0,"تتكلم عن احتياجك أنت، والمقابِل يبي يعرف وش بتضيف له."],["لأني شخص مجتهد وأتعلم بسرعة.",1,"صفات عامة يقولها الكل، بدون دليل أو مثال."],["عندي خبرة في نظام جسر وقوى، وقللت وقت إصدار المسيرات يومين في جهتي الحالية، وأقدر أبدأ أطبق هذا عندكم من أول شهر.",2,""]],"fix":"مهارة مطلوبة في الوظيفة + إنجاز رقمي يثبتها + كيف بتفيدهم."},{"q":"وش نقاط قوتك؟","o":[["أنا ما عندي نقاط ضعف، كل شي عندي قوي.",0,"المبالغة تفقدك المصداقية، وما جاوبت على السؤال أصلًا."],["التنظيم والتواصل: مثلًا رتبت ملفات 200 موظف إلكترونيًا، وأتابع مع الأقسام بشكل أسبوعي بدون تأخير.",2,""],["التنظيم والتواصل والعمل الجماعي والقيادة والإبداع.",1,"قائمة طويلة بدون أمثلة، وما يعلق منها شي في ذهن المقابِل."]],"fix":"نقطتين بس مرتبطة بالوظيفة، ومع كل وحدة مثال قصير."},{"q":"وش نقاط ضعفك؟","o":[["أحيانًا أتردد في تفويض المهام، وصرت أوزعها على الفريق بخطة واضحة ونتابعها أسبوعيًا.",2,""],["أنا مثالي زيادة عن اللزوم.",1,"إجابة محفوظة ومكشوفة، والمقابِل يحس إنك تتهرب."],["ما أحب الالتزام بالدوام وأتأخر أحيانًا.",0,"ذكرت ضعف جوهري يمس أساسيات العمل بدون ما توضح كيف تعالجه."]],"fix":"نقطة حقيقية غير جوهرية للوظيفة + وش سويت فعليًا لتطويرها."},{"q":"ليش تبي تترك عملك الحالي؟","o":[["مديري ما يفهم والشركة بيئتها سيئة.",0,"انتقاد الجهة السابقة يخلي المقابِل يتوقع إنك بتتكلم عنهم بنفس الطريقة."],["تعلمت كثير في عملي الحالي، وأبحث الحين عن فرصة أكبر في التوظيف ما هي متاحة عندهم.",2,""],["والله ما أدري، بس حسيت إني لازم أتغير.",1,"إجابة غير واضحة توحي بعدم استقرار أو عدم وضوح هدف."]],"fix":"إيجابي ومختصر: وش استفدت + وش الفرصة اللي تبحث عنها."},{"q":"وين تشوف نفسك بعد 5 سنوات؟","o":[["في مكانك أنت 😄",1,"دعابة ممكن تفهم غلط، وما توضح خطة حقيقية."],["ما أفكر بعيد، أعيش اليوم بيومه.",0,"توحي بعدم وجود طموح أو تخطيط."],["أكون أتقنت التوظيف والتطوير، وأقود فريق صغير في الموارد البشرية داخل المنشأة.",2,""]],"fix":"طموح واقعي في نفس المسار، يبيّن إنك ناوي تكبر داخل المنشأة."},{"q":"كم الراتب المتوقع؟","o":[["أي رقم تعطوني إياه مناسب.",0,"تقلل من قيمتك، وغالبًا تنعطى أقل من حقك."],["بناءً على خبرتي ومتوسط السوق، أتوقع بين 9 و11 ألف، ومرن حسب الباقة كاملة.",2,""],["أبي 20 ألف ولا أقل.",1,"رقم ثابت بدون مبرر قد يقفل الباب من البداية."]],"fix":"نطاق مبني على السوق وخبرتك + مرونة واسأل عن الباقة (بدلات، تأمين، إجازات)."},{"q":"احكِ لنا عن موقف صعب واجهته","o":[["تأخرت رواتب شهر بسبب خطأ في النظام (الموقف)، وكنت مسؤول عن حلها خلال يومين (المهمة)، فراجعت البيانات مع المالية وصححت الربط (الإجراء)، ونزلت الرواتب خلال 24 ساعة وما تكرر الخطأ (النتيجة).",2,""],["ما واجهت مواقف صعبة، كل شي كان سهل.",0,"كل موظف واجه تحديات، وهالإجابة تبيّن قلة خبرة أو عدم استعداد."],["مرة كان فيه ضغط شغل كبير بس عدّت الأمور.",1,"وصف عام بدون وش سويت أنت ولا وش كانت النتيجة."]],"fix":"استخدم STAR: الموقف ← المهمة ← وش سويت أنت ← النتيجة بالأرقام."}]
+</script>
   <div class="gd"><h3>✅ قبل المقابلة</h3><ul>
     <li>اقرأ عن المنشأة: نشاطها، خدماتها، وآخر أخبارها.</li>
     <li>راجع الوصف الوظيفي، واربط كل متطلب بخبرة أو موقف عندك.</li>
@@ -1353,6 +1369,23 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
     const day=w/30,min=day/(h*60),tot=d*day+m*min,over=tot>w/2;
     $("abRes").innerHTML=`إجمالي الخصم<b>${f(tot)} ريال</b><small>الغياب: ${f(d*day)} ريال (${f(d)} يوم × ${f(day)}) · التأخير: ${f(m*min)} ريال (${f(m)} دقيقة)${over?'<br><span style="color:#F2C14E;font-weight:700">تنبيه: الخصم يتجاوز نصف الأجر، والنظام لا يجيز ذلك</span>':""}</small>`}
   ["abWage","abDays","abMin","abHours"].forEach(id=>$(id).addEventListener("input",ab));
+})();
+(function(){const Q=JSON.parse(document.getElementById("mockdata").textContent);if(!$("mkGo"))return;
+  const esc2=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  let i=0,ans=[];
+  function show(){const q=Q[i];$("mkN").textContent=(i+1)+" / "+Q.length;$("mkP").style.width=(i/Q.length*100)+"%";$("mkQt").textContent="«"+q.q+"»";
+    const ord=q.o.map((o,k)=>k).sort(()=>Math.random()-.5);
+    $("mkO").innerHTML=ord.map(k=>`<button type="button" data-k="${k}">${esc2(q.o[k][0])}</button>`).join("")}
+  function result(){$("mkQ").hidden=true;const tot=ans.reduce((a,k,j)=>a+Q[j].o[k][1],0),pct=Math.round(tot/(Q.length*2)*100);
+    const [cl,lb]=pct>=85?["mk-g","ممتاز، جاهز للمقابلة 👏"]:pct>=60?["mk-m","جيد، وتحتاج تحسين بسيط"]:["mk-b","تحتاج تدريب أكثر"];
+    const bad=ans.map((k,j)=>({q:Q[j],o:Q[j].o[k]})).filter(x=>x.o[1]<2);
+    $("mkR").innerHTML=`<div class="mk-score"><b>${pct}%</b><span class="${cl}">${lb}</span></div>`+
+      (bad.length?`<p><b>وش تحتاج تعدّل (${bad.length}):</b></p>`+bad.map(x=>`<div class="mk-it"><h4>«${esc2(x.q.q)}»</h4><p class="y">إجابتك: ${esc2(x.o[0])}</p><p class="w">⚠️ ${esc2(x.o[2])}</p><p class="f">✅ الأفضل: ${esc2(x.q.fix)}</p></div>`).join(""):`<p class="mk-ok">كل إجاباتك كانت الأفضل 👌</p>`)+
+      `<button class="btn" id="mkAgain" type="button">أعد المقابلة</button>`;
+    $("mkR").hidden=false;$("mkAgain").onclick=start;$("mock").scrollIntoView({behavior:"smooth",block:"start"})}
+  function start(){i=0;ans=[];$("mkStart").hidden=true;$("mkR").hidden=true;$("mkQ").hidden=false;show()}
+  $("mkGo").onclick=start;
+  $("mkO").addEventListener("click",e=>{const b=e.target.closest("button[data-k]");if(!b)return;ans.push(+b.dataset.k);i++;if(i<Q.length)show();else result()});
 })();
 route();
 
