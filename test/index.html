@@ -860,14 +860,14 @@ const CVP=new Promise(res=>{
   const bv=document.getElementById("bankView");bv.classList.add("locked");
   const done=d=>{bv.classList.remove("locked");res(d)};
   let saved=null;try{saved=localStorage.getItem("cvk")}catch(e){}
-  try{if((+localStorage.getItem("cvFail")||0)>=5)document.getElementById("cvWa").hidden=false}catch(e){}
+  try{if((+localStorage.getItem("cvFail")||0)>=2)document.getElementById("cvWa").hidden=false}catch(e){}
   if(saved)cvOpen(ub(saved)).then(done).catch(()=>{try{localStorage.removeItem("cvk")}catch(e){}});
   document.getElementById("cvLockF").addEventListener("submit",async e=>{e.preventDefault();
     const inp=$("cvPin"),btn=$("cvGo"),err=$("cvErr");err.hidden=true;btn.disabled=true;btn.textContent="…";
     try{const raw=await cvKeyFromPin(inp.value.trim());if(!raw)throw 0;const d=await cvOpen(raw);
       try{localStorage.removeItem("cvFail")}catch(e){}
       try{localStorage.setItem("cvk",btoa(String.fromCharCode(...raw)))}catch(e){}inp.value="";done(d)}
-    catch(e){err.hidden=false;inp.select();let f=0;try{f=(+localStorage.getItem("cvFail")||0)+1;localStorage.setItem("cvFail",f)}catch(_){f=(window._cvF=(window._cvF||0)+1)}if(f>=5)$("cvWa").hidden=false}finally{btn.disabled=false;btn.textContent="دخول"}})});
+    catch(e){err.hidden=false;inp.select();let f=0;try{f=(+localStorage.getItem("cvFail")||0)+1;localStorage.setItem("cvFail",f)}catch(_){f=(window._cvF=(window._cvF||0)+1)}if(f>=2)$("cvWa").hidden=false}finally{btn.disabled=false;btn.textContent="دخول"}})});
 CVP.then(d=>{
   const _exp=new Date(Date.now()+3*3600e3-180*864e5).toISOString().slice(0,10); /* CVs expire 6 months after added */
    DATA=d.filter(r=>!r.added||r.added>=_exp).map(r=>(Object.assign({},r,{cat:CATS.some(c=>c.id===r.cat)?r.cat:"other",
