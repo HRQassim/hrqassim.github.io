@@ -457,6 +457,7 @@ footer{background:transparent}
 .cvlock h3{margin:0 0 6px;color:#20324C;font-size:20px}.cvlock p{margin:0 0 18px;color:#5B6B80;font-size:14px}
 .cvlock form{display:flex;gap:8px}.cvlock input{flex:1;min-width:0;font:inherit;font-size:18px;text-align:center;letter-spacing:6px;border:1.5px solid #D5DEE8;border-radius:14px;padding:10px}.cvlock input::placeholder{letter-spacing:0;font-size:15px}.cvlock input:focus{outline:0;border-color:#5B91BD}
 .cvlock .btn{border-radius:14px;padding:0 22px}.cvlock-err{color:#B4533A;font-size:13px;margin-top:10px;font-weight:600}.cvlock small{display:block;margin-top:16px;color:#83898F;font-size:12px}
+.cvlock-wa{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;background:#25D366;color:#fff;text-decoration:none;font-weight:700;border-radius:14px;padding:12px}.cvlock-wa svg{width:20px;height:20px}.cvlock-wa[hidden]{display:none}.cvlock-wa:not([hidden])~small{display:none}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -773,6 +774,7 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   <p>أدخل رمز الدخول لتصفّح السير الذاتية</p>
   <form id="cvLockF" autocomplete="off"><input id="cvPin" type="password" inputmode="numeric" placeholder="رمز الدخول" aria-label="رمز الدخول"><button class="btn" id="cvGo" type="submit">دخول</button></form>
   <div class="cvlock-err" id="cvErr" hidden>الرمز غير صحيح</div>
+  <a class="cvlock-wa" id="cvWa" hidden href="https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%BA%D9%89%20%D8%B1%D9%85%D8%B2%20%D8%A7%D9%84%D8%AF%D8%AE%D9%88%D9%84%20%D9%84%D8%A8%D9%86%D9%83%20%D8%A7%D9%84%D8%B3%D9%8A%D8%B1%20%D8%A7%D9%84%D8%B0%D8%A7%D8%AA%D9%8A%D8%A9%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%20%D9%85%D8%AC%D8%AA%D9%85%D8%B9%20%D9%85%D8%AD%D8%AA%D8%B1%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B1%D8%AF%20%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D9%8A%D8%A9" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.3-2.9-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.1z"/></svg>تواصل معنا للحصول على الرمز</a>
   <small>للحصول على الرمز تواصل مع إدارة المجتمع</small>
 </div></div>
 <div class="bar"><div class="bar-in"><div class="search">
@@ -858,12 +860,14 @@ const CVP=new Promise(res=>{
   const bv=document.getElementById("bankView");bv.classList.add("locked");
   const done=d=>{bv.classList.remove("locked");res(d)};
   let saved=null;try{saved=localStorage.getItem("cvk")}catch(e){}
+  try{if((+localStorage.getItem("cvFail")||0)>=5)document.getElementById("cvWa").hidden=false}catch(e){}
   if(saved)cvOpen(ub(saved)).then(done).catch(()=>{try{localStorage.removeItem("cvk")}catch(e){}});
   document.getElementById("cvLockF").addEventListener("submit",async e=>{e.preventDefault();
     const inp=$("cvPin"),btn=$("cvGo"),err=$("cvErr");err.hidden=true;btn.disabled=true;btn.textContent="…";
     try{const raw=await cvKeyFromPin(inp.value.trim());if(!raw)throw 0;const d=await cvOpen(raw);
+      try{localStorage.removeItem("cvFail")}catch(e){}
       try{localStorage.setItem("cvk",btoa(String.fromCharCode(...raw)))}catch(e){}inp.value="";done(d)}
-    catch(e){err.hidden=false;inp.select()}finally{btn.disabled=false;btn.textContent="دخول"}})});
+    catch(e){err.hidden=false;inp.select();let f=0;try{f=(+localStorage.getItem("cvFail")||0)+1;localStorage.setItem("cvFail",f)}catch(_){f=(window._cvF=(window._cvF||0)+1)}if(f>=5)$("cvWa").hidden=false}finally{btn.disabled=false;btn.textContent="دخول"}})});
 CVP.then(d=>{
   const _exp=new Date(Date.now()+3*3600e3-180*864e5).toISOString().slice(0,10); /* CVs expire 6 months after added */
    DATA=d.filter(r=>!r.added||r.added>=_exp).map(r=>(Object.assign({},r,{cat:CATS.some(c=>c.id===r.cat)?r.cat:"other",
