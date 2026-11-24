@@ -11,7 +11,12 @@
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/app-180.png">
+<link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#20324C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="HR Qassim">
 <title>مجتمع محترفي الموارد البشرية</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -452,6 +457,7 @@ footer{background:transparent}
 .cvlock h3{margin:0 0 6px;color:#20324C;font-size:20px}.cvlock p{margin:0 0 18px;color:#5B6B80;font-size:14px}
 .cvlock form{display:flex;gap:8px}.cvlock input{flex:1;min-width:0;font:inherit;font-size:18px;text-align:center;letter-spacing:6px;border:1.5px solid #D5DEE8;border-radius:14px;padding:10px}.cvlock input::placeholder{letter-spacing:0;font-size:15px}.cvlock input:focus{outline:0;border-color:#5B91BD}
 .cvlock .btn{border-radius:14px;padding:0 22px}.cvlock-err{color:#B4533A;font-size:13px;margin-top:10px;font-weight:600}.cvlock small{display:block;margin-top:16px;color:#83898F;font-size:12px}
+.inst{position:fixed;left:12px;right:12px;bottom:12px;z-index:90;background:#20324C;color:#fff;border-radius:22px;padding:14px 16px;display:flex;gap:12px;align-items:center;box-shadow:0 10px 30px rgba(32,50,76,.3);max-width:520px;margin:auto}.inst img{width:44px;height:44px;border-radius:12px;background:#fff;flex:none}.inst .t{flex:1;min-width:0;font-size:13px;line-height:1.7;color:#DCE7F2}.inst .t b{display:block;color:#fff;font-size:14.5px}.inst .ios-sh{display:inline-block;width:16px;height:16px;vertical-align:-3px}.inst button{border:0;font:inherit;cursor:pointer}.inst .go{background:#fff;color:#20324C;font-weight:800;border-radius:999px;padding:8px 14px;font-size:13px}.inst .x{background:transparent;color:#9FB7CF;font-size:20px;line-height:1;padding:4px}.inst{display:none!important}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -1238,6 +1244,24 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
     const day=w/30,min=day/(h*60),tot=d*day+m*min,over=tot>w/2;
     $("abRes").innerHTML=`إجمالي الخصم<b>${f(tot)} ريال</b><small>الغياب: ${f(d*day)} ريال (${f(d)} يوم × ${f(day)}) · التأخير: ${f(m*min)} ريال (${f(m)} دقيقة)${over?'<br><span style="color:#F2C14E;font-weight:700">تنبيه: الخصم يتجاوز نصف الأجر، والنظام لا يجيز ذلك</span>':""}</small>`}
   ["abWage","abDays","abMin","abHours"].forEach(id=>$(id).addEventListener("input",ab));
+})();
+(function(){
+  if("serviceWorker" in navigator&&location.protocol==="https:")navigator.serviceWorker.register("sw.js").catch(()=>{});
+  const standalone=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+  let seen=false;try{seen=localStorage.getItem("instDismiss")==="1"}catch(e){}
+  if(standalone||seen)return;
+  const ua=navigator.userAgent,isIOS=/iPhone|iPad|iPod/.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  const isSafari=isIOS&&/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS|GSA|Instagram|FBAN|FBAV|Line|Snapchat|Twitter/.test(ua);
+  const SH='<svg class="ios-sh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></svg>';
+  const box=document.createElement("div");box.className="inst";
+  const close=()=>{box.remove();try{localStorage.setItem("instDismiss","1")}catch(e){}};
+  function show(html,btn){box.innerHTML=`<img src="assets/app-192.png" alt=""><div class="t">${html}</div>${btn?'<button class="go">تثبيت</button>':""}<button class="x" aria-label="إغلاق">×</button>`;
+    document.body.appendChild(box);box.querySelector(".x").onclick=close;return box.querySelector(".go")}
+  let deferred=null;
+  window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;const g=show("<b>ثبّت التطبيق على جوالك</b>يفتح بشاشة كاملة وتوصله بضغطة",true);
+    g.onclick=async()=>{deferred.prompt();await deferred.userChoice;close()}});
+  if(isIOS)setTimeout(()=>{if(isSafari)show(`<b>ثبّت التطبيق على جوالك</b>اضغط ${SH} مشاركة، ثم «إضافة إلى الشاشة الرئيسية»`);
+    else show("<b>ثبّت التطبيق على جوالك</b>افتح الرابط في Safari، ثم مشاركة ← «إضافة إلى الشاشة الرئيسية»")},1500);
 })();
 route();
 
