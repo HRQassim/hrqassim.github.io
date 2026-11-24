@@ -980,6 +980,11 @@ async function downloadCv(r,btn){
       try{await DL.save({filename:r.file||(r.name+".pdf"),data:blob});toast("تم تحميل السيرة ✓")}
       catch(e){if(e&&e.code==="declined")toast("تم إلغاء التحميل");else if(e&&e.code==="rate_limited")toast("انتظر لحظة وحاول مرة ثانية");else openFallback(r)}
     }else{
+      const nm=r.file||(r.name+".jpg");
+      if((navigator.standalone||matchMedia("(display-mode: standalone)").matches)&&navigator.canShare){ /* inside the installed app: share sheet ("Save Image") instead of leaving the app */
+        const f=new File([blob],nm,{type:"image/jpeg"});
+        if(navigator.canShare({files:[f]})){try{await navigator.share({files:[f]});}catch(e){}return}
+      }
       const u=URL.createObjectURL(blob);const a=document.createElement("a");a.href=u;a.download=r.file||(r.name+".jpg");document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);toast("تم تحميل السيرة ✓");
     }
   }catch(e){toast("تعذّر جلب ملف السيرة")}
@@ -1252,7 +1257,7 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
   const esc=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const f=n=>n.toLocaleString("en-US",{maximumFractionDigits:2});
   const TP=JSON.parse(document.getElementById("tpldata").textContent),cats=[...new Set(TP.map(t=>t.c))];
-  $("tplList").innerHTML=cats.map(c=>`<h3>${esc(c)}</h3>`+TP.filter(t=>t.c===c).map(t=>`<div class="tpl"><b>${esc(t.t)}</b><a class="w" href="../templates/${t.id}.docx" download="${esc(t.t)}.docx">Word</a><a class="p" href="../templates/${t.id}.pdf" target="_blank" rel="noopener">PDF</a></div>`).join("")).join("");
+  $("tplList").innerHTML=cats.map(c=>`<h3>${esc(c)}</h3>`+TP.filter(t=>t.c===c).map(t=>`<div class="tpl"><b>${esc(t.t)}</b><a class="w" href="../templates/${t.id}.docx" download="${esc(t.t)}.docx" target="_blank" rel="noopener">Word</a><a class="p" href="../templates/${t.id}.pdf" target="_blank" rel="noopener">PDF</a></div>`).join("")).join("");
   const PL=JSON.parse(document.getElementById("platdata").textContent);
   $("platList").innerHTML=PL.map(p=>`<div class="plat"><div class="h"><h3>${esc(p.n)}</h3><a href="${esc(p.u)}" target="_blank" rel="noopener">فتح المنصة ‹</a></div><p>${esc(p.d)}</p><ul>${p.s.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
   // leave
