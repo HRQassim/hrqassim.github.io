@@ -474,6 +474,23 @@ a,button,summary{touch-action:manipulation;-webkit-tap-highlight-color:transpare
 .tv-b img{display:block;width:100%;max-width:700px;margin:auto;background:#fff;border-radius:10px;box-shadow:0 6px 24px rgba(32,50,76,.12)}
 .tv-back{position:absolute;right:18px;bottom:calc(env(safe-area-inset-bottom) + 16px);background:none;border:0;padding:6px;color:#20324C;cursor:pointer;line-height:0}
 .tv-back svg{width:34px;height:34px;filter:drop-shadow(0 1px 2px rgba(255,255,255,.9))}
+.b-org{background:#35547D!important}
+.org-in{background:#FBFCFE;border-radius:22px;padding:14px 16px;margin-bottom:12px;font-size:13.5px;color:#4A5563;line-height:1.9}.org-in h3{margin:0 0 6px;font-size:15px;color:#20324C}.org-in ul{margin:0;padding-inline-start:20px}.org-in p{margin:0}
+.org-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}.org-tabs button{font:inherit;font-size:12px;font-weight:800;border:0;border-radius:14px;padding:8px 6px;background:#EAF1F8;color:#35547D;cursor:pointer;line-height:1.4}.org-tabs button.on{background:#20324C;color:#fff}
+.org{background:#FBFCFE;border-radius:22px;padding:18px 12px 16px;margin-bottom:12px}
+.org-d{text-align:center;font-size:12px;color:#83898F;margin-bottom:10px}
+.org-root{display:flex;flex-direction:column;align-items:center}
+.ob{display:inline-flex;align-items:center;gap:6px;justify-content:center;border-radius:14px;padding:9px 14px;font-size:13px;font-weight:800;text-align:center;line-height:1.5}
+.ob.r{background:#20324C;color:#fff;font-size:15px;padding:11px 22px}
+.ob.s{background:#EAF1F8;color:#35547D;font-weight:700}
+.ob.jd{cursor:pointer}.ob.jd:after{content:"📄";font-size:11px}
+.org-v{width:2px;height:16px;background:#C5D3E2;margin:0 auto}
+.org-side{display:flex;align-items:center;justify-content:center;gap:0;margin:2px 0}.org-side i{display:block;width:22px;height:2px;background:#C5D3E2}
+.org-deps{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:2px solid #C5D3E2;padding-top:14px;margin-top:0}
+.od{background:#fff;border:1px solid #E3EAF2;border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:6px}
+.od h4{margin:0 0 2px;font-size:13px;color:#fff;background:#5B91BD;border-radius:10px;padding:6px 8px;text-align:center}
+.od .ob{background:#F3F6FA;color:#20324C;font-weight:700;font-size:12px;padding:7px 8px;display:flex}
+.od .ob.lead{background:#EAF1F8;color:#20324C;font-weight:800}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -519,6 +536,7 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
 
   <section class="b b-soon"><span class="b-ic">🎓</span><h3>دليل الشهادات المهنية</h3><span class="b-tag">قريبًا</span></section>
   <a class="b b-ins" href="#insurance"><span class="b-ic">🩺</span><div><h3>دليل مندوبي التأمين الطبي</h3><p>تواصل مباشر مع مندوبي شركات التأمين</p></div><span class="b-go">‹</span></a>
+  <a class="b b-ins b-org" href="#org"><span class="b-ic">🏢</span><div><h3>الهيكل التنظيمي</h3><p>نماذج جاهزة لهيكل منشأتك وإدارة الموارد البشرية</p></div><span class="b-go">‹</span></a>
 
   <section class="b b-calc">
     <h3>الحاسبات</h3>
@@ -608,6 +626,23 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   <script type="application/json" id="platdata">[{"n": "قوى", "u": "https://www.qiwa.sa", "d": "منصة وزارة الموارد البشرية لخدمات قطاع العمل.", "s": ["توثيق عقود العمل", "رخص العمل ونقل الخدمات", "متابعة نطاقات ونسب التوطين", "شهادة السعودة"]}, {"n": "مدد", "u": "https://mudad.com.sa", "d": "منصة الرواتب وحماية الأجور.", "s": ["رفع ملف حماية الأجور", "مسيرات الرواتب", "متابعة الالتزام بدفع الأجور"]}, {"n": "التأمينات الاجتماعية", "u": "https://www.gosi.gov.sa", "d": "خدمات المؤسسة العامة للتأمينات الاجتماعية للمنشآت والمشتركين.", "s": ["تسجيل المشتركين واستبعادهم", "تعديل الأجور", "شهادة الالتزام", "إصابات العمل"]}, {"n": "مقيم", "u": "https://muqeem.sa", "d": "خدمات الإقامة للعمالة الوافدة.", "s": ["إصدار وتجديد الإقامة", "تأشيرات الخروج والعودة", "الخروج النهائي"]}, {"n": "أبشر أعمال", "u": "https://www.absher.sa", "d": "خدمات الجوازات والأحوال للمنشآت.", "s": ["خدمات الجوازات للعمالة", "تفويض المستخدمين", "الاستعلامات"]}, {"n": "جدارات", "u": "https://jadarat.sa", "d": "منصة التوظيف الوطنية.", "s": ["نشر الوظائف الشاغرة", "البحث عن الكفاءات الوطنية"]}, {"n": "صندوق تنمية الموارد البشرية (هدف)", "u": "https://www.hrdf.org.sa", "d": "برامج دعم التوظيف والتدريب.", "s": ["دعم أجور السعوديين", "برامج التدريب على رأس العمل", "دعم التوطين"]}]</script>
   <div id="platList" class="insl"></div>
   <p class="hint">روابط المنصات الرسمية وأبرز خدماتها لمنسوبي الموارد البشرية.</p>
+</main>
+</div>
+
+<div id="orgView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>الهيكل التنظيمي</b></div>
+<main class="hub">
+  <script type="application/json" id="orgdata">{"small": {"n": "منشأة صغيرة", "d": "حتى 50 موظف تقريبًا", "root": "المدير العام", "side": [], "deps": [["المالية", ["محاسب"]], ["الموارد البشرية", ["أخصائي موارد بشرية"]], ["المبيعات", ["مندوب مبيعات"]], ["المستودعات", ["أمين مستودع"]], ["الشؤون الإدارية", ["مساعد إداري", "موظف استقبال"]]]}, "mid": {"n": "منشأة متوسطة", "d": "50 – 250 موظف تقريبًا", "root": "الرئيس التنفيذي", "side": ["مساعد إداري"], "deps": [["المالية", ["مدير مالي", "محاسب", "أخصائي مشتريات"]], ["الموارد البشرية", ["مدير الموارد البشرية", "أخصائي توظيف", "أخصائي رواتب", "أخصائي علاقات حكومية"]], ["المبيعات والتسويق", ["مدير مبيعات", "مندوب مبيعات", "أخصائي تسويق", "مصمم جرافيك"]], ["تقنية المعلومات", ["مطور برمجيات", "أخصائي دعم فني"]], ["الجودة والسلامة", ["أخصائي جودة", "مشرف سلامة"]], ["خدمة العملاء", ["ممثل خدمة عملاء"]], ["الشؤون القانونية", ["مستشار قانوني"]]]}, "hr": {"n": "إدارة الموارد البشرية", "d": "هيكل الإدارة نفسها", "root": "مدير الموارد البشرية", "side": ["شريك أعمال الموارد البشرية (HRBP)"], "deps": [["التوظيف والاستقطاب", ["مدير التوظيف والاستقطاب", "مشرف توظيف", "أخصائي توظيف"]], ["التعويضات والرواتب", ["مدير التعويضات والمزايا", "مشرف رواتب", "أخصائي رواتب", "أخصائي تعويضات ومزايا"]], ["التدريب والتطوير", ["مدير التدريب والتطوير", "مشرف تدريب", "أخصائي تدريب وتطوير"]], ["شؤون الموظفين", ["مشرف شؤون موظفين", "موظف شؤون موظفين", "أخصائي علاقات موظفين"]], ["العلاقات الحكومية والتوطين", ["مشرف علاقات حكومية", "أخصائي تخطيط القوى العاملة والتوطين"]], ["الأداء والتطوير التنظيمي", ["أخصائي إدارة الأداء", "أخصائي تطوير تنظيمي"]], ["أنظمة الموارد البشرية", ["أخصائي أنظمة الموارد البشرية (HRIS)"]]]}}</script>
+  <div class="org-in"><p>الهيكل التنظيمي يوضح إدارات المنشأة وأقسامها، ومين يرتبط بمين. اختر نموذجًا جاهزًا، واضغط على أي وظيفة فيها 📄 لعرض وصفها الوظيفي.</p></div>
+  <div class="org-tabs" id="orgTabs"></div>
+  <div class="org" id="orgBox"></div>
+  <div class="org-in"><h3>كيف تبني هيكل منشأتك؟</h3><ul>
+    <li>ابدأ من الأهداف: وش الأنشطة الأساسية للمنشأة؟</li>
+    <li>جمّع المهام المتشابهة في إدارة أو قسم واحد.</li>
+    <li>حدد خطوط الارتباط: كل موظف يرتبط بمدير واحد.</li>
+    <li>خل نطاق الإشراف معقول (5 – 8 موظفين للمشرف تقريبًا).</li>
+    <li>اربط كل وظيفة بوصف وظيفي واضح، وراجع الهيكل كل ما توسعت المنشأة.</li></ul></div>
+  <p class="hint">نماذج استرشادية تختلف حسب نشاط المنشأة وحجمها.</p>
 </main>
 </div>
 
@@ -1039,6 +1074,7 @@ function route(){
   else if(h==="insurance")v="insView";
   else if(h==="templates")v="tplView";
   else if(h==="platforms")v="platView";
+  else if(h==="org")v="orgView";
   else if(h==="leave")v="leaveView";
   else if(h==="gosi")v="gosiView";
   else if(h==="absence")v="absView";
@@ -1308,6 +1344,18 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
     try{if(navigator.canShare){const b=await (await fetch(url)).blob(),f=new File([b],nm,{type});if(navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}}}catch(e){if(e&&e.name==="AbortError")return}
     const a=document.createElement("a");a.href=url;a.download=nm;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove()};
 })();
+(function(){const box=$("orgBox");if(!box)return;const O=JSON.parse(document.getElementById("orgdata").textContent);
+  const JD=JSON.parse(document.getElementById("jddata").textContent),jf={};JD.forEach(j=>jf[j.t]=j.f);
+  const e=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const b=(t,c)=>`<span class="ob ${c}${jf[t]?" jd":""}"${jf[t]?` data-f="${e(jf[t])}"`:""}>${e(t)}</span>`;
+  const show=k=>{const o=O[k];[...$("orgTabs").children].forEach(x=>x.classList.toggle("on",x.dataset.k===k));
+    box.innerHTML=`<div class="org-d">${e(o.d)}</div><div class="org-root">${o.side.length?`<div class="org-side">${b(o.root,"r")}<i></i>${o.side.map(x=>b(x,"s")).join("")}</div>`:b(o.root,"r")}<div class="org-v"></div></div>
+    <div class="org-deps">${o.deps.map(([d,rs])=>`<div class="od"><h4>${e(d)}</h4>${rs.map((r,i)=>b(r,i===0&&rs.length>1&&/مدير|مشرف/.test(r)?"lead":"")).join("")}</div>`).join("")}</div>`};
+  $("orgTabs").innerHTML=Object.keys(O).map(k=>`<button type="button" data-k="${k}">${e(O[k].n)}</button>`).join("");
+  $("orgTabs").addEventListener("click",ev=>{const t=ev.target.closest("button[data-k]");if(t)show(t.dataset.k)});
+  box.addEventListener("click",ev=>{const t=ev.target.closest(".ob[data-f]");if(!t)return;const tv=$("tv");if(!tv)return;
+    $("tvI").src="../jd/prev/ar/"+t.dataset.f.replace(/\.pdf$/,"")+".jpg";tv.hidden=false;document.body.style.overflow="hidden";history.pushState({tv:1},"")});
+  show("mid")})();
 route();
 
 </script>
