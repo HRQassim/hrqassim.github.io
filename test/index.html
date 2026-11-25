@@ -474,6 +474,10 @@ a,button,summary{touch-action:manipulation;-webkit-tap-highlight-color:transpare
 .tv-b img{display:block;width:100%;max-width:700px;margin:auto;background:#fff;border-radius:10px;box-shadow:0 6px 24px rgba(32,50,76,.12)}
 .tv-back{position:absolute;right:18px;bottom:calc(env(safe-area-inset-bottom) + 16px);background:none;border:0;padding:6px;color:#20324C;cursor:pointer;line-height:0}
 .tv-back svg{width:34px;height:34px;filter:drop-shadow(0 1px 2px rgba(255,255,255,.9))}
+.wg-card{background:#FBFCFE;border-radius:22px;padding:14px;text-align:center}.wg-card img{width:100%;border-radius:16px;display:block}.wg-card p{margin:10px 4px 2px;font-size:13.5px;color:#4A5563;line-height:1.8}
+.wg-steps{background:#FBFCFE;border-radius:22px;padding:14px 34px 14px 16px;margin:12px 0;font-size:13.5px;color:#35475E;line-height:2}.wg-steps a{color:#35547D;font-weight:700}
+.wg-copy{display:block;width:100%;border-radius:16px;padding:12px}
+.wg-link{text-align:center;margin:2px 0 0}.wg-link a{font-size:12px;color:#83898F;text-decoration:none}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -543,6 +547,7 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   </section>
 </main>
 <div class="rfr-w"><button type="button" class="rfr" id="rfr" aria-label="تحديث الصفحة" title="تحديث"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg></button></div>
+<div class="wg-link"><a href="#widget">📱 ويدجت للآيفون</a></div>
 <footer>مجتمع محترفي الموارد البشرية</footer>
 </div>
 </div>
@@ -608,6 +613,22 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   <script type="application/json" id="platdata">[{"n": "قوى", "u": "https://www.qiwa.sa", "d": "منصة وزارة الموارد البشرية لخدمات قطاع العمل.", "s": ["توثيق عقود العمل", "رخص العمل ونقل الخدمات", "متابعة نطاقات ونسب التوطين", "شهادة السعودة"]}, {"n": "مدد", "u": "https://mudad.com.sa", "d": "منصة الرواتب وحماية الأجور.", "s": ["رفع ملف حماية الأجور", "مسيرات الرواتب", "متابعة الالتزام بدفع الأجور"]}, {"n": "التأمينات الاجتماعية", "u": "https://www.gosi.gov.sa", "d": "خدمات المؤسسة العامة للتأمينات الاجتماعية للمنشآت والمشتركين.", "s": ["تسجيل المشتركين واستبعادهم", "تعديل الأجور", "شهادة الالتزام", "إصابات العمل"]}, {"n": "مقيم", "u": "https://muqeem.sa", "d": "خدمات الإقامة للعمالة الوافدة.", "s": ["إصدار وتجديد الإقامة", "تأشيرات الخروج والعودة", "الخروج النهائي"]}, {"n": "أبشر أعمال", "u": "https://www.absher.sa", "d": "خدمات الجوازات والأحوال للمنشآت.", "s": ["خدمات الجوازات للعمالة", "تفويض المستخدمين", "الاستعلامات"]}, {"n": "جدارات", "u": "https://jadarat.sa", "d": "منصة التوظيف الوطنية.", "s": ["نشر الوظائف الشاغرة", "البحث عن الكفاءات الوطنية"]}, {"n": "صندوق تنمية الموارد البشرية (هدف)", "u": "https://www.hrdf.org.sa", "d": "برامج دعم التوظيف والتدريب.", "s": ["دعم أجور السعوديين", "برامج التدريب على رأس العمل", "دعم التوطين"]}]</script>
   <div id="platList" class="insl"></div>
   <p class="hint">روابط المنصات الرسمية وأبرز خدماتها لمنسوبي الموارد البشرية.</p>
+</main>
+</div>
+
+<div id="wgView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>ويدجت HR Qassim للآيفون</b></div>
+<main class="hub">
+  <div class="wg-card"><img src="../widget/preview.png" alt="شكل الويدجت"><p>أرقام الموقع وموعد التوطين القادم على شاشتك الرئيسية، وتتحدث تلقائيًا.</p></div>
+  <ol class="wg-steps">
+    <li>حمّل تطبيق <b>Scriptable</b> المجاني <a href="https://apps.apple.com/app/scriptable/id1405459188" target="_blank" rel="noopener">من App Store ‹</a></li>
+    <li>اضغط <b>«انسخ الكود»</b> تحت</li>
+    <li>افتح Scriptable ← اضغط <b>+</b> ← الصق الكود، وسمّه <b>HR Qassim</b></li>
+    <li>ارجع للشاشة الرئيسية، اضغط مطولًا ← <b>تعديل</b> ← <b>إضافة أداة</b> ← Scriptable ← اختر الحجم</li>
+    <li>اضغط على الأداة مطولًا ← <b>تعديل الأداة</b> ← Script: اختر <b>HR Qassim</b></li>
+  </ol>
+  <button class="btn wg-copy" id="wgCopy" type="button">انسخ الكود</button>
+  <p class="hint">الويدجت يعرض أرقامًا عامة فقط، ويفتح الموقع إذا ضغطت عليه.</p>
 </main>
 </div>
 
@@ -1039,6 +1060,7 @@ function route(){
   else if(h==="insurance")v="insView";
   else if(h==="templates")v="tplView";
   else if(h==="platforms")v="platView";
+  else if(h==="widget")v="wgView";
   else if(h==="leave")v="leaveView";
   else if(h==="gosi")v="gosiView";
   else if(h==="absence")v="absView";
@@ -1308,6 +1330,7 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
     try{if(navigator.canShare){const b=await (await fetch(url)).blob(),f=new File([b],nm,{type});if(navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}}}catch(e){if(e&&e.name==="AbortError")return}
     const a=document.createElement("a");a.href=url;a.download=nm;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove()};
 })();
+(function(){const b=$("wgCopy");if(!b)return;b.addEventListener("click",async()=>{try{const t=await (await fetch("../widget/hrqassim.js",{cache:"no-cache"})).text();await navigator.clipboard.writeText(t);b.textContent="تم النسخ ✓";setTimeout(()=>b.textContent="انسخ الكود",2500)}catch(e){location.href="../widget/hrqassim.js"}})})();
 route();
 
 </script>
