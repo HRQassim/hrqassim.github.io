@@ -474,6 +474,10 @@ a,button,summary{touch-action:manipulation;-webkit-tap-highlight-color:transpare
 .tv-b img{display:block;width:100%;max-width:700px;margin:auto;background:#fff;border-radius:10px;box-shadow:0 6px 24px rgba(32,50,76,.12)}
 .tv-back{position:absolute;right:18px;bottom:calc(env(safe-area-inset-bottom) + 16px);background:none;border:0;padding:6px;color:#20324C;cursor:pointer;line-height:0}
 .tv-back svg{width:34px;height:34px;filter:drop-shadow(0 1px 2px rgba(255,255,255,.9))}
+.gs-note{background:#F3F7FB;border:1px solid #DCE7F2;border-radius:14px;padding:10px 12px;margin:4px 0 10px;font-size:12px;color:#4A5563;line-height:1.7}.gs-note b{display:block;color:#20324C;font-size:12.5px}
+.gs-tl{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:6px;text-align:center}.gs-tl div{background:#fff;border-radius:10px;padding:5px 2px;font-weight:800;color:#20324C;font-size:12px}.gs-tl i{display:block;font-style:normal;font-weight:600;color:#83898F;font-size:9.5px}
+.gs-tl div.now{background:#20324C;color:#fff}.gs-tl div.now i{color:#C9D8E8}
+.gs-note small{display:block;margin-top:4px;color:#83898F;font-size:10px}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -634,6 +638,9 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
     <label>الأجر الأساسي<input id="gsBasic" type="number" inputmode="decimal" placeholder="مثال: 6000"></label>
     <label>بدل السكن<input id="gsHousing" type="number" inputmode="decimal" placeholder="مثال: 1500"></label>
     <label>العمولات (إن وجدت)<input id="gsComm" type="number" inputmode="decimal" placeholder="0"></label>
+    <div class="gs-note" id="gsNote"><b>📅 مواعيد الزيادة السنوية (النظام الجديد)</b><span>تزيد نسبة المعاشات 0.5% على كل من الموظف وصاحب العمل في 1 يوليو من كل سنة:</span>
+      <div class="gs-tl"><div><i>3 يوليو 2024</i>9%</div><div><i>1 يوليو 2025</i>9.5%</div><div><i>1 يوليو 2026</i>10%</div><div><i>1 يوليو 2027</i>10.5%</div><div><i>1 يوليو 2028</i>11%</div></div>
+      <small>المصدر: المؤسسة العامة للتأمينات الاجتماعية</small></div>
     <div class="res" id="gsRes">أدخل البيانات لعرض النتيجة</div>
     <p class="hint">الأجر الخاضع للاشتراك = الأساسي + السكن + العمولات، بحد أعلى 45,000 ريال. للسعودي: المعاشات (9% على كل طرف في النظام الحالي، وفي النظام الجديد ترتفع 0.5% كل يوليو حتى 11% في 2028)، وساند 0.75% على كل طرف، والأخطار المهنية 2% على صاحب العمل. لغير السعودي: الأخطار المهنية 2% على صاحب العمل فقط. المرجع: المؤسسة العامة للتأمينات الاجتماعية. النتيجة تقديرية.</p>
   </div>
@@ -1308,6 +1315,7 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
     try{if(navigator.canShare){const b=await (await fetch(url)).blob(),f=new File([b],nm,{type});if(navigator.canShare({files:[f]})){await navigator.share({files:[f]});return}}}catch(e){if(e&&e.name==="AbortError")return}
     const a=document.createElement("a");a.href=url;a.download=nm;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove()};
 })();
+(function(){const n=$("gsNote");if(!n)return;const f=()=>{n.hidden=!($("gsNat").value==="sa"&&$("gsSys").value==="new")};["gsNat","gsSys"].forEach(i=>$(i).addEventListener("change",f));f();const d=new Date(),ds=["2024-07-03","2025-07-01","2026-07-01","2027-07-01","2028-07-01"];let k=0;ds.forEach((x,i)=>{if(d>=new Date(x))k=i});n.querySelectorAll(".gs-tl div")[k].classList.add("now")})();
 route();
 
 </script>
