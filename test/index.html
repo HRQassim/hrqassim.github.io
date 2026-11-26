@@ -478,6 +478,9 @@ a,button,summary{touch-action:manipulation;-webkit-tap-highlight-color:transpare
 .gs-tl{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin-top:6px;text-align:center}.gs-tl div{background:#fff;border-radius:10px;padding:5px 2px;font-weight:800;color:#20324C;font-size:12px}.gs-tl i{display:block;font-style:normal;font-weight:600;color:#83898F;font-size:9.5px}
 .gs-tl div.now{background:#20324C;color:#fff}.gs-tl div.now i{color:#C9D8E8}
 .gs-note small{display:block;margin-top:4px;color:#83898F;font-size:10px}
+.cgrid a.wide{grid-column:1/-1;flex-direction:row;min-height:56px;gap:10px}
+.sl-t{width:100%;border-collapse:collapse;margin-top:4px;font-size:14px}.sl-t td{padding:7px 4px;border-bottom:1px solid rgba(255,255,255,.12)}.sl-t td:last-child{text-align:left;font-weight:800;direction:ltr}
+.sl-t tr.tot td{border-bottom:0;font-size:16px;color:#8FC0E6}.sl-h{font-size:12.5px;opacity:.8;margin:10px 0 2px;font-weight:700}
 </style>
 <script>
 window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.style.background="#fee";d.style.color="#900";d.textContent="خطأ: "+m+" (سطر "+l+")";}};
@@ -533,6 +536,7 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
       <a href="#leave"><span>🏖️</span>الإجازات</a>
       <a href="#gosi"><span>🛡️</span>التأمينات</a>
       <a href="#absence"><span>⏰</span>خصم الغياب</a>
+      <a href="#salary" class="wide"><span>💵</span>تقسيم الراتب</a>
     </div>
   </section>
 
@@ -612,6 +616,22 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   <script type="application/json" id="platdata">[{"n": "قوى", "u": "https://www.qiwa.sa", "d": "منصة وزارة الموارد البشرية لخدمات قطاع العمل.", "s": ["توثيق عقود العمل", "رخص العمل ونقل الخدمات", "متابعة نطاقات ونسب التوطين", "شهادة السعودة"]}, {"n": "مدد", "u": "https://mudad.com.sa", "d": "منصة الرواتب وحماية الأجور.", "s": ["رفع ملف حماية الأجور", "مسيرات الرواتب", "متابعة الالتزام بدفع الأجور"]}, {"n": "التأمينات الاجتماعية", "u": "https://www.gosi.gov.sa", "d": "خدمات المؤسسة العامة للتأمينات الاجتماعية للمنشآت والمشتركين.", "s": ["تسجيل المشتركين واستبعادهم", "تعديل الأجور", "شهادة الالتزام", "إصابات العمل"]}, {"n": "مقيم", "u": "https://muqeem.sa", "d": "خدمات الإقامة للعمالة الوافدة.", "s": ["إصدار وتجديد الإقامة", "تأشيرات الخروج والعودة", "الخروج النهائي"]}, {"n": "أبشر أعمال", "u": "https://www.absher.sa", "d": "خدمات الجوازات والأحوال للمنشآت.", "s": ["خدمات الجوازات للعمالة", "تفويض المستخدمين", "الاستعلامات"]}, {"n": "جدارات", "u": "https://jadarat.sa", "d": "منصة التوظيف الوطنية.", "s": ["نشر الوظائف الشاغرة", "البحث عن الكفاءات الوطنية"]}, {"n": "صندوق تنمية الموارد البشرية (هدف)", "u": "https://www.hrdf.org.sa", "d": "برامج دعم التوظيف والتدريب.", "s": ["دعم أجور السعوديين", "برامج التدريب على رأس العمل", "دعم التوطين"]}]</script>
   <div id="platList" class="insl"></div>
   <p class="hint">روابط المنصات الرسمية وأبرز خدماتها لمنسوبي الموارد البشرية.</p>
+</main>
+</div>
+
+<div id="salView" class="view">
+<div class="subbar"><a href="#" class="back">→ الرئيسية</a><b>حاسبة تقسيم الراتب</b></div>
+<main class="hub">
+  <div class="calc">
+    <label>الراتب الإجمالي الشهري<input id="slTotal" type="number" inputmode="decimal" placeholder="مثال: 15000"></label>
+    <label>بدل السكن (% من الأساسي)<input id="slH" type="number" inputmode="decimal" value="25"></label>
+    <label>بدل النقل (% من الأساسي)<input id="slT" type="number" inputmode="decimal" value="10"></label>
+    <label>بدلات ثابتة أخرى (ريال)<input id="slO" type="number" inputmode="decimal" value="0"></label>
+    <label>الجنسية<select id="slNat"><option value="sa">سعودي</option><option value="nsa">غير سعودي</option></select></label>
+    <label id="slSysL">تاريخ أول تسجيل في التأمينات<select id="slSys"><option value="new">من 3 يوليو 2024 فأحدث (النظام الجديد)</option><option value="old">قبل 3 يوليو 2024 (النظام الحالي)</option></select></label>
+    <div class="res" id="slRes">أدخل الراتب الإجمالي لعرض التقسيم</div>
+    <p class="hint">التقسيم الشائع في سوق العمل: السكن 25% والنقل 10% من الأساسي، وهو عرف وليس إلزامًا نظاميًا، وتقدر تعدّل النسب حسب سياسة منشأتك. اشتراك التأمينات يُحسب على الأساسي + السكن (بحد أعلى 45,000). النتيجة تقديرية.</p>
+  </div>
 </main>
 </div>
 
@@ -1046,6 +1066,7 @@ function route(){
   else if(h==="insurance")v="insView";
   else if(h==="templates")v="tplView";
   else if(h==="platforms")v="platView";
+  else if(h==="salary")v="salView";
   else if(h==="leave")v="leaveView";
   else if(h==="gosi")v="gosiView";
   else if(h==="absence")v="absView";
@@ -1316,6 +1337,17 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
     const a=document.createElement("a");a.href=url;a.download=nm;a.target="_blank";a.rel="noopener";document.body.appendChild(a);a.click();a.remove()};
 })();
 (function(){const n=$("gsNote");if(!n)return;const f=()=>{n.hidden=!($("gsNat").value==="sa"&&$("gsSys").value==="new")};["gsNat","gsSys"].forEach(i=>$(i).addEventListener("change",f));f();const d=new Date(),ds=["2024-07-03","2025-07-01","2026-07-01","2027-07-01","2028-07-01"];let k=0;ds.forEach((x,i)=>{if(d>=new Date(x))k=i});n.querySelectorAll(".gs-tl div")[k].classList.add("now")})();
+(function(){if(!$("slTotal"))return;const f=n=>Math.round(n).toLocaleString("en-US")+" ﷼";
+  const rateNew=()=>{const d=new Date(),ds=[["2024-07-03",9],["2025-07-01",9.5],["2026-07-01",10],["2027-07-01",10.5],["2028-07-01",11]];let r=9;ds.forEach(([x,v])=>{if(d>=new Date(x))r=v});return r};
+  const calc=()=>{const T=+$("slTotal").value||0,h=(+$("slH").value||0)/100,t=(+$("slT").value||0)/100,o=+$("slO").value||0,sa=$("slNat").value==="sa";
+    $("slSysL").hidden=!sa;
+    if(T<=0||T<=o){$("slRes").textContent="أدخل الراتب الإجمالي لعرض التقسيم";return}
+    const B=Math.round((T-o)/(1+h+t)),H=Math.round(B*h),Tr=T-o-B-H,base=Math.min(B+H,45000);
+    const ann=sa?($("slSys").value==="new"?rateNew():9):0;
+    const empD=sa?base*(ann+0.75)/100:0,erC=sa?base*(ann+0.75+2)/100:base*2/100;
+    $("slRes").innerHTML=`<table class="sl-t"><tr><td>الراتب الأساسي</td><td>${f(B)}</td></tr><tr><td>بدل السكن</td><td>${f(H)}</td></tr><tr><td>بدل النقل</td><td>${f(Tr)}</td></tr>${o?`<tr><td>بدلات أخرى</td><td>${f(o)}</td></tr>`:""}<tr class="tot"><td>الإجمالي</td><td>${f(T)}</td></tr></table>
+    <div class="sl-h">التأمينات الاجتماعية (على ${f(base)})</div><table class="sl-t"><tr><td>استقطاع الموظف${sa?` (${ann+0.75}%)`:""}</td><td>${f(empD)}</td></tr><tr class="tot"><td>صافي الراتب للموظف</td><td>${f(T-empD)}</td></tr><tr><td>اشتراك صاحب العمل (${sa?ann+2.75:2}%)</td><td>${f(erC)}</td></tr><tr class="tot"><td>التكلفة الشهرية على المنشأة</td><td>${f(T+erC)}</td></tr></table>`};
+  ["slTotal","slH","slT","slO","slNat","slSys"].forEach(i=>{$(i).addEventListener("input",calc);$(i).addEventListener("change",calc)});calc()})();
 route();
 
 </script>
