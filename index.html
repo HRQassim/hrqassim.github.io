@@ -458,6 +458,12 @@ footer{background:transparent}
 .cvlock form{display:flex;gap:8px}.cvlock input{flex:1;min-width:0;font:inherit;font-size:18px;text-align:center;letter-spacing:6px;border:1.5px solid #D5DEE8;border-radius:14px;padding:10px}.cvlock input::placeholder{letter-spacing:0;font-size:15px}.cvlock input:focus{outline:0;border-color:#5B91BD}
 .cvlock .btn{border-radius:14px;padding:0 22px}.cvlock-err{color:#B4533A;font-size:13px;margin-top:10px;font-weight:600}.cvlock small{display:block;margin-top:16px;color:#83898F;font-size:12px}
 .inst{position:fixed;left:12px;right:12px;bottom:12px;z-index:90;background:#20324C;color:#fff;border-radius:22px;padding:14px 16px;display:flex;gap:12px;align-items:center;box-shadow:0 10px 30px rgba(32,50,76,.3);max-width:520px;margin:auto}.inst img{width:44px;height:44px;border-radius:12px;background:#fff;flex:none}.inst .t{flex:1;min-width:0;font-size:13px;line-height:1.7;color:#DCE7F2}.inst .t b{display:block;color:#fff;font-size:14.5px}.inst .ios-sh{display:inline-block;width:16px;height:16px;vertical-align:-3px}.inst button{border:0;font:inherit;cursor:pointer}.inst .go{background:#fff;color:#20324C;font-weight:800;border-radius:999px;padding:8px 14px;font-size:13px}.inst .x{background:transparent;color:#9FB7CF;font-size:20px;line-height:1;padding:4px}.inst{display:none!important}
+.cvlock-wa{display:flex;align-items:center;justify-content:center;gap:7px;margin:14px auto 0;width:fit-content;background:rgba(37,211,102,.12);-webkit-backdrop-filter:blur(10px) saturate(160%);backdrop-filter:blur(10px) saturate(160%);border:1px solid rgba(37,211,102,.28);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 4px 14px rgba(37,211,102,.12);color:#1E9E57;text-decoration:none;font-weight:600;font-size:14.5px;border-radius:999px;padding:9px 22px}.cvlock-wa svg{width:18px;height:18px}.cvlock-wa[hidden]{display:none}.cvlock-wa:not([hidden])~small{display:none}
+.ad.vid{background:none;padding-top:0}
+.ad-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;background:#20324C}
+.ad.vid:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(32,50,76,.95) 0%,rgba(32,50,76,.55) 38%,rgba(32,50,76,0) 65%)}
+.ad.vid{isolation:isolate}
+.ad-snd{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:14px;padding:0;cursor:pointer}
 .rfr-w{display:flex;justify-content:center;margin:6px 0 2px}.rfr{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.45);-webkit-backdrop-filter:blur(10px) saturate(160%);backdrop-filter:blur(10px) saturate(160%);box-shadow:0 2px 8px rgba(32,50,76,.08),inset 0 1px 0 rgba(255,255,255,.8);color:#5B91BD;display:grid;place-items:center;padding:0;cursor:pointer;opacity:.85}.rfr svg{width:13px;height:13px}.rfr:active{opacity:1}.rfr.spin svg{animation:rfspin .8s linear infinite}@keyframes rfspin{to{transform:rotate(360deg)}}
 .tv{position:fixed;inset:0;z-index:80;background:#EAEFF5}
 .tv[hidden]{display:none}
@@ -791,6 +797,7 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
   <p>أدخل رمز الدخول لتصفّح السير الذاتية</p>
   <form id="cvLockF" autocomplete="off"><input id="cvPin" type="password" inputmode="numeric" placeholder="رمز الدخول" aria-label="رمز الدخول"><button class="btn" id="cvGo" type="submit">دخول</button></form>
   <div class="cvlock-err" id="cvErr" hidden>الرمز غير صحيح</div>
+  <a class="cvlock-wa" id="cvWa" hidden href="https://wa.me/966552655676?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D8%BA%D9%89%20%D8%B1%D9%85%D8%B2%20%D8%A7%D9%84%D8%AF%D8%AE%D9%88%D9%84%20%D9%84%D8%A8%D9%86%D9%83%20%D8%A7%D9%84%D8%B3%D9%8A%D8%B1%20%D8%A7%D9%84%D8%B0%D8%A7%D8%AA%D9%8A%D8%A9%20%D9%81%D9%8A%20%D9%85%D9%88%D9%82%D8%B9%20%D9%85%D8%AC%D8%AA%D9%85%D8%B9%20%D9%85%D8%AD%D8%AA%D8%B1%D9%81%D9%8A%20%D8%A7%D9%84%D9%85%D9%88%D8%A7%D8%B1%D8%AF%20%D8%A7%D9%84%D8%A8%D8%B4%D8%B1%D9%8A%D8%A9" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-1.4-.7-2.4-1.3-3.3-2.9-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 2s.9 2.3 1 2.5c.1.2 1.7 2.6 4.1 3.6 1.5.7 2.1.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.4-.1z"/></svg>تواصل معنا</a>
   <small>للحصول على الرمز تواصل مع إدارة المجتمع</small>
 </div></div>
 <div class="bar"><div class="bar-in"><div class="search">
@@ -875,13 +882,15 @@ async function cvBlob(r){if(_imgs[r.id])return _imgs[r.id];const res=await fetch
 const CVP=new Promise(res=>{
   const bv=document.getElementById("bankView");bv.classList.add("locked");
   const done=d=>{bv.classList.remove("locked");res(d)};
-  let saved=null;try{saved=localStorage.getItem("cvk")}catch(e){}
+  let saved=null;try{saved=localStorage.getItem("cvk");if(saved&&!(Date.now()-(+localStorage.getItem("cvkT")||0)<6*3600e3)){localStorage.removeItem("cvk");saved=null}}catch(e){} /* access lasts 6 hours */
+  try{if((+localStorage.getItem("cvFail")||0)>=2)document.getElementById("cvWa").hidden=false}catch(e){}
   if(saved)cvOpen(ub(saved)).then(done).catch(()=>{try{localStorage.removeItem("cvk")}catch(e){}});
   document.getElementById("cvLockF").addEventListener("submit",async e=>{e.preventDefault();
     const inp=$("cvPin"),btn=$("cvGo"),err=$("cvErr");err.hidden=true;btn.disabled=true;btn.textContent="…";
     try{const raw=await cvKeyFromPin(inp.value.trim());if(!raw)throw 0;const d=await cvOpen(raw);
-      try{localStorage.setItem("cvk",btoa(String.fromCharCode(...raw)))}catch(e){}inp.value="";done(d)}
-    catch(e){err.hidden=false;inp.select()}finally{btn.disabled=false;btn.textContent="دخول"}})});
+      try{localStorage.removeItem("cvFail")}catch(e){}
+      try{localStorage.setItem("cvk",btoa(String.fromCharCode(...raw)));localStorage.setItem("cvkT",Date.now())}catch(e){}inp.value="";done(d)}
+    catch(e){err.hidden=false;inp.select();let f=0;try{f=(+localStorage.getItem("cvFail")||0)+1;localStorage.setItem("cvFail",f)}catch(_){f=(window._cvF=(window._cvF||0)+1)}if(f>=2)$("cvWa").hidden=false}finally{btn.disabled=false;btn.textContent="دخول"}})});
 CVP.then(d=>{
   const _exp=new Date(Date.now()+3*3600e3-180*864e5).toISOString().slice(0,10); /* CVs expire 6 months after added */
    DATA=d.filter(r=>!r.added||r.added>=_exp).map(r=>(Object.assign({},r,{cat:CATS.some(c=>c.id===r.cat)?r.cat:"other",
@@ -1170,13 +1179,16 @@ const ADS_ALL=JSON.parse(document.getElementById("addata").textContent);let adI=
   }).filter(Boolean);
   for(let i=ADS.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[ADS[i],ADS[j]]=[ADS[j],ADS[i]]} // random order per visit
   window.ADS=ADS;
-  $("adTrack").innerHTML=ADS.map((a,i)=>`<div class="ad ${a.kind}${i?"":" on"}">${a.logo?`<div class="ad-logo"><img src="${a.logo.startsWith("http")?a.logo:a.logo}" alt="${esc(a.title)}"></div>`:""}<span class="b-tag light">${esc(a.tag)}</span><h3>${esc(a.title)}</h3><p>${esc(a.sub)}</p>${a.meta.length?`<div class="ad-meta">${a.meta.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`:""}${a.status?`<div class="ad-status">${esc(a.status)}</div>`:""}${a.cta?`<a class="ad-cta" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.cta)} ‹</a>`:""}</div>`).join("");
+  $("adTrack").innerHTML=ADS.map((a,i)=>`<div class="ad ${a.kind}${a.video||a.image?" vid":""}${i?"":" on"}">${a.video?`<video class="ad-vid" src="${esc(a.video)}"${a.poster?` poster="${esc(a.poster)}"`:""} muted playsinline loop preload="metadata"></video>${a.sound?`<button class="ad-snd" type="button" aria-label="الصوت">🔇</button>`:""}`:""}${a.image&&!a.video?`<img class="ad-vid" src="${a.image.startsWith("http")?esc(a.image):esc(a.image)}" alt="">`:""}${a.logo?`<div class="ad-logo"><img src="${a.logo.startsWith("http")?a.logo:a.logo}" alt="${esc(a.title)}"></div>`:""}<span class="b-tag light">${esc(a.tag)}</span><h3>${esc(a.title)}</h3><p>${esc(a.sub)}</p>${a.meta.length?`<div class="ad-meta">${a.meta.map(x=>`<span>${esc(x)}</span>`).join("")}</div>`:""}${a.status?`<div class="ad-status">${esc(a.status)}</div>`:""}${a.cta?`<a class="ad-cta" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.cta)} ‹</a>`:""}</div>`).join("");
   $("adDots").innerHTML=ADS.length>1?ADS.map((a,i)=>`<button data-i="${i}" class="${i?"":"on"}" aria-label="إعلان ${i+1}"></button>`).join(""):"";
-  const go=i=>{adI=(i+ADS.length)%ADS.length;document.querySelectorAll("#adTrack .ad").forEach((e,k)=>e.classList.toggle("on",k===adI));document.querySelectorAll("#adDots button").forEach((e,k)=>e.classList.toggle("on",k===adI))};
-  const start=()=>{clearInterval(adT);if(ADS.length>1)adT=setInterval(()=>go(adI+1),5000)};
+  const go=i=>{adI=(i+ADS.length)%ADS.length;document.querySelectorAll("#adTrack .ad").forEach((e,k)=>{e.classList.toggle("on",k===adI);const v=e.querySelector("video");if(v){if(k===adI){try{v.currentTime=0}catch(_){}const pr=v.play();pr&&pr.catch(()=>{})}else v.pause()}});document.querySelectorAll("#adDots button").forEach((e,k)=>e.classList.toggle("on",k===adI))};
+  const hold=()=>{const v=document.querySelectorAll("#adTrack .ad")[adI];const vd=v&&v.querySelector("video");return vd?Math.max(5000,((vd.duration||12)*1000)):5000};
+  const start=()=>{clearTimeout(adT);if(ADS.length>1)adT=setTimeout(()=>{go(adI+1);start()},hold())};
   $("adDots").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;go(+b.dataset.i);start()});
   let x0=null;$("adBox").addEventListener("touchstart",e=>{x0=e.touches[0].clientX},{passive:true});
   $("adBox").addEventListener("touchend",e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){go(adI+(dx>0?1:-1));start()}x0=null});
+  go(0);
+  $("adTrack").addEventListener("click",e=>{const b=e.target.closest(".ad-snd");if(!b)return;e.preventDefault();const v=b.parentElement.querySelector("video");v.muted=!v.muted;b.textContent=v.muted?"🔇":"🔊"});
   start();})();
 (function(){
   const qd=new URLSearchParams(location.search).get("d");

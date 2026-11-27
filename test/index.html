@@ -903,7 +903,7 @@ async function cvBlob(r){if(_imgs[r.id])return _imgs[r.id];const res=await fetch
 const CVP=new Promise(res=>{
   const bv=document.getElementById("bankView");bv.classList.add("locked");
   const done=d=>{bv.classList.remove("locked");res(d)};
-  let saved=null;try{saved=localStorage.getItem("cvk");if(saved&&!(Date.now()-(+localStorage.getItem("cvkT")||0)<8*3600e3)){localStorage.removeItem("cvk");saved=null}}catch(e){} /* access lasts 8 hours */
+  let saved=null;try{saved=localStorage.getItem("cvk");if(saved&&!(Date.now()-(+localStorage.getItem("cvkT")||0)<6*3600e3)){localStorage.removeItem("cvk");saved=null}}catch(e){} /* access lasts 6 hours */
   try{if((+localStorage.getItem("cvFail")||0)>=2)document.getElementById("cvWa").hidden=false}catch(e){}
   if(saved)cvOpen(ub(saved)).then(done).catch(()=>{try{localStorage.removeItem("cvk")}catch(e){}});
   document.getElementById("cvLockF").addEventListener("submit",async e=>{e.preventDefault();
