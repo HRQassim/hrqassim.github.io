@@ -487,7 +487,7 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
 <div id="lockOpen" hidden style="position:fixed;inset:0;z-index:9999;background:radial-gradient(circle at 50% 40%,#35547D 0%,#20324C 55%,#121E31 100%);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:Cairo,sans-serif;direction:rtl">
   <img src="assets/logo-full-white.png" alt="مجتمع محترفي الموارد البشرية" style="width:150px;margin-bottom:26px">
   <div style="font-size:15px;color:#8FC0E6;font-weight:700;margin-bottom:6px">قريبًا</div>
-  <div style="font-size:26px;font-weight:900;line-height:1.5">نفتح الموقع اليوم<br>الساعة 7:38 مساءً</div>
+  <div style="font-size:26px;font-weight:900;line-height:1.5">نفتح الموقع اليوم<br>الساعة 8:00 مساءً</div>
   <div id="lockCd" style="margin-top:22px;display:flex;gap:10px;direction:rtl"></div>
   <div style="margin-top:30px;font-size:13px;color:#C9D8E8">تابعنا على</div>
   <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;align-items:center">
@@ -495,10 +495,10 @@ window.onerror=function(m,u,l,c){var d=document.getElementById("boot");if(d){d.s
     <a href="https://x.com/hrpc_sa" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font:600 14px -apple-system,Arial;direction:ltr;background:rgba(255,255,255,.1);border-radius:999px;padding:7px 16px"><svg viewBox="0 0 24 24" width="22" height="22"><rect width="24" height="24" rx="5" fill="#000"/><path fill="#fff" d="M13.6 10.8 18.9 4.8h-1.3l-4.6 5.2-3.7-5.2H5l5.6 7.9L5 19.2h1.3l4.9-5.5 3.9 5.5H19.4l-5.8-8.4zm-1.7 2-.6-.8L6.8 5.7h1.9l3.6 5.1.6.8 4.7 6.6h-1.9l-3.8-5.4z"/></svg>@hrpc_sa</a>
   </div>
 </div>
-<script>(function(){var T=Date.parse("2026-11-28T19:38:00+03:00"),L=document.getElementById("lockOpen"),C=document.getElementById("lockCd");
+<script>(function(){var T=Date.parse("2026-11-28T19:38:00+03:00"),SHOW=Date.parse("2026-11-28T20:00:00+03:00"),L=document.getElementById("lockOpen"),C=document.getElementById("lockCd");
 if(/[?&]preview=1/.test(location.search)||Date.now()>=T)return;L.hidden=false;document.documentElement.style.overflow="hidden";
 var box=function(n,l){return '<div style="background:rgba(255,255,255,.1);border-radius:14px;padding:8px 0;width:64px"><div style="font:800 26px -apple-system,Arial">'+String(n).padStart(2,"0")+'</div><div style="font-size:11px;color:#C9D8E8;font-family:Cairo,sans-serif">'+l+'</div></div>'};
-var tick=function(){var d=T-Date.now();if(d<=0){location.reload();return}var h=Math.floor(d/36e5),m=Math.floor(d%36e5/6e4),s=Math.floor(d%6e4/1e3);C.innerHTML=box(h,"ساعة")+box(m,"دقيقة")+box(s,"ثانية")};tick();setInterval(tick,1000)})();</script>
+var tick=function(){if(Date.now()>=T){location.reload();return}var d=SHOW-Date.now();var h=Math.floor(d/36e5),m=Math.floor(d%36e5/6e4),s=Math.floor(d%6e4/1e3);C.innerHTML=box(h,"ساعة")+box(m,"دقيقة")+box(s,"ثانية")};tick();setInterval(tick,1000)})();</script>
 <div id="hubView" class="view">
 <div class="minibar" id="miniBar" aria-hidden="true"><a href="#" id="miniLink"><img src="assets/logo-icon.png" alt=""><b>مجتمع محترفي الموارد البشرية</b></a></div>
 <main class="bento">
